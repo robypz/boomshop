@@ -15,7 +15,7 @@ class Bundle extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function recharges(){
-        return $this->hasMany(OrderStatus::class);
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }

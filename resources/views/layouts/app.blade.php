@@ -135,9 +135,9 @@
                                         class="bi bi-collection me-2 "></i>Tarjetas</a>
                             </li>
 
-                            <li class="nav-item mt-3">
+                            <li class="nav-item mt-3 text-center">
 
-                                    <a class="btn btn-primary rounded-pill fw-bold boom-color-darkgray fs-5 w-100" href="{{ route('logout') }}"
+                                    <a class="btn btn-primary rounded-pill fw-bold boom-color-darkgray fs-5 w-75" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                         <i class="bi bi-door-closed me-2 "></i>{{ __('Cerrar sesión') }}

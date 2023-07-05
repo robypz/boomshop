@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bundle;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -83,8 +85,16 @@ class UserController extends Controller
 
         $pendingOrders = count(Order::whereRelation('orderStatus', "status", "=", "Pendiente")->where('user_id', auth()->user()->id)->get());
 
-        $successOrders = count(Order::whereRelation('orderStatus', "status", "=", "Pendiente")->where('user_id', auth()->user()->id)->get());
+        $successOrders = count(Order::whereRelation('orderStatus', "status", "=", "Exitoso")->where('user_id', auth()->user()->id)->get());
 
-        return view('user.profile',compact('user','pendingOrders','successOrders'));
+        $favoriteBundles = Bundle::select('product_id', DB::raw('count(*) as total'))
+            ->join('orders', 'bundles.id', '=', 'orders.bundle_id')
+            ->where('orders.user_id', $user->id)
+            ->groupBy('product_id')
+            ->orderBy('total', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('user.profile', compact('user', 'pendingOrders', 'successOrders','favoriteBundles'));
     }
 }

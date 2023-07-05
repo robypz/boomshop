@@ -2,19 +2,30 @@
 
 @section('content')
     <div class="container py-4">
-        <div class="row">
-            <div class="col">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col mb-3">
                 <div class="card recharge-data h-100">
                     <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-1">
-                                <i class="bi bi-person-circle fs-3"></i>
-                            </div>
+                        <div class="row mb-2 text-center">
+
                             <div class="col fs-3 boom-color-yellow fw-bold">
-                                {{ $user->nick }}
+                                <i class="bi bi-person-circle fs-1 me-2 boom-color-lightgray"></i> {{ $user->nick }}
                             </div>
                         </div>
-                        <div class="row">
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                Nombre: <span class="fw-bold">{{ $user->name }}</span>
+                            </div>
+
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                Apellido: <span class="fw-bold">{{ $user->surname }}</span>
+                            </div>
+
+                        </div>
+                        <div class="row mb-2">
                             <div class="col">
                                 Correo: <span class="fw-bold">{{ $user->email }}</span>
                             </div>
@@ -22,12 +33,18 @@
                                 <i class="bi bi-shield-fill-check text-success"></i>
                             </div>
                         </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                Miembro desde: <span class="fw-bold">{{ $user->created_at->diffForHumans() }}</span>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
             </div>
-            <div class="col">
-                <div class="card recharge-data h-100"">
+            <div class="col mb-3">
+                <div class="card recharge-data h-100">
                     <div class="card-body">
                         <div class="row ">
                             <div class="col fs-3 text-center mb-3 boom-color-yellow fw-bold">
@@ -37,28 +54,80 @@
 
                         <div class="row">
                             <div class="col text-center ">
-                                {{ count($user->orders) }}
+                                <span class="fw-bold">{{ count($user->orders) }}</span>
+
                                 <br>
                                 <hr class="mx-3">
-                                <span class="fw-bold">Totales</span>
+                                <span>Totales</span>
 
                             </div>
                             <div class="col text-center">
-                                {{ $pendingOrders }}
+                                <span class="fw-bold">{{ $pendingOrders }}</span>
+
                                 <br>
                                 <hr class="mx-3">
-                                <span class="fw-bold">Pendientes</span>
+                                <span>Pendientes</span>
 
                             </div>
                             <div class="col text-center">
-                                {{ $successOrders }}
+                                <span class="fw-bold">{{ $successOrders }}</span>
+
                                 <br>
                                 <hr class="mx-3">
-                                <span class="fw-bold">
+                                <span>
                                     Exitosas
                                 </span>
 
                             </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col mb-3">
+
+            </div>
+            <div class="col mb-3">
+                <div class="card recharge-data h-100">
+                    <div class="card-body">
+                        <div class="row ">
+                            <div class="col fs-3 text-center mb-3 boom-color-yellow fw-bold">
+                                Compras recientes
+                            </div>
+                        </div>
+
+                        <div class="row row-cols-2 row-cols-md-3">
+                            @foreach ($favoriteBundles as $favoriteBundle)
+                                <div class="col mb-3">
+                                    <a href="{{ route('product.show', ['id' => $favoriteBundle->product->id]) }}">
+                                        <div class="game">
+                                            <div class="myimg-container img-container text-center">
+                                                @if ($favoriteBundle->product->category->category == 'Tarjetas')
+                                                    <img class="card-img-top mycard-img-top w-75"
+                                                        src="{{ route('image.show', ['image' => $favoriteBundle->product->image]) }}"
+                                                        alt="Card image cap">
+                                                @else
+                                                    <img class="card-img-top mycard-img-top"
+                                                        src="{{ route('image.show', ['image' => $favoriteBundle->product->image]) }}"
+                                                        alt="Card image cap">
+                                                @endif
+
+
+                                            </div>
+
+                                            <div class="d-flex align-items-center justify-content-center game-name">
+                                                <div class="text-center">
+                                                    {{ $favoriteBundle->product->name }}
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </a>
+
+                                </div>
+                            @endforeach
                         </div>
                     </div>
 
