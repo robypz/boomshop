@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\BundleController;
 
 use App\Http\Controllers\HomeController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +49,22 @@ Route::group(
         Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
         Route::post('login', [LoginController::class, 'login']);
         Route::post('register', [RegisterController::class, 'register']);
+
+        Route::get('/confirm-password', function () {
+            return view('auth.passwords.confirm');
+        })->middleware('auth')->name('password.confirmPassword');
+
+        Route::post('/confirm-password', function (Request $request) {
+            if (! Hash::check($request->password, $request->user()->password)) {
+                return back()->withErrors([
+                    'password' => ['The provided password does not match our records.']
+                ]);
+            }
+         
+            $request->session()->passwordConfirmed();
+         
+            return redirect()->intended();
+        })->middleware(['auth', 'throttle:6,1']);
 
 
         Route::post('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');
@@ -162,7 +181,7 @@ Route::group(
                 Route::post('/update', [UserController::class, 'update'])->name('user.update');
                 Route::get('/orders', [UserController::class, 'orders'])->name('user.orders');
                 Route::get('/giftcards', [UserController::class, 'giftCards'])->name('user.giftCards');
-                Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+                Route::get('/profile', [UserController::class, 'profile'])->name('user.profile')->middleware(['password.confirm']);
 
                 Route::group(['middleware' => ['role:super-admin|admin|operator']], function () {
                     Route::get('/ordersInProcess', [UserController::class, 'ordersInProcess'])->name('user.ordersInProcess');

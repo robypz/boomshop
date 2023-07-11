@@ -85,7 +85,34 @@
                 </div>
             </div>
             <div class="col mb-3">
+                <div class="card recharge-data h-100">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col fs-3 text-center boom-color-yellow fw-bold">
+                                <i class="bi bi-lock-fill me-2 boom-color-lightgray"></i>Seguridad
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col password-reset d-flex align-items-center">
+                                <div class="">
+                                    Contraseña: <span class="fw-bold">********</span>
+                                </div>
+                                
+                            </div>
+                            <div class="col text-start">
+                                <form action="{{ route('password.email') }}" method="POST">
+                                    @csrf
+                                    <input type="email" name="email" id="email" value="{{ auth()->user()->email }}"
+                                        hidden readonly>
+                                    <button type="submit" class="btn btn-blue">Cambiar</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
             <div class="col mb-3">
                 <div class="card recharge-data h-100">

@@ -5,12 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card recharge-data">
-                <div class="card-header recharge-data-header">{{ __('Confirm Password') }}</div>
+                <div class="card-header recharge-data-header fs-5 fw-bold text-center">{{ __('Confirm Password') }}</div>
 
                 <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+                    <div class="text-center fw-bold">
+                        {{ __('Please confirm your password before continuing.') }}
+                    </div>
+                    
 
-                    <form method="POST" action="{{ route('password.confirm') }}">
+                    <form method="POST" action="{{ route('password.confirmPassword') }}">
                         @csrf
 
                         <div class="row mb-3">
