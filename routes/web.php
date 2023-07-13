@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\BundleController;
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PaymentController;
@@ -39,7 +37,7 @@ Auth::routes([
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
 
@@ -50,21 +48,7 @@ Route::group(
         Route::post('login', [LoginController::class, 'login']);
         Route::post('register', [RegisterController::class, 'register']);
 
-        Route::get('/confirm-password', function () {
-            return view('auth.passwords.confirm');
-        })->middleware('auth')->name('password.confirmPassword');
 
-        Route::post('/confirm-password', function (Request $request) {
-            if (! Hash::check($request->password, $request->user()->password)) {
-                return back()->withErrors([
-                    'password' => ['The provided password does not match our records.']
-                ]);
-            }
-         
-            $request->session()->passwordConfirmed();
-         
-            return redirect()->intended();
-        })->middleware(['auth', 'throttle:6,1']);
 
 
         Route::post('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');
@@ -89,8 +73,25 @@ Route::group(
             Route::view('termsAndConditions', 'help.termsAndConditions')->name('help.termsAndConditions');
         });
 
+        Route::get('/confirm-password', function () {
+            return view('auth.passwords.confirm');
+        })->middleware('auth')->name('password.confirmPassword');
 
-        Route::middleware(['auth','verified'])->group(function () {
+        Route::post('/confirm-password', function (Request $request) {
+            if (!Hash::check($request->password, $request->user()->password)) {
+                return back()->withErrors([
+                    'password' => ['The provided password does not match our records.']
+                ]);
+            }
+
+            $request->session()->passwordConfirmed();
+
+            return redirect()->intended();
+        })->middleware(['auth', 'throttle:6,1']);
+
+
+
+        Route::middleware(['auth', 'verified'])->group(function () {
 
 
             Route::prefix('product')->group(function () {
@@ -99,8 +100,6 @@ Route::group(
                     Route::get('/create', [ProductController::class, 'create'])->name('product.create');
                     Route::post('/store', [ProductController::class, 'store'])->name('product.store');
                 });
-
-
             });
 
             Route::prefix('category')->group(function () {
@@ -112,8 +111,6 @@ Route::group(
                     Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
                     Route::get('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
                 });
-
-
             });
 
             Route::group(['middleware' => ['role:super-admin|admin']], function () {
@@ -168,7 +165,6 @@ Route::group(
                     Route::post('/store', [PaymentMethodController::class, 'store'])->name('paymentMethod.store');
                     Route::get('/edit/{id}', [PaymentMethodController::class, 'edit'])->name('paymentMethod.edit');
                     Route::post('/update', [PaymentMethodController::class, 'update'])->name('paymentMethod.update');
-
                 });
             });
 
@@ -181,7 +177,9 @@ Route::group(
                 Route::post('/update', [UserController::class, 'update'])->name('user.update');
                 Route::get('/orders', [UserController::class, 'orders'])->name('user.orders');
                 Route::get('/giftcards', [UserController::class, 'giftCards'])->name('user.giftCards');
-                Route::get('/profile', [UserController::class, 'profile'])->name('user.profile')->middleware(['password.confirm']);
+                Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+                Route::get('/changePasswordRequest', [UserController::class, 'passwordChangeRequest'])->name('user.changePasswordRequest')->middleware(['password.confirm']);
+                Route::post('/changePassword', [UserController::class, 'passwordChange'])->name('user.passwordChange')->middleware(['password.confirm']);
 
                 Route::group(['middleware' => ['role:super-admin|admin|operator']], function () {
                     Route::get('/ordersInProcess', [UserController::class, 'ordersInProcess'])->name('user.ordersInProcess');
@@ -192,8 +190,6 @@ Route::group(
                     Route::get('/editRole/{id}', [UserController::class, 'editRole'])->name('user.editRole');
                     Route::post('/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
                 });
-
-
             });
 
             Route::prefix('code')->group(function () {
@@ -206,9 +202,7 @@ Route::group(
 
                 Route::post('/validate', [CodeController::class, 'validateCode'])->name('code.validate');
                 Route::get('/test', [CodeController::class, 'test'])->name('code.test');
-
             });
         });
-
     }
 );

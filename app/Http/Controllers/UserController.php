@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -95,6 +96,24 @@ class UserController extends Controller
             ->take(3)
             ->get();
 
-        return view('user.profile', compact('user', 'pendingOrders', 'successOrders','favoriteBundles'));
+        return view('user.profile', compact('user', 'pendingOrders', 'successOrders', 'favoriteBundles'));
+    }
+
+    function passwordChangeRequest()
+    {
+        return view('user.passwordChange');
+    }
+
+    function passwordChange(Request $request)
+    {
+        $validated = $request->validate([
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $user= User::find($request->user()->id);
+
+        $user->password = Hash::make($request->password);
+        $user->update();
+        return redirect(route('user.profile'))->with('password','changed');
     }
 }

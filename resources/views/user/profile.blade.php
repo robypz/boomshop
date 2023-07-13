@@ -6,9 +6,9 @@
             <div class="col mb-3">
                 <div class="card recharge-data h-100">
                     <div class="card-body">
-                        <div class="row mb-2 text-center">
+                        <div class="row mb-2">
 
-                            <div class="col fs-3 boom-color-yellow fw-bold">
+                            <div class="col fs-3 boom-color-yellow fw-bold d-flex align-items-center justify-content-center">
                                 <i class="bi bi-person-circle fs-1 me-2 boom-color-lightgray"></i> {{ $user->nick }}
                             </div>
                         </div>
@@ -27,10 +27,7 @@
                         </div>
                         <div class="row mb-2">
                             <div class="col">
-                                Correo: <span class="fw-bold">{{ $user->email }}</span>
-                            </div>
-                            <div class="col">
-                                <i class="bi bi-shield-fill-check text-success"></i>
+                                Correo: <span class="fw-bold">{{ $user->email }}</span><i class="bi bi-shield-fill-check text-success ms-3"></i>
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -93,21 +90,28 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row row-cols-2">
                             <div class="col password-reset d-flex align-items-center">
                                 <div class="">
                                     Contraseña: <span class="fw-bold">********</span>
                                 </div>
-                                
+
                             </div>
                             <div class="col text-start">
-                                <form action="{{ route('password.email') }}" method="POST">
-                                    @csrf
-                                    <input type="email" name="email" id="email" value="{{ auth()->user()->email }}"
-                                        hidden readonly>
-                                    <button type="submit" class="btn btn-blue">Cambiar</button>
-                                </form>
+                                <a href="{{ route('user.changePasswordRequest') }}"><button type="button"
+                                        class="btn btn-blue">Cambiar</button></a>
+
+
                             </div>
+
+                        </div>
+                        <div class="mt-3">
+                            @if (session('password'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Contraseña actualizada con exito
+                                </div>
+                            @endif
+
                         </div>
 
                     </div>

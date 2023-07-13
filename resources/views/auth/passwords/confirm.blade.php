@@ -11,7 +11,7 @@
                     <div class="text-center fw-bold">
                         {{ __('Please confirm your password before continuing.') }}
                     </div>
-                    
+
 
                     <form method="POST" action="{{ route('password.confirmPassword') }}">
                         @csrf
@@ -24,7 +24,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ __($message) }}</strong>
                                     </span>
                                 @enderror
                             </div>
