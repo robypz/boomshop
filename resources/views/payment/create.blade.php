@@ -87,7 +87,7 @@
                                     <div class="col">
                                         Banco: <br> <span class="text-primary fw-bold"> Banesco</span>
                                     </div>
-                                    <div class="col col-lg-4">
+                                    <div class="col col-lg-4 col-6">
                                         Cedula de Identidad:
                                         <span class="text-primary fw-bold" id="ci">6189959</span>
 
@@ -234,7 +234,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="number" name="amount" step="0.01" class="form-control mb-4"
+                                            <input type="number" name="amount" step="0.01"
+                                                class="form-control mb-4"
                                                 value="{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}"
                                                 required hidden>
                                         </div>
@@ -380,10 +381,10 @@
 
 
                                 <input type="text" name="payment_method_id" hidden value="{{ $paymentMethod->id }}">
-                                @if ($bundle->game->need_region_id)
+                                @if ($bundle->product->need_region_id)
                                     <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                     <input type="text" name="region_id" hidden value="{{ $region_id }}">
-                                @elseif ($bundle->game->need_access)
+                                @elseif ($bundle->product->need_access)
                                     <input type="email" name="email" hidden value="{{ $email }}">
                                     <input type="password" name="password" hidden value="{{ $password }}">
                                 @else
@@ -416,72 +417,87 @@
                                     <div class="col">
                                         <input type="number" name="amount" step="0.01" class="form-control mb-4"
                                             value="{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}"
-                                            readonly required hidden>
+                                            required hidden>
                                     </div>
                                     @if ($bundle->discount > 0)
                                         <div class="col-12 text-end mb-3 mt-3">
-                                            <p class="fs-5">MONTO TOTAL A PAGAR</p>
-                                            <p class=" text-decoration-line-through text-muted">
+                                            <span class="">MONTO TOTAL A PAGAR</span><br>
+                                            <span class="text-decoration-line-through text-muted">
                                                 {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                USD</p>
-                                            <p class=""><span
-                                                    class="fw-bold">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                USD</span> <br>
+                                            <span class="fs-5" id="amount-container">
+                                                <span class="fw-bold"
+                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
                                                 <span class="fw-bold"> USD</span>
-                                            </p>
+                                            </span>
+                                            <br>
+                                            <br>
+                                            <span class="fs-5" id="code-discount" hidden>
+                                                <span class="fw-bold" id="code-discount-amount"></span>
+                                                <span class="fw-bold"> USD</span>
+                                            </span>
 
                                         </div>
                                     @else
                                         <div class="col-12 text-end mb-3 mt-3">
-                                            <p class="fs-5">MONTO TOTAL A PAGAR: </p>
-                                            <p class=""><span
-                                                    class="fw-bold">{{ $bundle->price * $paymentMethod->valuation->value }}</span>
+                                            <span class="">MONTO TOTAL A PAGAR: </span><br>
+                                            <span class="fs-5" id="amount-container">
+                                                <span class="fw-bold"
+                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
                                                 <span class="fw-bold"> USD</span>
-                                            </p>
+                                            </span>
+
+                                            <br>
+
+                                            <span class="fs-5" id="code-discount" hidden>
+                                                <span class="fw-bold" id="code-discount-amount"></span>
+                                                <span class="fw-bold"> USD</span>
+                                            </span>
 
                                         </div>
                                     @endif
-
-                                </div>
-                                <!-- Button trigger modal -->
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
-                                        data-bs-target="#refunds">
-                                        <span class="fw-bold btn-color">Pagar</span>
-                                    </button>
-                                </div>
+                                    <!-- Button trigger modal -->
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
+                                            data-bs-target="#refunds">
+                                            <span class="fw-bold btn-color">Pagar</span>
+                                        </button>
+                                    </div>
 
 
-                                <!-- Modal -->
-                                <div class="modal fade " id="refunds" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="refundsLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content recharge-data">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title  fw-bold" id="refundsLabel">Sin Reembolsos
-                                                </h1>
-                                                <i type="button" class="bi bi-x-lg" data-bs-dismiss="modal"
-                                                    aria-label="Close"></i>
+                                    <!-- Modal -->
+                                    <div class="modal fade " id="refunds" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="refundsLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content recharge-data">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title  fw-bold" id="refundsLabel">Sin Reembolsos
+                                                    </h1>
+                                                    <i type="button" class="bi bi-x-lg" data-bs-dismiss="modal"
+                                                        aria-label="Close"></i>
+                                                </div>
+                                                <div class="modal-body ">
+                                                    <p>
+                                                        Usted es responsable de asegurarse de que leyó la descripción e
+                                                        instrucciones del servicio a adquirir y asegura que el monto de la
+                                                        transacción ingresado o mostrado en su pantalla sea correcto antes
+                                                        de
+                                                        confirmar la transacción. Una vez que se confirme la transacción, se
+                                                        considerará irrevocable y no podrá cancelar, detener o realizar un
+                                                        reembolso de esa transacción.
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="{{ route('product.show', ['id' => $bundle->product->id]) }}">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Volver</button>
+                                                    </a>
+
+                                                    <button type="submit" class="btn btn-primary">Entendido</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-body ">
-                                                <p>
-                                                    Usted es responsable de asegurarse de que leyó la descripción e
-                                                    instrucciones del servicio a adquirir y asegura que el monto de la
-                                                    transacción ingresado o mostrado en su pantalla sea correcto antes
-                                                    de
-                                                    confirmar la transacción. Una vez que se confirme la transacción, se
-                                                    considerará irrevocable y no podrá cancelar, detener o realizar un
-                                                    reembolso de esa transacción.
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="{{ route('game.show', ['id' => $bundle->game->id]) }}">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Volver</button>
-                                                </a>
 
-                                                <button type="submit" class="btn btn-primary">Entendido</button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -583,7 +599,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="number" name="amount" step="0.01" class="form-control mb-4"
+                                            <input type="number" name="amount" step="0.01"
+                                                class="form-control mb-4"
                                                 value="{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}"
                                                 required hidden>
                                         </div>
@@ -596,13 +613,13 @@
                                                 <span class="fs-5" id="amount-container">
                                                     <span class="fw-bold"
                                                         id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> USD</span>
+                                                    <span class="fw-bold"> USDT</span>
                                                 </span>
                                                 <br>
                                                 <br>
                                                 <span class="fs-5" id="code-discount" hidden>
                                                     <span class="fw-bold" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> USD</span>
+                                                    <span class="fw-bold"> USDT</span>
                                                 </span>
 
                                             </div>
@@ -612,14 +629,14 @@
                                                 <span class="fs-5" id="amount-container">
                                                     <span class="fw-bold"
                                                         id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> USD</span>
+                                                    <span class="fw-bold"> USDT</span>
                                                 </span>
 
                                                 <br>
 
                                                 <span class="fs-5" id="code-discount" hidden>
                                                     <span class="fw-bold" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> USD</span>
+                                                    <span class="fw-bold"> USDT</span>
                                                 </span>
 
                                             </div>
@@ -758,7 +775,8 @@
                                                         </p>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <a href="{{ route('product.show', ['id' => $bundle->product->id]) }}">
+                                                        <a
+                                                            href="{{ route('product.show', ['id' => $bundle->product->id]) }}">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Volver</button>
                                                         </a>

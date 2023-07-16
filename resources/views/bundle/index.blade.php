@@ -50,7 +50,7 @@
                         <td>{{$bundle->product->category->category}}</td>
                         <td>{{ $bundle->product->name }}</td>
                         <td>{{ $bundle->content }}</td>
-                        <td>{{ number_format($bundle->price, 2) }}</td>
+                        <td>{{ number_format($bundle->price, 2) }} $</td>
                         @if ($bundle->availability)
                             <td>Si</td>
                         @else

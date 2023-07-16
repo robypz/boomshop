@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\http\Controllers\Auth\LoginController;
 use App\http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -180,6 +181,8 @@ Route::group(
                 Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
                 Route::get('/changePasswordRequest', [UserController::class, 'passwordChangeRequest'])->name('user.changePasswordRequest')->middleware(['password.confirm']);
                 Route::post('/changePassword', [UserController::class, 'passwordChange'])->name('user.passwordChange')->middleware(['password.confirm']);
+                Route::get('/editAvatar', [UserController::class, 'editAvatar'])->name('user.editAvatar');
+                Route::post('/setAvatar', [UserController::class, 'setAvatar'])->name('user.setAvatar');
 
                 Route::group(['middleware' => ['role:super-admin|admin|operator']], function () {
                     Route::get('/ordersInProcess', [UserController::class, 'ordersInProcess'])->name('user.ordersInProcess');
@@ -191,6 +194,20 @@ Route::group(
                     Route::post('/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
                 });
             });
+
+
+
+            Route::prefix('avatar')->group(function () {
+                Route::group(['middleware' => ['role:super-admin|admin']], function () {
+                    Route::get('/create', [AvatarController::class, 'create'])->name('avatar.create');
+                    Route::get('/index', [AvatarController::class, 'index'])->name('avatar.index');
+                    Route::post('/store', [AvatarController::class, 'store'])->name('avatar.store');
+                    Route::get('/destroy/{id}', [AvatarController::class, 'destroy'])->name('avatar.destroy');
+                });
+
+            });
+
+
 
             Route::prefix('code')->group(function () {
 

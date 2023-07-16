@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('avatars', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-
+            $table->string('avatar');
         });
 
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreignId('category_id')->constrained()->change();
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('avatar_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
-
-
     }
 
     /**
@@ -30,10 +26,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('codes');
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('avatar');
         });
+
+        Schema::drop('avatars');
     }
 };

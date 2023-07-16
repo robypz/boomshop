@@ -551,7 +551,7 @@ hr {
 }
 
 
-input[type="radio"]+label {
+.input + .label {
     cursor: pointer;
     min-width: 150px;
     min-height: 80px;
@@ -744,4 +744,26 @@ input[type=number] {
 
 .password-reset{
     height: 38px;
+}
+
+.edit-avatar{
+    background-color: $boom-yellow;
+    color: $boom-darkgray;
+    visibility: hidden;
+    transition: all 300ms;
+
+}
+
+.avatar{
+    transition: all 300ms;
+    border: 2px solid transparent;
+}
+
+
+.avatar:hover{
+    border: 2px solid $boom-yellow;
+    border-radius: 5px;
+    .edit-avatar{
+        visibility: visible;
+    }
 }

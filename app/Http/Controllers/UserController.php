@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
 use App\Models\Bundle;
 use App\Models\Order;
 use App\Models\User;
@@ -115,5 +116,24 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->update();
         return redirect(route('user.profile'))->with('password','changed');
+    }
+
+    public function editAvatar()
+    {
+        $avatars = Avatar::all();
+
+        return view('user.edit-avatar',compact('avatars'));
+    }
+
+    public function setAvatar(Request $request)
+    {
+        $user = User::find($request->user()->id);
+
+        $user->avatar_id = $request->avatar;
+
+        $user->update();
+
+        return redirect(route('user.profile'));
+
     }
 }

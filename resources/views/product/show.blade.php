@@ -34,11 +34,11 @@
                         </p>
 
                         <p class="mt-5 mb-5 fs-5 ">
-                            <p class="fs-2 text-center"><b>{{$product->name}}<b>
+                            <p class="fs-2 text-center"><b><!-- {{$product->name}}<b>-->
 
                     </p>
                             <p class="text-justify fw-normal">
-                                {{$product->description}}
+                               <!--{{$product->description}}-->
                             </p>
 
 
@@ -456,9 +456,9 @@
                                                 <div class="col p-2 mt-2 d-flex align-items-center justify-content-center">
                                                     <div class="button p-2 position-relative">
                                                         <input type="radio" id="pack-{{ $bundle->id }}"
-                                                            name="bundle_id" class="pack" value="{{ $bundle->id }}"
+                                                            name="bundle_id" class="pack input" value="{{ $bundle->id }}"
                                                             hidden required>
-                                                        <label class="d-flex align-items-center justify-content-center"
+                                                        <label class="d-flex align-items-center justify-content-center label"
                                                             for="pack-{{ $bundle->id }}"><span
                                                                 class="text-center fw-bold" id>{{ $bundle->content }}
                                                             </span>

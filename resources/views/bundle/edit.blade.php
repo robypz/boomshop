@@ -26,7 +26,7 @@
                         <input type="text" name="id" value="{{$bundle->id}}" class="form-control mb-4" required readonly>
 
                         <label for="game_id" class="form-label">Juego</label>
-                        <input type="text" name="game_id" value="{{$bundle->game->name}}" class="form-control mb-4" required readonly>
+                        <input type="text" name="game_id" value="{{$bundle->product->name}}" class="form-control mb-4" required readonly>
 
                         <label for="content" class="form-label">Contenido</label>
                         <input type="text" name="content" value="{{$bundle->content}}" class="form-control mb-4" required>

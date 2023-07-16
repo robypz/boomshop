@@ -8,8 +8,40 @@
                     <div class="card-body">
                         <div class="row mb-2">
 
-                            <div class="col fs-3 boom-color-yellow fw-bold d-flex align-items-center justify-content-center">
-                                <i class="bi bi-person-circle fs-1 me-2 boom-color-lightgray"></i> {{ $user->nick }}
+                            <div class="col boom-color-yellow fw-bold d-flex align-items-center justify-content-center">
+                                @if (is_null($user->avatar))
+                                    <a href="{{route('user.editAvatar')}}">
+                                        <figure class="figure position-relative avatar">
+                                            <img class="rounded "
+                                                src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
+                                                width="184px" alt="" srcset="">
+                                            <figcaption class="figure-caption text-center boom-color-lightgray fs-4">
+                                                {{ $user->nick }}</figcaption>
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill  edit-avatar">
+                                                <i class="bi bi-pencil-fill fs-4"></i>
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                        </figure>
+                                    </a>
+
+                                @else
+                                <a href="{{route('user.editAvatar')}}">
+                                    <figure class="figure position-relative avatar">
+                                        <img class="rounded "
+                                            src="{{ asset($user->avatar->avatar)}}"
+                                            width="184px" alt="" srcset="">
+                                        <figcaption class="figure-caption text-center boom-color-lightgray fs-4">
+                                            {{ $user->nick }}</figcaption>
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill  edit-avatar">
+                                            <i class="bi bi-pencil-fill fs-4"></i>
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    </figure>
+                                </a>
+                                @endif
+
                             </div>
                         </div>
 
@@ -27,7 +59,8 @@
                         </div>
                         <div class="row mb-2">
                             <div class="col">
-                                Correo: <span class="fw-bold">{{ $user->email }}</span><i class="bi bi-shield-fill-check text-success ms-3"></i>
+                                Correo: <span class="fw-bold">{{ $user->email }}</span><i
+                                    class="bi bi-shield-fill-check text-success ms-3"></i>
                             </div>
                         </div>
                         <div class="row mb-2">
