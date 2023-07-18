@@ -136,4 +136,16 @@ class UserController extends Controller
         return redirect(route('user.profile'));
 
     }
+
+    public static function favoriteProducts($id) {
+        $favoriteBundles = Bundle::select('product_id', DB::raw('count(*) as total'))
+        ->join('orders', 'bundles.id', '=', 'orders.bundle_id')
+        ->where('orders.user_id', $id)
+        ->groupBy('product_id')
+        ->orderBy('total', 'desc')
+        ->take(3)
+        ->get();
+
+        return $favoriteBundles;
+    }
 }

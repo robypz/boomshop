@@ -177,7 +177,7 @@ Route::group(
                 Route::get('/edit', [UserController::class, 'edit'])->name('user.edit');
                 Route::post('/update', [UserController::class, 'update'])->name('user.update');
                 Route::get('/orders', [UserController::class, 'orders'])->name('user.orders');
-                Route::get('/giftcards', [UserController::class, 'giftCards'])->name('user.giftCards');
+                Route::get('/giftcards', [UserController::class, 'giftCards'])->name('user.giftCards')->middleware(['password.confirm']);
                 Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
                 Route::get('/changePasswordRequest', [UserController::class, 'passwordChangeRequest'])->name('user.changePasswordRequest')->middleware(['password.confirm']);
                 Route::post('/changePassword', [UserController::class, 'passwordChange'])->name('user.passwordChange')->middleware(['password.confirm']);

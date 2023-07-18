@@ -24,6 +24,62 @@
         </div>
     </div>
 
+    @auth
+        @if ($favoriteProducts)
+            <div class="container games-container">
+                <h2>
+                    <p class="title mt-5 mb-3">
+                        Compras Recientes
+                    </p>
+                </h2>
+
+
+                <!-- Cards Section-->
+                <section>
+                    <div class="container">
+                        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-6">
+                            @foreach ($favoriteProducts as $Favoriteproduct)
+                                <div class="col mb-4">
+                                    <a href="{{ route('product.show', ['id' => $Favoriteproduct->product->id]) }}">
+                                        <div class="game">
+                                            <div class="myimg-container img-container text-center">
+                                                @if ($Favoriteproduct->product->category->category == 'Tarjetas')
+                                                    <img class="card-img-top mycard-img-top w-75"
+                                                        src="{{ route('image.show', ['image' => $Favoriteproduct->product->image]) }}"
+                                                        alt="Card image cap">
+                                                @else
+                                                    <img class="card-img-top mycard-img-top"
+                                                        src="{{ route('image.show', ['image' => $Favoriteproduct->product->image]) }}"
+                                                        alt="Card image cap">
+                                                @endif
+
+                                            </div>
+
+                                            <div class="d-flex align-items-center justify-content-center game-name">
+                                                <div class="text-center">
+                                                    {{ $Favoriteproduct->product->name }}
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </a>
+
+                                </div>
+                            @endforeach
+
+
+                        </div>
+                    </div>
+                    <!--  <i class="> <i class="bi bi-eye"></i></i>
+                                                                              <h3 class="">Ver mas Juegos</h3>-->
+                </section>
+            </div>
+        @endif
+
+    @endauth
+
     <div class="container games-container">
         <h2>
             <p class="title mt-5 mb-3">
@@ -67,7 +123,7 @@
                 </div>
             </div>
             <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                      <h3 class="">Ver mas Juegos</h3>-->
+                                                                  <h3 class="">Ver mas Juegos</h3>-->
         </section>
     </div>
 
@@ -106,8 +162,8 @@
                 @endforeach
 
                 <div class="col mb-3 text-center">
-                    <img class="gift-card" style="width: 100%;" src="{{ asset('images/gifCard/APPLE GIFT CARD (US).png') }}"
-                        alt="">
+                    <img class="gift-card" style="width: 100%;"
+                        src="{{ asset('images/gifCard/APPLE GIFT CARD (US).png') }}" alt="">
                     <br>
 
                     <caption>

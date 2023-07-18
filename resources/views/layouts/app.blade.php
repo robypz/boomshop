@@ -115,9 +115,26 @@
                     @else
                         <ul class="navbar-nav ms-auto d-flex  justify-content-center flex-grow-1 pe-3 h-100">
                             <li class="nav-item mb-3">
-                                <a id="" class="nav-item fs-4" href="{{route('user.profile')}}"
-                                aria-current="page">
-                                    <i class="bi bi-person me-2"></i><span>{{ Auth::user()->nick }}</span>
+                                <a id="" class="nav-item fs-4" href="{{ route('user.profile') }}"
+                                    aria-current="page">
+                                    <div class="row">
+                                        @if (Auth::user()->avatar)
+                                        <div class="col-1">
+                                            <img class="rounded" src="{{ asset(Auth::user()->avatar->avatar) }}"
+                                                alt="" srcset="" width="32px">
+                                        </div>
+                                        @else
+                                        <div class="col-1">
+                                            <img class="rounded" src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
+                                                alt="" srcset="" width="32px">
+                                        </div>
+                                        @endif
+
+                                        <div class="col">
+                                            <span class="ms-2 fw-bold">{{ Auth::user()->nick }}</span>
+                                        </div>
+                                    </div>
+
                                 </a>
 
 
@@ -137,15 +154,16 @@
 
                             <li class="nav-item mt-3 text-center">
 
-                                    <a class="btn btn-primary rounded-pill fw-bold boom-color-darkgray fs-5 w-75" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
+                                <a class="btn btn-blue rounded-pill fw-bold boom-color-darkgray fs-5 w-75"
+                                    href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                        <i class="bi bi-door-closed me-2 "></i>{{ __('Cerrar sesión') }}
-                                    </a>
+                                    <i class="bi bi-door-closed me-2 "></i>{{ __('Cerrar sesión') }}
+                                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
 
                             </li>
                             <hr>
@@ -173,7 +191,6 @@
                                         </li>
                                     </ul>
                                 </li>
-
                             @endhasanyrole
                             @hasanyrole('super-admin')
                                 <li class="nav-item dropdown mb-2 ">
@@ -285,6 +302,26 @@
                                                 Agregar
                                             </a>
                                         </li>
+                                    </ul>
+                                </li>
+                            @endhasanyrole
+
+                            @hasanyrole('super-admin|admin|operator')
+                                <li class="nav-item dropdown mb-2 ">
+                                    <a class="dropdown-toggle fs-4 nav-item" href="#" role="link"
+                                        data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-wallet2 me-2 "></i>
+                                        Avatares
+                                    </a>
+                                    <ul class="dropdown-menu user-dropdown">
+                                        @hasanyrole('super-admin|admin')
+                                            <li><a class="dropdown-item text-primary user-dropdown-item"
+                                                    href="{{ route('avatar.index') }}"><i
+                                                        class="bi bi-clock-history me-1"></i>Ver
+                                                    Todos</a></li>
+                                        @endhasanyrole
+                                        <li><a class="dropdown-item text-primary user-dropdown-item"
+                                                href="{{ route('avatar.create') }}"><i
+                                                    class="bi bi-clipboard2 me-1"></i>Agregar</a></li>
                                     </ul>
                                 </li>
                             @endhasanyrole

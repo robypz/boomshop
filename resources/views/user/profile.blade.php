@@ -6,71 +6,70 @@
             <div class="col mb-3">
                 <div class="card recharge-data h-100">
                     <div class="card-body">
-                        <div class="row mb-2">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 ">
+                                <div class="row mb-2">
 
-                            <div class="col boom-color-yellow fw-bold d-flex align-items-center justify-content-center">
-                                @if (is_null($user->avatar))
-                                    <a href="{{route('user.editAvatar')}}">
-                                        <figure class="figure position-relative avatar">
-                                            <img class="rounded "
-                                                src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
-                                                width="184px" alt="" srcset="">
-                                            <figcaption class="figure-caption text-center boom-color-lightgray fs-4">
-                                                {{ $user->nick }}</figcaption>
-                                            <span
-                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill  edit-avatar">
-                                                <i class="bi bi-pencil-fill fs-4"></i>
-                                                <span class="visually-hidden">unread messages</span>
-                                            </span>
-                                        </figure>
-                                    </a>
+                                    <div
+                                        class="col boom-color-yellow fw-bold d-flex align-items-center justify-content-center">
+                                        @if (is_null($user->avatar))
+                                            <a href="{{ route('user.editAvatar') }}">
+                                                <figure class="figure position-relative avatar">
+                                                    <img class="rounded "
+                                                        src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
+                                                        width="150px" alt="" srcset="">
+                                                    <figcaption
+                                                        class="figure-caption text-center boom-color-lightgray fs-5">
+                                                        {{ $user->nick }}</figcaption>
+                                                    <span
+                                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill  edit-avatar">
+                                                        <i class="bi bi-pencil-fill fs-5"></i>
+                                                        <span class="visually-hidden">unread messages</span>
+                                                    </span>
+                                                </figure>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('user.editAvatar') }}">
+                                                <figure class="figure position-relative avatar">
+                                                    <img class="rounded " src="{{ asset($user->avatar->avatar) }}"
+                                                        width="150px" alt="" srcset="">
+                                                    <figcaption
+                                                        class="figure-caption text-center boom-color-lightgray fs-5">
+                                                        {{ $user->nick }}</figcaption>
+                                                    <span
+                                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill  edit-avatar">
+                                                        <i class="bi bi-pencil-fill fs-5"></i>
+                                                        <span class="visually-hidden">unread messages</span>
+                                                    </span>
+                                                </figure>
+                                            </a>
+                                        @endif
 
-                                @else
-                                <a href="{{route('user.editAvatar')}}">
-                                    <figure class="figure position-relative avatar">
-                                        <img class="rounded "
-                                            src="{{ asset($user->avatar->avatar)}}"
-                                            width="184px" alt="" srcset="">
-                                        <figcaption class="figure-caption text-center boom-color-lightgray fs-4">
-                                            {{ $user->nick }}</figcaption>
-                                        <span
-                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill  edit-avatar">
-                                            <i class="bi bi-pencil-fill fs-4"></i>
-                                            <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                    </figure>
-                                </a>
-                                @endif
-
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row mb-2">
                             <div class="col">
-                                Nombre: <span class="fw-bold">{{ $user->name }}</span>
-                            </div>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        Nombre: <span class="fw-bold">{{ $user->name }} {{ $user->surname }}</span>
+                                    </div>
 
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col">
-                                Apellido: <span class="fw-bold">{{ $user->surname }}</span>
-                            </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        Correo: <span class="fw-bold">{{ $user->email }}</span><i
+                                            class="bi bi-shield-fill-check text-success ms-3"></i>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        Miembro desde: <span class="fw-bold">{{ $user->created_at->diffForHumans() }}</span>
+                                    </div>
 
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col">
-                                Correo: <span class="fw-bold">{{ $user->email }}</span><i
-                                    class="bi bi-shield-fill-check text-success ms-3"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col">
-                                Miembro desde: <span class="fw-bold">{{ $user->created_at->diffForHumans() }}</span>
-                            </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="col mb-3">
@@ -125,7 +124,7 @@
 
                         <div class="row row-cols-2">
                             <div class="col password-reset d-flex align-items-center">
-                                <div class="">
+                                <div class="text-end">
                                     Contraseña: <span class="fw-bold">********</span>
                                 </div>
 

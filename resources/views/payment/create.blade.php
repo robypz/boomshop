@@ -82,7 +82,7 @@
                             <p class="fw-bold text-center">Paga el monto total de tu orden mostrado en Bs. en la siguiente
                                 cuenta.
                             </p>
-                            <div class="lh-sm container">
+                            <div class="lh-sm container text-center mb-5">
                                 <div class="row">
                                     <div class="col">
                                         Banco: <br> <span class="text-primary fw-bold"> Banesco</span>
@@ -133,10 +133,9 @@
                                     </div>
                                 </div>
                             </div>
-
                             <hr>
                             <div class="">
-                                <div class="container mt-4 mb-2 text-center">
+                                <div class="container mt-3 mb-2 text-center">
                                     <img src="{{ route('image.show', ['image' => $paymentMethod->image]) }}" class="w-25">
                                 </div>
                                 <form action="{{ route('order.store') }}" method="post">

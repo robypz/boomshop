@@ -14,7 +14,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -25,6 +24,12 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('home', ['products' => $products]);
+
+        if (auth()->user()) {
+            $favoriteProducts = UserController::favoriteProducts(auth()->user()->id);
+            return view('home', ['products' => $products,'favoriteProducts'=>$favoriteProducts]);
+        } else {
+            return view('home', ['products' => $products]);
+        }
     }
 }
