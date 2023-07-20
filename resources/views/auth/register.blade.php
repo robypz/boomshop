@@ -12,7 +12,7 @@
                     @csrf
 
                     <div class="row mb-3 row-cols-1">
-                        <label for="name" class="col mb-1 text-primary">Nombre</label>
+                        <label for="name" class="col mb-1 boom-color-lightgray fw-bold">Nombre</label>
 
                         <div class="col">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="row mb-3 row-cols-1">
-                        <label for="surname" class="col mb-1 text-primary">Apellido</label>
+                        <label for="surname" class="col mb-1 boom-color-lightgray fw-bold">Apellido</label>
 
                         <div class="col">
                             <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror"
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="row mb-3 row-cols-1">
-                        <label for="nick" class="col mb-1 text-primary">Nombre de
+                        <label for="nick" class="col mb-1 boom-color-lightgray fw-bold">Nombre de
                             Usuario</label>
 
                         <div class="col">
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="row mb-3 row-cols-1">
-                        <label for="email" class="col mb-1 text-primary">Correo
+                        <label for="email" class="col mb-1 boom-color-lightgray fw-bold">Correo
                             Electrónico</label>
 
                         <div class="col">
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="row mb-3 row-cols-1">
-                        <label for="password" class="col mb-1 text-primary">Contraseña</label>
+                        <label for="password" class="col mb-1 boom-color-lightgray fw-bold">Contraseña</label>
 
                         <div class="col">
                             <input id="password" type="password"
@@ -90,13 +90,16 @@
                     </div>
 
                     <div class="row mb-3 row-cols-1">
-                        <label for="password-confirm" class="col mb-1 text-primary">Confirmar
+                        <label for="password-confirm" class="col mb-1 boom-color-lightgray fw-bold">Confirmar
                             Contraseña</label>
 
                         <div class="col">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                                 required autocomplete="new-password">
                         </div>
+                    </div>
+                    <div class="row mb-3 row-cols-1 text-end">
+                        <a class="text-decoration-underline text-primary fw-bold" href="{{route('login')}}">Ya tienes cuenta?</a>
                     </div>
 
                     <div class="row mb-3 row-cols-1">

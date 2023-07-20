@@ -15,21 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::factory(1)->create();
-        foreach ($users as $user) {
-            $user->assignRole('admin');
-        }
-
-        $users = User::factory(1)->create();
-        foreach ($users as $user) {
-            $user->assignRole('operator');
-        }
-
-        $users = User::factory(1)->create();
-        foreach ($users as $user) {
-            $user->assignRole('client');
-        }
-
         $superAdmin = new User;
 
         $superAdmin->name = 'Boom';

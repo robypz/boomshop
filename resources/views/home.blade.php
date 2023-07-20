@@ -28,7 +28,7 @@
         @if ($favoriteProducts)
             <div class="container games-container">
                 <h2>
-                    <p class="title mt-5 mb-3">
+                    <p class="display-4 ms-bold mt-5 mb-3">
                         Compras Recientes
                     </p>
                 </h2>
@@ -73,16 +73,16 @@
                         </div>
                     </div>
                     <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                                              <h3 class="">Ver mas Juegos</h3>-->
+                                                                                                                                      <h3 class="">Ver mas Juegos</h3>-->
                 </section>
             </div>
         @endif
 
     @endauth
 
-    <div class="container games-container">
+    <div class="container">
         <h2>
-            <p class="title mt-5 mb-3">
+            <p class="display-3 ms-bold mt-5 mb-3">
                 Juegos Favoritos
             </p>
         </h2>
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                                  <h3 class="">Ver mas Juegos</h3>-->
+                                                                                              <h3 class="">Ver mas Juegos</h3>-->
         </section>
     </div>
 
@@ -132,12 +132,12 @@
 
             <div class="row-col-12">
                 <div class="col-12">
-                    <h2 class="title">
+                    <p class="display-3 ms-bold">
                         Gift Cards
-                    </h2>
+                    </p>
                 </div>
                 <div class="col">
-                    <p class="fs-3">ELEVA TU ENTRETENIMIENTO AL MÁXIMO CON LAS TARJETAS DE
+                    <p class="fs-5">ELEVA TU ENTRETENIMIENTO AL MÁXIMO CON LAS TARJETAS DE
                         REGALOS QUE TENEMOS PARA TI.</p>
                 </div>
             </div>
@@ -206,7 +206,52 @@
             </div>
 
         </div>
-
-        </div>
     </section>
+
+    <div class="recharge-data">
+        <div class="container p-4">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col text-center p-3">
+                    <h2 class="text-primary"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"> </i><i
+                            class="bi bi-star-fill"> </i><i class="bi bi-star-fill"> </i><i class="bi bi-star-fill"></i>
+                    </h2>
+                    <h3 class="fs-4 boom-color-lightgray ">Entérate de todo lo que opinan nuestros clientes, haciendo click
+                        <a class="text-decoration-underline" href="https://www.instagram.com/p/Ch5ThNPPK1v/" target="blank">AQUI</a>
+                    </h3>
+
+                </div>
+                <div class="col d-flex align-items-center justify-content-center">
+                    <div class="row text-center recharge-data p-3 rounded">
+                        <div class="col p-1 d-flex aling-items-center">
+                            <div><img src="{{ asset('images/paymentMethods/16758822201670799988PAGO MOVIL BOOM.png') }}"
+                                    alt="" style="max-width: 100px"></div>
+                        </div>
+                        <div class="col p-1 d-flex aling-items-center">
+                            <div>
+                                <img src="{{ asset('images/paymentMethods/1676659553632px-Binance_logo.svg.png') }}"
+                                    alt="" style="max-width: 100px">
+                            </div>
+                        </div>
+                        <div class="col p-1 d-flex aling-items-center">
+                            <div>
+                                <img src="{{ asset('images/paymentMethods/1677308404ZELLE PNG BOOM.png') }}"
+                                    alt="" style="max-width: 100px">
+                            </div>
+
+                        </div>
+                        <div class="col p-1 d-flex aling-items-center">
+                            <div>
+                                <img src="{{ asset('images/paymentMethods/1681202258reserve_white.png') }}"
+                                    alt="" style="max-width: 100px">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 @endsection

@@ -82,10 +82,10 @@
 
                                         <div class="row">
                                             @if (Route::has('register'))
-                                                <div class="col-6 p-0 m-0">
+                                                <div class="col-6 p-1">
                                                     <a class="nav-link text-primary" href="{{ route('register') }}">
                                                         <button type="button"
-                                                            class="btn btn-primary rounded-pill fw-bold ">
+                                                            class="btn btn-blue w-100 rounded-pill fw-bold">
                                                             <small>Registrarse</small>
                                                         </button>
                                                     </a>
@@ -95,10 +95,10 @@
 
 
                                             @if (Route::has('login'))
-                                                <div class="col-6 p-0 m-0">
+                                                <div class="col-6 p-1">
 
                                                     <a class="nav-link text-primary" href="{{ route('login') }}"> <button
-                                                            type="button" class="btn btn-primary rounded-pill fw-bold ">
+                                                            type="button" class="btn btn-primary rounded-pill fw-bold w-100">
                                                             <small>Iniciar Sesion</small>
                                                         </button></a>
 

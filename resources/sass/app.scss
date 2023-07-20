@@ -111,7 +111,8 @@
 body {
     background-image: url('../../public/images/background/Fondos\ BOOM_1.jpg');
     background-attachment: fixed;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: Montserrat-Regular;
     color: $boom-lightgray;
 
@@ -160,7 +161,7 @@ nav .mynavar-toggler .bi {
 
 .mymenu-options {
     text-decoration: none !important;
-    color: $boom-yellow;
+    color: $boom-lightgray;
 }
 
 .notification-bell {
@@ -174,7 +175,7 @@ nav .mynavar-toggler .bi {
 
 .mymenu-options:hover {
 
-    color: $boom-lightgray !important
+    color: $boom-yellow !important
 }
 
 .sidebar {
@@ -312,8 +313,6 @@ span.mycarousel-control-next-icon {
 
 
 .advantage {
-
-    min-height: 1080px;
     background-attachment: inherit;
     background-position: 100%;
     margin-top: 100px;
@@ -364,7 +363,7 @@ main {
 
 
 .login {
-    background-image: url('../../public/images/background/13.png');
+    //background-image: url('../../public/images/background/13.png');
     background-position: center;
     background-size: cover;
     display: flex;
@@ -373,8 +372,15 @@ main {
 
 }
 
+.centered-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .register {
-    background-image: url('../../public/images/background/13.png');
+    //background-image: url('../../public/images/background/13.png');
     background-position: center;
     background-size: cover;
     display: flex;
@@ -766,4 +772,16 @@ input[type=number] {
     .edit-avatar{
         visibility: visible;
     }
+}
+
+.pre-footer{
+    background-color: $boom-blue;
+}
+
+.ms-bold{
+    font-family: Montserrat-Bold;
+}
+
+.payment-methods{
+    min-height: 240px;
 }

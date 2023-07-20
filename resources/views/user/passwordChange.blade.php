@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="login">
+        <div class="window d-flex align-items-center justify-content-center">
             <div class="card recharge-data">
                 <div class="card-header recharge-data-header text-center">
                     <h3><strong>Nuva Contraseña</strong></h3>
@@ -58,7 +58,7 @@
 
             var height = $(window).height();
 
-            $('.login').height(height);
+            $('.window').height(height-75);
         });
     </script>
 @endsection
