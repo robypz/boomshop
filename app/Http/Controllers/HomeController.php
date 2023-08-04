@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use DateTime;
 
 class HomeController extends Controller
 {
@@ -23,13 +23,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all()->where('available', '1');
 
         if (auth()->user()) {
             $favoriteProducts = UserController::favoriteProducts(auth()->user()->id);
-            return view('home', ['products' => $products,'favoriteProducts'=>$favoriteProducts]);
+            return view('home', ['products' => $products, 'favoriteProducts' => $favoriteProducts]);
         } else {
             return view('home', ['products' => $products]);
+        }
+    }
+
+    public function close()
+    {
+        $actual = new DateTime();
+        $close_time = new DateTime('22:00');
+        if ($actual >= $close_time) {
+            return view('close',[ 'close_time' => $close_time->format('d-m-Y h:i')]);
+        } else {
+            return redirect(route('home'));
         }
     }
 }

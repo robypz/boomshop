@@ -9,10 +9,10 @@
                 <div class="col col-lg-6">
                     <div class="row">
                         <div class="col-1 align-baseline">
-                            <label for="game_id" class="form-label">Juego </label>
+                            <label for="product_id" class="form-label">Juego </label>
                         </div>
                         <div class="col">
-                            <select name="game_id" id="game_id" class="form-control">
+                            <select name="product_id" id="product_id" class="form-control">
                                 <option value="">Todos</option>
                                 @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->name }}</option>

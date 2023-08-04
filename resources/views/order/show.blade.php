@@ -76,17 +76,10 @@
                                         <p class="fs-4">Informacion de Cuenta</p>
                                     </div>
                                     <div class="col-4">
-                                        email:
+                                        ID de usuario BOOM:
                                     </div>
                                     <div class="col-8">
-                                        {{ $accountInfo['email'] }}
-                                    </div>
-
-                                    <div class="col-4">
-                                        Contraseña:
-                                    </div>
-                                    <div class="col-8">
-                                        {{ $accountInfo['password'] }}
+                                        {{ $accountInfo['user_id'] }}
                                     </div>
                                 @elseif ($order->bundle->product->need_region_id)
                                     <div class="col-4">

@@ -201,6 +201,10 @@
                                     </a>
                                     <ul class="dropdown-menu user-dropdown">
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
+                                            href="{{ route('product.index') }}"><i
+                                                class="bi bi-list me-1"></i>Ver Todos</a>
+                                        </li>
+                                        <li><a class="dropdown-item text-primary user-dropdown-item"
                                                 href="{{ route('product.create') }}"><i
                                                     class="bi bi-plus me-1"></i>Agregar</a>
                                         </li>
@@ -293,7 +297,7 @@
                                     </a>
                                     <ul class="dropdown-menu user-dropdown">
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
-                                                href="{{ route('code.index') }}"><i class="bi bi-list-columns me-1"></i>Ver
+                                                href="{{ route('code.index') }}"><i class="bi bi-list me-1"></i>Ver
                                             </a>
                                         </li>
                                         <li>
@@ -316,7 +320,7 @@
                                         @hasanyrole('super-admin|admin')
                                             <li><a class="dropdown-item text-primary user-dropdown-item"
                                                     href="{{ route('avatar.index') }}"><i
-                                                        class="bi bi-clock-history me-1"></i>Ver
+                                                        class="bi bi-list me-1"></i>Ver
                                                     Todos</a></li>
                                         @endhasanyrole
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
@@ -426,9 +430,6 @@
 
         </div>
     </div>
-
-
-
 
 
     @auth

@@ -25,14 +25,13 @@
     </div>
 
     @auth
-        @if ($favoriteProducts)
+        @if ($favoriteProducts->modelKeys())
             <div class="container games-container">
                 <h2>
                     <p class="display-4 ms-bold mt-5 mb-3">
                         Compras Recientes
                     </p>
                 </h2>
-
 
                 <!-- Cards Section-->
                 <section>

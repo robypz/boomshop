@@ -16,7 +16,7 @@
 
                             </div>
                             <div class="col text-center">
-                                <b class=" fs-3">{{ $product->name }}</b>
+                                <b class="fs-4">{{ $product->name }}</b>
                             </div>
                         </div>
                     </div>
@@ -24,145 +24,149 @@
                         <p class="text-center">
 
                             @if ($product->category->category == 'Tarjetas')
-                                <img
-                                    class="game-card-image mt-3 mb-2 w-50" src="{{ route('image.show', ['image' => $product->image]) }}">
+                                <img class="game-card-image mt-3 mb-2 w-50 product-description-image"
+                                    src="{{ route('image.show', ['image' => $product->image]) }}">
                             @else
                                 <img
-                                    class="game-card-image mt-3 mb-2 w-75"src="{{ route('image.show', ['image' => $product->image]) }}">
+                                    class="game-card-image mt-3 mb-2 w-75 product-description-image"src="{{ route('image.show', ['image' => $product->image]) }}">
                             @endif
 
                         </p>
 
                         <p class="mt-5 mb-5 fs-5 ">
-                            <p class="fs-2 text-center"><b><!-- {{$product->name}}<b>-->
+                        <p class="fs-2 text-center"><b>
+                                <!-- {{ $product->name }}<b>-->
 
-                    </p>
-                            <p class="text-justify fw-normal">
-                               <!--{{$product->description}}-->
+                        </p>
+                        <p class="text-justify fw-normal">
+                            <!--{{ $product->description }}-->
+                        </p>
+
+
+                        @if ($product->name == 'Call Of Duty Mobile (Venezuela)')
+                            <p class="fs-2 text-center"><b>CALL OF DUTY: MOBILE<b><br>
+                                        (Venezuela)
+                            </p>
+
+                            <p class="text-center fw-normal">
+                                Juega diferentes formas de juego como el clásico modo multijugador o el modo Battle
+                                Royale.
+                                Además de eso, puedes personalizar tus armas y llevar a tu equipo a la victoria con los
+                                gráficos más destacados. ¡Podrás disfrutar de emocionantes momentos con tus amigos!
+
+                            </p>
+
+                            <p class="text-center fw-bold">Este servicio de recarga SÓLO se aplica a los jugadores de
+                                CODM en Venezuela.</p>
+
+                            <p class="text-justify fw-normal">Las compras del Pase de Batalla son válidas para cuentas
+                                que actualmente no tienen una
+                                suscripción de Pase de Batalla existente. Verifica el estado de tu suscripción iniciando
+                                sesión en tu cuenta en el juego.
                             </p>
 
 
-                            @if ($product->name == 'Call Of Duty Mobile (Venezuela)')
-                                <p class="fs-2 text-center"><b>CALL OF DUTY: MOBILE<b><br>
-                                            (Venezuela)
-                                </p>
 
-                                <p class="text-center fw-normal">
-                                    Juega diferentes formas de juego como el clásico modo multijugador o el modo Battle
-                                    Royale.
-                                    Además de eso, puedes personalizar tus armas y llevar a tu equipo a la victoria con los
-                                    gráficos más destacados. ¡Podrás disfrutar de emocionantes momentos con tus amigos!
+                            <b>Para saber tu ID de Jugador debes ir a:<b>
+                                    <ul class="list-unstyled">
+                                        <li class="fw-normal">→ Lobby del Juego</li>
+                                        <li class="fw-normal">→ Configuración</li>
+                                        <li class="fw-normal">→ Legal y Privacidad</li>
+                                        <li class="fw-normal">→ Copia tu Player ID de 6-7 Dígitos.</li>
+                                    </ul>
 
-                                </p>
+                                    <span class="mb-2 mt-2 d-block">Asegúrese de ingresar su ID de Jugador
+                                        correctamente.</span>
 
-                                <p class="text-center fw-bold">Este servicio de recarga SÓLO se aplica a los jugadores de
-                                    CODM en Venezuela.</p>
+                                    <p>¿Cómo saber si puedo recargar mi cuenta por ID desde Venezuela?</p>
+                                    <p> - Tu Pase de Batalla debe costar 360 CP (Imagen de referencia).</p>
+                                    <p class="text-center">
+                                        <img src="{{ asset('images/cod/COD MOBILE ID REF.jpeg') }}" alt=""
+                                            srcset="" class="w-50">
+                                    </p>
 
-                                <p class="text-justify fw-normal">Las compras del Pase de Batalla son válidas para cuentas
-                                    que actualmente no tienen una
-                                    suscripción de Pase de Batalla existente. Verifica el estado de tu suscripción iniciando
-                                    sesión en tu cuenta en el juego.
-                                </p>
+                                    <p>- Tu cuenta de Call of Duty debe ser creada únicamente en <b>VENEZUELA<b>.</p>
+                        @endif
 
+                        @if ($product->name == 'Free Fire')
+                        <div class="product-description">
+                            <p class="fs-2 text-center"><b>FREE FIRE<b><br>
 
+                            </p>
 
-                                <b>Para saber tu ID de Jugador debes ir a:<b>
-                                        <ul class="list-unstyled">
-                                            <li class="fw-normal">→ Lobby del Juego</li>
-                                            <li class="fw-normal">→ Configuración</li>
-                                            <li class="fw-normal">→ Legal y Privacidad</li>
-                                            <li class="fw-normal">→ Copia tu Player ID de 6-7 Dígitos.</li>
-                                        </ul>
+                            <p class="text-center fw-normal">
+                                Es un shooter para móviles multijugador de supervivencia del género Battle Royale en el
+                                que te enfrentas a otros 49 jugadores.
+                                <br>
+                                Disfrutarás diferentes modos de juegos para compartir con tus amistades o el mundo.
 
-                                        <span class="mb-2 mt-2 d-block">Asegúrese de ingresar su ID de Jugador
-                                            correctamente.</span>
+                            </p>
+                        </div>
 
-                                        <p>¿Cómo saber si puedo recargar mi cuenta por ID desde Venezuela?</p>
-                                        <p> - Tu Pase de Batalla debe costar 360 CP (Imagen de referencia).</p>
-                                        <p class="text-center">
-                                            <img src="{{ asset('images/cod/COD MOBILE ID REF.jpeg') }}" alt=""
-                                                srcset="" class="w-50">
-                                        </p>
+                        @endif
 
-                                        <p>- Tu cuenta de Call of Duty debe ser creada únicamente en <b>VENEZUELA<b>.</p>
-                            @endif
+                        @if ($product->name == 'Genshin Impact')
+                            <p class="fs-2 text-center"><b>GENSHIN IMPACT<b><br>
 
-                            @if ($product->name == 'Free Fire')
-                                <p class="fs-2 text-center"><b>FREE FIRE<b><br>
+                            </p>
 
-                                </p>
+                            <p class="text-center fw-normal">
+                                Genshin Impact es un RPG gratuito de mundo abierto en el que podremos explorar un mundo
+                                vasto lleno de mazmorras, secretos y aventuras que vivir. Con una descripción tan vaga,
+                                uno no puede llegar a entender qué es lo que lo hace destacar frente a los otros tantos
+                                RPGs ya existentes.
+                            </p>
 
-                                <p class="text-center fw-normal">
-                                    Es un shooter para móviles multijugador de supervivencia del género Battle Royale en el
-                                    que te enfrentas a otros 49 jugadores.
-                                    <br>
-                                    Disfrutarás diferentes modos de juegos para compartir con tus amistades o el mundo.
+                            <p class="fw-normal">Es seguro y fácil. Simplemente ingrese su ID de usuario de Genshin
+                                Impact y Servidor,
+                                seleccione los artículos que desea comprar, complete el pago y listo, al confirmar su
+                                pago su recarga llegará directamente su cuenta.
+                            </p>
 
-                                </p>
-                            @endif
+                            <p class="fw-normal">
+                                <b>Bendición Lunar</b><br>
 
-                            @if ($product->name == 'Genshin Impact')
-                                <p class="fs-2 text-center"><b>GENSHIN IMPACT<b><br>
+                                Por cada compra de Bendición Lunar, obtendrás 300 Cristales Génesis y una Bendición
+                                Lunar que durará 30 días.
+                                Mientras dure su efecto, podrás iniciar sesión para recibir 90 Protogemas diarias.
+                            </p>
 
-                                </p>
+                            <p>
+                                <b>Importante:</b>
+                            <ul class="list-unstyled fw-normal">
+                                <li class="mb-2 ms-4"> <b>1)</b> La duración de la Bendición Lunar solo se puede
+                                    extender si su duración restante
+                                    es
+                                    menor o igual a 180 días.
+                                </li>
 
-                                <p class="text-center fw-normal">
-                                    Genshin Impact es un RPG gratuito de mundo abierto en el que podremos explorar un mundo
-                                    vasto lleno de mazmorras, secretos y aventuras que vivir. Con una descripción tan vaga,
-                                    uno no puede llegar a entender qué es lo que lo hace destacar frente a los otros tantos
-                                    RPGs ya existentes.
-                                </p>
+                                <li class="mb-2 ms-4">
+                                    <b>2)</b> No puedes comprar una bendición adicional si la duración restante aún
+                                    excede los
+                                    180
+                                    días. Si debido a circunstancias excepcionales compras repetidamente una Bendición
+                                    Lunar, su duración no se extenderá, y se te reembolsará 330 Cristales génesis
+                                    directamente.
+                                </li>
 
-                                <p class="fw-normal">Es seguro y fácil. Simplemente ingrese su ID de usuario de Genshin
-                                    Impact y Servidor,
-                                    seleccione los artículos que desea comprar, complete el pago y listo, al confirmar su
-                                    pago su recarga llegará directamente su cuenta.
-                                </p>
+                                <li class="mb-2 ms-4">
+                                    <b>3)</b> No se reembolsará ninguna Protogema que no se haya obtenido mediante
+                                    inicio de
+                                    sesión
+                                    durante la duración de la bendición.
+                                </li>
 
-                                <p class="fw-normal">
-                                    <b>Bendición Lunar</b><br>
-
-                                    Por cada compra de Bendición Lunar, obtendrás 300 Cristales Génesis y una Bendición
-                                    Lunar que durará 30 días.
-                                    Mientras dure su efecto, podrás iniciar sesión para recibir 90 Protogemas diarias.
-                                </p>
-
-                                <p>
-                                    <b>Importante:</b>
-                                <ul class="list-unstyled fw-normal">
-                                    <li class="mb-2 ms-4"> <b>1)</b> La duración de la Bendición Lunar solo se puede
-                                        extender si su duración restante
-                                        es
-                                        menor o igual a 180 días.
-                                    </li>
-
-                                    <li class="mb-2 ms-4">
-                                        <b>2)</b> No puedes comprar una bendición adicional si la duración restante aún
-                                        excede los
-                                        180
-                                        días. Si debido a circunstancias excepcionales compras repetidamente una Bendición
-                                        Lunar, su duración no se extenderá, y se te reembolsará 330 Cristales génesis
-                                        directamente.
-                                    </li>
-
-                                    <li class="mb-2 ms-4">
-                                        <b>3)</b> No se reembolsará ninguna Protogema que no se haya obtenido mediante
-                                        inicio de
-                                        sesión
-                                        durante la duración de la bendición.
-                                    </li>
-
-                                    <li class="mb-2 ms-4">
-                                        <b>4)</b>
-                                        Las cuentas con un Rango de Aventura inferior a 5 no pueden ver temporalmente el
-                                        número de días restantes de su Bono mensual.
-                                    </li>
-                                </ul>
+                                <li class="mb-2 ms-4">
+                                    <b>4)</b>
+                                    Las cuentas con un Rango de Aventura inferior a 5 no pueden ver temporalmente el
+                                    número de días restantes de su Bono mensual.
+                                </li>
+                            </ul>
 
 
 
 
-                        </p>
+                            </p>
                         @endif
 
                         @if ($product->name == 'Mobile Legends Bang Bang')
@@ -249,13 +253,14 @@
                     </div>
                 </div>
             </div>
+            <form method="POST" action="{{ route('payment.create') }}">
+                @csrf
+                <input type="number" hidden name="game_id" value="{{ $product->id }}">
+            @if ($product->category->category == 'Recargas' && $product->need_access == false)
+                <div class="col">
+                    <div class="row row-cols-1">
 
-            <div class="col">
-                <div class="row row-cols-1">
-                    <form method="POST" action="{{ route('payment.create') }}">
-                        @csrf
-                        <input type="number" hidden name="game_id" value="{{ $product->id }}">
-                        @if ($product->category->category == 'Recargas')
+
                             <div class="col">
                                 <div class="card recharge-data mb-3">
                                     <div class="card-header recharge-data-header">
@@ -267,50 +272,18 @@
 
                                             </div>
                                             <div class="col text-center">
-                                                <b class=" fs-3">Información de Cuenta</b>
+                                                <b class="fs-4">Información de Cuenta</b>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body p-2">
 
-
-                                        @if ($product->need_access)
-                                            <h3>Activision</h3>
-                                            <div class="row row-cols-1 mt-2">
-                                                <label for="email" class="col-12 ">Correo</label>
-                                                <div class="col-lg-6 col-12">
-                                                    <input id="email" type="email" placeholder="tuemail@email.com"
-                                                        class="form-control @error('email') is-invalid @enderror"
-                                                        name="email" value="{{ old('email') }}" required
-                                                        autocomplete="email" autofocus>
-
-                                                    @error('email')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-
-                                            </div>
-                                            <div class="row row-cols-1 mb-3 mt-3">
-                                                <label for="password" class="col ">Contraseña</label>
-                                                <div class="col-lg-6 col-12">
-                                                    <input id="password" type="password" placeholder="********"
-                                                        class="form-control @error('password') is-invalid @enderror"
-                                                        name="password" autofocus required>
-
-                                                    @error('password')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        @elseif ($product->need_region_id)
+                                        @if ($product->need_region_id)
                                             <div class="row mb-3 mt-3">
-                                                <label for="account_id" class="col-md-4 col-form-label text-md-end">ID de
+                                                <label for="account_id" class="col-5 col-sm-3 col-form-label text-md-end">ID
+                                                    de
                                                     Cuenta</label>
-                                                <div class="mb-3 col-10 col-md-6">
+                                                <div class="mb-3 col-10 col-sm-8">
                                                     <input id="account_id" type="text"
                                                         class="form-control @error('account_id') is-invalid @enderror"
                                                         name="account_id" value="{{ old('account_id') }}" required
@@ -322,20 +295,19 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <i class="col-1 bi bi-question-circle fs-4 mt-2 text-center"
+                                                <i class="col-1 bi bi-question-circle fs-4 mt-2 text-start"
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal">
 
                                                 </i>
 
                                             </div>
                                             @if ($product->name == 'Genshin Impact')
-                                                <div class="row mb-3 mt-3 row-cols-1">
+                                                <div class="row mb-3 mt-3">
                                                     <label for="region_id"
-                                                        class="col-md-4 col-form-label text-md-end text-start">ID de
+                                                        class="col-12 col-md-3 col-form-label text-md-end text-start">ID de
                                                         Servidor</label>
-                                                    <div class="col-md-6 col-10">
-                                                        <select name="region_id" id="region_id"
-                                                            class="form-select col-6">
+                                                    <div class="col-md-8 col-10">
+                                                        <select name="region_id" id="region_id" class="form-select col-6">
                                                             <option value="America">America</option>
                                                             <option value="Europe">Europe</option>
                                                             <option value="Asia">Asia</option>
@@ -350,14 +322,14 @@
                                                     </div>
                                                 </div>
                                             @elseif ($product->name == 'Mobile Legends Bang Bang')
-                                                <div class="row mb-3 row-cols-1">
+                                                <div class="row mb-3">
                                                     <label for="region_id"
-                                                        class="col-md-4 col-form-label text-md-end">Zone
+                                                        class="col-sm-3 col-form-label text-start text-sm-end">Zone
                                                         ID</label>
-                                                    <div class="col-md-6">
-                                                        <input id="region_id" type="text"
+                                                    <div class="col-10 col-sm-8">
+                                                        <input id="region_id" type="number"
                                                             class="form-control @error('region_id') is-invalid @enderror"
-                                                            name="region_id" value="{{ old('region_id') }}" required
+                                                            name="region_id" value="{{ old('region_id') }}" placeholder="4 Dígitos" required
                                                             autocomplete="region_id" autofocus>
                                                         @error('region_id')
                                                             <span class="invalid-feedback" role="alert">
@@ -388,10 +360,10 @@
                                         @else
                                             <div class="row mb-3 mt-3">
                                                 <label for="account_id"
-                                                    class="col-sm-4 col-form-label text-md-end fw-bold text-end">ID
+                                                    class="col-10 col-md-4 form-label text-md-end fw-bold text-start">ID
                                                     de
                                                     Cuenta</label>
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 col-10">
                                                     <input id="account_id" type="text"
                                                         class="form-control @error('account_id') is-invalid @enderror"
                                                         name="account_id" value="{{ old('account_id') }}" required
@@ -403,154 +375,153 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <i class="col-sm-2 bi bi-question-circle mt-2 col-1"
+                                                <i class=" bi bi-question-circle mt-2 col-2"
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                                             </div>
+
+                                            <div class="row mb-3">
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content recharge-data">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                    {{ $product->name }} ID</h1>
+                                                                <i type="button" class="bi bi-x-lg text-primary"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></i>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <img src="{{ route('image.show', ['image' => $product->gif]) }}"
+                                                                    alt="" width="100%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
-
-                                        <div class="row mb-3">
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content recharge-data">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                                {{ $product->name }} ID</h1>
-                                                            <i type="button" class="bi bi-x-lg text-primary"
-                                                                data-bs-dismiss="modal" aria-label="Close"></i>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="{{ route('image.show', ['image' => $product->gif]) }}"
-                                                                alt="" width="100%">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        @endif
+            @endif
 
-                        <div class="col">
-                            <div class="card recharge-data mb-3">
-                                <div class="card-header recharge-data-header">
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <div class="fs-4 icon-bg">
-                                                <i class="bi bi-box boom-color-lightgray "></i>
-                                            </div>
-
-                                        </div>
-                                        <div class="col text-center">
-                                            <b class=" fs-3">Paquetes</b>
-                                        </div>
-                                    </div>
+            <div class="col">
+                <div class="card recharge-data mb-3">
+                    <div class="card-header recharge-data-header">
+                        <div class="row">
+                            <div class="col-1">
+                                <div class="fs-4 icon-bg">
+                                    <i class="bi bi-box boom-color-lightgray "></i>
                                 </div>
 
-                                <div class="card-body p-2">
-                                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-2 row-cols-xl-3">
-                                        @foreach ($bundles as $bundle)
-                                            @if ($bundle->availability)
-                                                <div class="col p-2 mt-2 d-flex align-items-center justify-content-center">
-                                                    <div class="button p-2 position-relative">
-                                                        <input type="radio" id="pack-{{ $bundle->id }}"
-                                                            name="bundle_id" class="pack input" value="{{ $bundle->id }}"
-                                                            hidden required>
-                                                        <label class="d-flex align-items-center justify-content-center label"
-                                                            for="pack-{{ $bundle->id }}"><span
-                                                                class="text-center fw-bold" id>{{ $bundle->content }}
-                                                            </span>
-                                                            <span hidden
-                                                                id="pack-{{ $bundle->id }}-price">{{ $bundle->price }}
-                                                        </label>
-                                                        <span
-                                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary check">
-                                                            <i class="bi bi-check boom-color-darkgray"></i>
-                                                        </span>
-                                                    </div>
-                                                    @error('bundle_id')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
-
-                                </div>
-
-
+                            </div>
+                            <div class="col text-center">
+                                <b class=" fs-4">Paquetes</b>
                             </div>
                         </div>
+                    </div>
 
-
-
-                        <div class="col">
-                            <div class="card recharge-data">
-                                <div class="card-header recharge-data-header mb-3">
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <div class="fs-4 icon-bg">
-                                                <i class="bi bi-credit-card boom-color-lightgray"></i>
-                                            </div>
-
+                    <div class="card-body">
+                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-2 row-cols-xl-3">
+                            @foreach ($bundles as $bundle)
+                                @if ($bundle->availability)
+                                    <div class="col p-3 d-flex align-items-center justify-content-center">
+                                        <div class="button p-2 position-relative w-100">
+                                            <input type="radio" id="pack-{{ $bundle->id }}" name="bundle_id"
+                                                class="pack input" value="{{ $bundle->id }}" hidden required>
+                                            <label class="d-flex align-items-center justify-content-center label p-2"
+                                                for="pack-{{ $bundle->id }}"><span class="text-center fw-bold"
+                                                    id>{{ $bundle->content }}
+                                                </span>
+                                                <span hidden id="pack-{{ $bundle->id }}-price">{{ $bundle->price }}
+                                            </label>
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary check">
+                                                <i class="bi bi-check boom-color-darkgray"></i>
+                                            </span>
                                         </div>
-                                        <div class="col text-center">
-                                            <b class="fs-3">Métodos de Pago</b>
-                                        </div>
+                                        @error('bundle_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="row row-cols-2">
-
-                                        </fieldset>
-                                        @foreach ($paymentMethods as $paymentMethod)
-                                            @if ($paymentMethod->available)
-                                                <div class="col p-3 d-flex align-items-center justify-content-center">
-                                                    <div class="payment-button position-relative">
-                                                        <input class="" type="radio" hidden
-                                                            name="payment_method_id"
-                                                            id="payment-{{ $paymentMethod->id }}" class="payment"
-                                                            value="{{ $paymentMethod->id }}" required>
-
-                                                        <label
-                                                            class="d-flex align-items-center justify-content-center text-center p-2"
-                                                            style="width: 100%" for="payment-{{ $paymentMethod->id }}">
-                                                            <img class=""
-                                                                src="{{ route('image.show', ['image' => $paymentMethod->image]) }}"
-                                                                alt="" width="80%" srcset="">
-                                                        </label>
-                                                        <span
-                                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary check">
-                                                            <i class="bi bi-check boom-color-darkgray"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                    <div class="row mb-5 mt-5 ">
-                                        <div class="col text-center">
-                                            <button type="submit" class="btn btn-primary w-50">
-                                                <span class="fw-bold btn-color">Comprar</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                                @endif
+                            @endforeach
                         </div>
 
-                    </form>
+                    </div>
+
 
                 </div>
-
             </div>
+
+
+
+            <div class="col">
+                <div class="card recharge-data">
+                    <div class="card-header recharge-data-header mb-3">
+                        <div class="row">
+                            <div class="col-1">
+                                <div class="fs-4 icon-bg">
+                                    <i class="bi bi-credit-card boom-color-lightgray"></i>
+                                </div>
+
+                            </div>
+                            <div class="col text-center">
+                                <b class="fs-4">Métodos de Pago</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row row-cols-2">
+
+                            @foreach ($paymentMethods as $paymentMethod)
+                                @if ($paymentMethod->available)
+                                    <div class="col p-3 d-flex align-items-center justify-content-center">
+                                        <div class="payment-button position-relative">
+                                            <input class="" type="radio" hidden name="payment_method_id"
+                                                id="payment-{{ $paymentMethod->id }}" class="payment"
+                                                value="{{ $paymentMethod->id }}" required>
+
+                                            <label class="d-flex align-items-center justify-content-center text-center p-2"
+                                                style="width: 100%" for="payment-{{ $paymentMethod->id }}">
+                                                <img class=""
+                                                    src="{{ route('image.show', ['image' => $paymentMethod->image]) }}"
+                                                    alt="" width="80%" srcset="">
+                                            </label>
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary check">
+                                                <i class="bi bi-check boom-color-darkgray"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+
+                            <div class="sub-total text-center fs-5">
+                               <span class="text-primary ms-bold">$</span><span id="sub-total" class="text-primary ms-bold">0.0</span> USD
+                            </div>
+                        <div class="row mb-5 mt-3 ">
+                            <div class="col text-center">
+                                <button type="submit" class="btn btn-primary w-50">
+                                    <span class="fw-bold btn-color">Comprar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            </form>
+
         </div>
+
+    </div>
+    </div>
 
     </div>
 
@@ -577,6 +548,12 @@
                 var zelle = document.getElementById('payment-4');
                 zelle.disabled = false;
             }
+
+           var subtotal = document.getElementById(this.id+'-price').textContent;
+           console.log(subtotal);
+
+           document.getElementById('sub-total').innerHTML = subtotal;
+
         });
 
         $('#payment-4').click(function () {

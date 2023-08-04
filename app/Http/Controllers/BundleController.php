@@ -16,8 +16,8 @@ class BundleController extends Controller
 
     public function index()
     {
-        if(isset($_GET['game_id'])&& $_GET['game_id']!=''){
-            $bundles = Bundle::where('game_id','=',$_GET['game_id'])->get();
+        if(isset($_GET['product_id'])&& $_GET['product_id']!=''){
+            $bundles = Bundle::where('product_id','=',$_GET['product_id'])->get();
         }else{
             $bundles = Bundle::all();
         }

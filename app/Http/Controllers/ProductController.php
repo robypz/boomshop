@@ -21,8 +21,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all('id', 'name', 'image');
-        return $products;
+        $products = Product::orderBy('name','asc')->paginate(10);
+        return view('product.index',compact('products'));
     }
 
     /**
@@ -89,9 +89,14 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = product::find($id);
-        $bundles = Bundle::where('product_id', $id)->where('availability', 1)->get();
-        $paymentMethods = PaymentMethod::all();
-        return view('product.show', ['product' => $product, 'paymentMethods' => $paymentMethods, 'bundles' => $bundles]);
+        if ($product->available) {
+            $bundles = Bundle::where('product_id', $id)->where('availability', 1)->get();
+            $paymentMethods = PaymentMethod::where('available',1)->get();
+            return view('product.show', ['product' => $product, 'paymentMethods' => $paymentMethods, 'bundles' => $bundles]);
+        }else {
+            return redirect(route('home'));
+        }
+
     }
 
     /**
@@ -102,7 +107,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = product::find($id);
+
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -114,7 +121,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = product::find($id);
+
+        $product->available = $request->available;
+
+        $product->save();
+
+        return redirect(route('product.index'));
     }
 
     /**

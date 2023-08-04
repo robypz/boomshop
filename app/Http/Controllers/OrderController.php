@@ -91,7 +91,7 @@ class OrderController extends Controller
 
 
         if ($order->bundle->product->need_access) {
-            $order->account_info = ['email' => Crypt::encryptString($request->email), 'password' => Crypt::encryptString($request->password)];
+            $order->account_info = ['user_id' => $request->user_id];
         } elseif ($order->bundle->product->need_region_id) {
             $order->account_info = ['region_id' => $request->region_id, 'account_id' => $request->account_id];
         } elseif ($order->bundle->product->category->category == "Tarjetas") {
@@ -202,7 +202,7 @@ class OrderController extends Controller
         if ($order->orderStatus->status == 'Procesando') {
             if ($order->asist_by == auth()->user()->id or auth()->user()->hasRole(['admin', 'super-admin'])) {
                 if ($order->bundle->product->need_access) {
-                    $accountInfo = ['email' => Crypt::decryptString($order->account_info['email']), 'password' => Crypt::decryptString($order->account_info['password'])];
+                    $accountInfo = ['user_id' => $order->account_info['user_id']];
                 } elseif ($order->bundle->product->need_region_id) {
                     $accountInfo = ['account_id' => $order->account_info['account_id'], 'region_id' => $order->account_info['region_id']];
                 } elseif ($order->bundle->product->category->category == "Tarjetas") {

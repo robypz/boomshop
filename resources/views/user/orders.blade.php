@@ -9,7 +9,7 @@
         @if ($orders)
             <div class="row">
                 @foreach ($orders as $order)
-                    <div class="col col col-12 col-sm-6 col-md-6 col-lg-4">
+                    <div class="col col-12 col-sm-12 col-md-6 col-lg-4">
                         <div class="card mb-4 recharge-data">
 
                             <div class="card-header recharge-data-header">
@@ -20,14 +20,14 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-11 text-center">
-                                        <b class="fs-5">{{ $order->bundle->product->name }}</b>
+                                    <div class="col-11 text-center d-flex align-items-center justify-content-center">
+                                        <b class="fs-6">{{ $order->bundle->product->name }}</b>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body min-text boom-color-lightgray">
                                 <div class="row mb-2">
-                                    <div class="col-5">
+                                    <div class="col-6 col-md-7 col-lg-6 col-xxl-5">
                                         <div class="row">
                                             <div class="col">
                                                 ID de Recarga
@@ -42,8 +42,8 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-2"">
-                                    <div class="col-5">
+                                <div class="row mb-2">
+                                    <div class="col-6 col-md-7 col-lg-6 col-xxl-5">
                                         <div class="row">
                                             <div class="col">
                                                 Estado del Pedido
@@ -84,11 +84,11 @@
 
                                 </div>
 
-                                <div class="row mb-2"">
-                                    <div class="col-5">
+                                <div class="row mb-2">
+                                    <div class="col-6 col-md-7 col-lg-6 col-xxl-5">
                                         <div class="row">
                                             <div class="col">
-                                                Fecha de Pedido:
+                                                Fecha de Pedido
                                             </div>
                                             <div class="col-1">
                                                 :
@@ -97,19 +97,19 @@
 
                                     </div>
                                     <div class="col fw-bold">
-                                        {{ $order->created_at }}
+                                        {{ date('Y-m-d', $order->create_at) }}
                                     </div>
 
 
                                 </div>
 
                                 <!--Bundle -->
-                                <div class="row mb-2"">
-                                    <div class="col-5 ">
+                                <div class="row mb-2">
+                                    <div class="col-6 col-md-7 col-lg-6 col-xxl-5">
 
                                         <div class="row">
-                                            <div class="col">
-                                                Paquete
+                                            <div class="col ">
+                                               Paq. Comprado
                                             </div>
                                             <div class="col-1">
                                                 :
@@ -123,12 +123,12 @@
 
 
                                 <!--Payment -->
-                                <div class="row mb-2"">
-                                    <div class="col-5">
+                                <div class="row mb-2">
+                                    <div class="col-6 col-md-7 col-lg-6 col-xxl-5">
 
                                         <div class="row">
                                             <div class="col">
-                                                ID de Pago
+                                                ID de Transacción
                                             </div>
                                             <div class="col-1">
                                                 :
@@ -140,8 +140,8 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-2"">
-                                    <div class="col-5">
+                                <div class="row mb-2">
+                                    <div class="col-6 col-md-7 col-lg-6 col-xxl-5">
                                         <div class="row">
                                             <div class="col">
                                                 Metodo de pago
@@ -155,9 +155,8 @@
                                         {{ $order->payment->paymentMethod->method }}
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="row mb-2"">
-                                    <div class="col-5">
+                                <div class="row mb-2">
+                                    <div class="col-6 col-md-7 col-xxl-5">
 
                                         <div class="row">
                                             <div class="col text-end fs-6 boom-color-yellow fw-bold">

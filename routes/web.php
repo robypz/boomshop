@@ -56,6 +56,7 @@ Route::group(
 
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::get('/close', [HomeController::class, 'close'])->name('close');
 
         Route::prefix('product')->group(function () {
             Route::get('/show/{id}', [ProductController::class, 'show'])->name('product.show');
@@ -97,9 +98,11 @@ Route::group(
 
             Route::prefix('product')->group(function () {
                 Route::group(['middleware' => ['role:super-admin']], function () {
-
+                    Route::get('/index', [ProductController::class, 'index'])->name('product.index');
                     Route::get('/create', [ProductController::class, 'create'])->name('product.create');
                     Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+                    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+                    Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
                 });
             });
 
@@ -120,7 +123,7 @@ Route::group(
 
                     Route::get('/create', [BundleController::class, 'create'])->name('bundle.create');
                     Route::post('/store', [BundleController::class, 'store'])->name('bundle.store');
-                    Route::get('/index/{game_id?}', [BundleController::class, 'index'])->name('bundle.index');
+                    Route::get('/index/{product_id?}', [BundleController::class, 'index'])->name('bundle.index');
                     Route::get('/edit/{id}', [BundleController::class, 'edit'])->name('bundle.edit');
                     Route::post('/update', [BundleController::class, 'update'])->name('bundle.update');
                 });

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.blank')
 
 @section('content')
-    <div class="container py-5 min-vh-100">
+    <div class="container py-2 min-vh-100">
 
         <div class="row flex-row d-flex justify-content-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-8 col-xxl-6">
@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="card-body lh-1">
-                        <h5 class="fw-bold text-center fs-5 text-primary mb-3">Datos del Pedido</h5>
+
                         <div class="row lh-sm">
                             <div class="col">
                                 <div class="row">
@@ -77,66 +77,63 @@
                         </div>
 
                         <hr>
-                        <h5 class="fw-bold text-center fs-5 text-primary mb-3">Datos de Pago</h5>
                         @if ($paymentMethod->method == 'Pago Móvil')
-                            <p class="fw-bold text-center">Paga el monto total de tu orden mostrado en Bs. en la siguiente
-                                cuenta.
+                            <p class="">
+                            <div class="cuadrado text-center ">1</div>&nbsp;Paga el monto de tu orden mostrado en <span
+                                class="fw-bold boom-color-yellow">Bs.
+                                {{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>,
+                            &nbsp;a la
+                            cuenta:
                             </p>
-                            <div class="lh-sm container text-center mb-5">
-                                <div class="row">
-                                    <div class="col">
-                                        Banco: <br> <span class="text-primary fw-bold"> Banesco</span>
+                            <div
+                                class="container mb-3 text-center d-flex aling-items-center justify-content-end justify-content-lg-center">
+                                <div class="row row-cols-2 payment-data">
+                                    <div class="mb-1 col-6 d-flex align-items-center justify-content-center">
+                                        <span class="">Banesco</span>
                                     </div>
-                                    <div class="col col-lg-4 col-6">
-                                        Cedula de Identidad:
-                                        <span class="text-primary fw-bold" id="ci">6189959</span>
+                                    <div class="col mb-1  ">
 
-
+                                    </div>
+                                    <div class="col-6  mb-1  d-flex align-items-center justify-content-center">
+                                        V-<span class="" id="ci">6189959</span>
+                                    </div>
+                                    <div class="col mb-1  text-start d-flex align-items-center ">
                                         <div class="tooltip-x">
-                                            <i onclick="myFunction('ci','myTooltip-ci')"
-                                                onmouseout="outFunc('myTooltip-ci')" class="bi bi-clipboard copy">
-                                                <span class="tooltiptext" id="myTooltip-ci">Copiar al
-                                                    portapapeles</span>
-
-                                            </i>
-                                        </div>
-
-                                    </div>
-                                    <div class="col">
-                                        Codigo: <br> <span class="text-primary fw-bold" id="bank">0134 </span>
-                                        <div class="tooltip-x ">
-                                            <i onclick="myFunction('bank','myTooltip-bank')"
-                                                onmouseout="outFunc('myTooltip-bank')" class="bi bi-clipboard copy">
-                                                <span class="tooltiptext" id="myTooltip-bank">Copiar al
-                                                    portapapeles</span>
-
-                                            </i>
+                                            <!--<i onclick="myFunction('ci','myTooltip-ci')"
+                                                                                                onmouseout="outFunc('myTooltip-ci')" class="btn btn-primary pill copy">
+                                                                                                <span class="tooltiptext" id="myTooltip-ci">Copiar al
+                                                                                                    portapapeles</span>
+                                                                                                Copiar
+                                                                                            </i>-->
+                                            <button class="copy rounded-pill">Copiar</button>
                                         </div>
                                     </div>
-
-
-
-                                    <div class="col col-xxl-4">
-                                        Teléfono: <br>
-                                        <span class=" text-primary fw-bold" id="tlf">04120328247</span>
-
+                                    <div class="col-6 mb-1  d-flex align-items-center justify-content-center">
+                                        <span class="" id="tlf">04120328247</span>
+                                    </div>
+                                    <div class="col mb-1  text-start d-flex align-items-center ">
 
                                         <div class="tooltip-x ">
-                                            <i onclick="myFunction('tlf','myTooltip-tlf')"
-                                                onmouseout="outFunc('myTooltip-tlf')" class="bi bi-clipboard copy">
-                                                <span class="tooltiptext" id="myTooltip-tlf">Copiar al
-                                                    portapapeles</span>
+                                            <!--<i onclick="myFunction('tlf','myTooltip-tlf')"
+                                                                                                onmouseout="outFunc('myTooltip-tlf')" class="bi bi-clipboard copy">
+                                                                                                <span class="tooltiptext" id="myTooltip-tlf">Copiar al
+                                                                                                    portapapeles</span>
 
-                                            </i>
+                                                                                            </i>-->
+                                            <button class="copy rounded-pill">Copiar</button>
                                         </div>
-
                                     </div>
                                 </div>
+
+
                             </div>
                             <hr>
                             <div class="">
-                                <div class="container mt-3 mb-2 text-center">
-                                    <img src="{{ route('image.show', ['image' => $paymentMethod->image]) }}" class="w-25">
+                                <div class="mt-3 mb-2">
+                                    <p class="">
+                                    <div class="cuadrado text-center ">2</div> Ingresa correctamente los datos de tu pago en
+                                    el
+                                    formulario.</p>
                                 </div>
                                 <form action="{{ route('order.store') }}" method="post">
                                     @csrf
@@ -146,14 +143,13 @@
                                         <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                         <input type="text" name="region_id" hidden value="{{ $region_id }}">
                                     @elseif ($bundle->product->need_access)
-                                        <input type="email" name="email" hidden value="{{ $email }}">
-                                        <input type="password" name="password" hidden value="{{ $password }}">
+                                        <input type="number" name="user_id" hidden value="{{ $user_id }}">
                                     @else
                                         <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                     @endif
-                                    <label for="bank" class="form-label ">Banco</label>
-                                    <select name="bank" required class="form-select mb-4">
-                                        <option value="" selected></option>
+                                    <select name="bank" required class="form-select mb-4"
+                                        aria-placeholder="Selecciona tu banco">
+                                        <option value="" selected>Selecciona tu banco</option>
                                         <option value="100% BANCO">100%BANCO</option>
                                         <option value="ABN AMRO BANK">ABN AMRO BANK</option>
                                         <option value="BANCAMIGA BANCO MICROFINANCIERO, C.A.">BANCAMIGA BANCO
@@ -211,19 +207,18 @@
                                         </option>
                                         <option value="SOFITASA">SOFITASA</option>
                                     </select>
-                                    <label for="phone" class="form-label ">Teléfono</label>
-                                    <input class="form-control mb-4" type="tel" name="phone" required>
-                                    <label for="transaction_id" class="form-label">Número Referencia</label>
-                                    <input class="form-control mb-4" type="number" placeholder="" name="transaction_id"
-                                        required>
-                                    <div class="row mb-4">
+                                    <input class="form-control mb-4" type="tel" name="phone"
+                                        placeholder="Número de teléfono" required>
+                                    <input class="form-control mb-4" type="number" placeholder="Número de referencia"
+                                        name="transaction_id" required>
+                                    <div class="row mb-1">
                                         <div class="col-8">
                                             <input id="code" name="code" class="form-control" type="text"
-                                                placeholder="CODIGO DE DESCUENTO">
+                                                placeholder="Código de descuento">
                                         </div>
                                         <div class="col-4">
                                             <button type="button" onclick="validateCode()" id="validate-btn"
-                                                class="btn w-100 btn-secondary">
+                                                class="btn w-100 btn-blue">
                                                 Aplicar
                                             </button>
                                         </div>
@@ -239,13 +234,13 @@
                                                 required hidden>
                                         </div>
                                         @if ($bundle->discount > 0)
-                                            <div class="col-12 text-end mb-3 mt-3">
+                                            <div class="col-12 text-end mb-3 mt-1">
                                                 <span class="">MONTO TOTAL A PAGAR</span><br>
                                                 <span class="text-decoration-line-through text-muted">
                                                     {{ $bundle->price * $paymentMethod->valuation->value }}
                                                     VES</span> <br>
                                                 <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold"
+                                                    <span class="fw-bold boom-color-yellow"
                                                         id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
                                                     <span class="fw-bold"> VES</span>
                                                 </span>
@@ -258,10 +253,10 @@
 
                                             </div>
                                         @else
-                                            <div class="col-12 text-end mb-3 mt-3">
-                                                <span class="">MONTO TOTAL A PAGAR: </span><br>
-                                                <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold"
+                                            <div class="col-12 text-end mb-3 mt-1">
+                                                <span class="">Monto Total: </span>
+                                                <span class="fs-6" id="amount-container">
+                                                    <span class="fw-bold boom-color-yellow"
                                                         id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
                                                     <span class="fw-bold"> VES</span>
                                                 </span>
@@ -329,50 +324,46 @@
                         @endif
 
                         @if ($paymentMethod->method == 'Zelle')
-                            <p class="  fw-bold text-center">Envía tu pago completo a la siguiente dirección de
-                                Zelle</p>
+                            <p class="">
+                            <div class="cuadrado text-center ">1</div> Envía tu pago completo a la siguiente dirección de
+                            Zelle</p>
+                            <div
+                                class="container mb-3 text-center d-flex aling-items-center justify-content-end justify-content-lg-center">
+                                <div class="row row-cols-2 payment-data-binance">
+                                    <div class="col-9  mb-1  d-flex align-items-center justify-content-center">
+                                        <span class="text-primary" id="ci">Olvin de Barros</span>
+                                    </div>
+                                    <div class="col-3 mb-1  text-start d-flex align-items-center ">
+                                        <button class="copy rounded-pill">Copiar</button>
+                                    </div>
+                                    <div class="col-9 mb-1  d-flex align-items-center justify-content-center">
+                                        <span class="" id="tlf">pay@isboomshop.com</span>
+                                    </div>
+                                    <div class="col-3 mb-1  text-start d-flex align-items-center ">
 
+                                        <div class="tooltip-x ">
+                                            <!--                                                    <i onclick="myFunction('nombre','myTooltip-nombre')"
+                                                                                            onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
+                                                                                            <span class="tooltiptext" id="myTooltip-nombre">Copy to
+                                                                                                clipboard</span>
 
-                            <div class="row">
-                                <div class="col-12 col-sm-3">Correo: </div>
-                                <div class="col-11 col-sm-8 col-lg-8 col-xxl-8 col-xl-8 text-primary fw-bold"
-                                    id="correo">
-                                    pagos@isboomshop.com
-                                </div>
-                                <div class="col-1 text-start">
-
-                                    <div class="tooltip-x">
-                                        <i onclick="myFunction('correo','myTooltip-correo')"
-                                            onmouseout="outFunc('myTooltip-correo')" class="bi bi-clipboard copy">
-                                            <span class="tooltiptext" id="myTooltip-correo">Copy to
-                                                clipboard</span>
-
-                                        </i>
+                                                                                        </i>-->
+                                            <button class="copy rounded-pill">Copiar</button>
+                                        </div>
                                     </div>
                                 </div>
+
+
                             </div>
 
-                            <div class="row">
-                                <div class="col-12 col-sm-3 ">Nombre: </div>
-                                <div class="col-11 col-sm-8 col-lg-8 col-lg-6 col-xxl-8 col-xl-8 text-start text-primary fw-bold"
-                                    id="nombre">
-                                    Olvin De Barros
-                                </div>
-                                <div class="col-1 text-start">
 
-                                    <div class="tooltip-x">
-                                        <i onclick="myFunction('nombre','myTooltip-nombre')"
-                                            onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
-                                            <span class="tooltiptext" id="myTooltip-nombre">Copy to
-                                                clipboard</span>
-
-                                        </i>
-                                    </div>
-                                </div>
-                            </div>
                             <hr>
-                            <div class="container mt-4 mb-2 text-center">
-                                <img src="{{ route('image.show', ['image' => $paymentMethod->image]) }}" class="w-25">
+                            <div class=" mt-4 mb-2 ">
+
+                                <p class="">
+                                <div class="cuadrado text-center ">2</div> Ingresa correctamente los datos de tu pago en
+                                el
+                                formulario.</p>
                             </div>
                             <form action="{{ route('order.store') }}" method="post">
                                 @csrf
@@ -390,21 +381,19 @@
                                     <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                 @endif
 
-                                <label for="name" class="form-label ">Nombre de quien envía (como se muestra en la
-                                    cuenta):</label>
-                                <input type="text" name="name" required class="form-control mb-4">
-                                <label for="amount" class="form-label ">Código de confirmación</label>
+                                <input type="text" name="name" required class="form-control mb-4" placeholder="Nombre del titular de la cuenta Zelle">
 
-                                <input type="number" name="confirmation_code" class="form-control mb-4" required>
+
+                                <input type="number" name="confirmation_code" class="form-control mb-4" placeholder="Código de confirmación" required>
                                 <label for="confirmation_code" hidden class="form-label">Monto</label>
                                 <div class="row mb-4">
                                     <div class="col-8">
                                         <input id="code" name="code" class="form-control" type="text"
-                                            placeholder="CODIGO DE DESCUENTO">
+                                            placeholder="Código de descuento">
                                     </div>
                                     <div class="col-4">
                                         <button type="button" onclick="validateCode()" id="validate-btn"
-                                            class="btn w-100 btn-secondary">
+                                            class="btn w-100 btn-blue">
                                             Aplicar
                                         </button>
                                     </div>
@@ -419,42 +408,42 @@
                                             required hidden>
                                     </div>
                                     @if ($bundle->discount > 0)
-                                        <div class="col-12 text-end mb-3 mt-3">
-                                            <span class="">MONTO TOTAL A PAGAR</span><br>
-                                            <span class="text-decoration-line-through text-muted">
-                                                {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                USD</span> <br>
-                                            <span class="fs-5" id="amount-container">
-                                                <span class="fw-bold"
-                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
-                                            <br>
-                                            <br>
-                                            <span class="fs-5" id="code-discount" hidden>
-                                                <span class="fw-bold" id="code-discount-amount"></span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
+                                    <div class="col-12 text-end mb-3 mt-1">
+                                        <span class="">MONTO TOTAL A PAGAR</span><br>
+                                        <span class="text-decoration-line-through text-muted">
+                                            {{ $bundle->price * $paymentMethod->valuation->value }}
+                                            VES</span> <br>
+                                        <span class="fs-5" id="amount-container">
+                                            <span class="fw-bold boom-color-yellow"
+                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                            <span class="fw-bold"> USD</span>
+                                        </span>
+                                        <br>
+                                        <br>
+                                        <span class="fs-5" id="code-discount" hidden>
+                                            <span class="fw-bold" id="code-discount-amount"></span>
+                                            <span class="fw-bold"> USD</span>
+                                        </span>
 
-                                        </div>
-                                    @else
-                                        <div class="col-12 text-end mb-3 mt-3">
-                                            <span class="">MONTO TOTAL A PAGAR: </span><br>
-                                            <span class="fs-5" id="amount-container">
-                                                <span class="fw-bold"
-                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
+                                    </div>
+                                @else
+                                    <div class="col-12 text-end mb-3 mt-1">
+                                        <span class="">Monto Total: </span>
+                                        <span class="fs-6" id="amount-container">
+                                            <span class="fw-bold boom-color-yellow"
+                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                            <span class="fw-bold"> USD</span>
+                                        </span>
 
-                                            <br>
+                                        <br>
 
-                                            <span class="fs-5" id="code-discount" hidden>
-                                                <span class="fw-bold" id="code-discount-amount"></span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
+                                        <span class="fs-5" id="code-discount" hidden>
+                                            <span class="fw-bold" id="code-discount-amount"></span>
+                                            <span class="fw-bold"> USD</span>
+                                        </span>
 
-                                        </div>
-                                    @endif
+                                    </div>
+                                @endif
                                     <!-- Button trigger modal -->
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
@@ -505,44 +494,35 @@
 
                         @if ($paymentMethod->method == 'Binance (USDT)')
                             <div class="">
-                                <p class="text-center fw-bold">Envía tu pago completo unicamente en “USDT” a la
-                                    siguiente dirección de Binance Pay
+                                <p class="text-center">
+                                <div class="cuadrado text-center ">1</div> Envía el monto total de la orden, únicamente en
+                                “USDT” a la cuenta:
                                 </p>
 
+                                <div
+                                    class="container mb-3 text-center d-flex aling-items-center justify-content-end justify-content-lg-center">
+                                    <div class="row row-cols-2 payment-data-binance">
+                                        <div class="col-9  mb-1  d-flex align-items-center justify-content-center">
+                                            <span class="text-primary" id="ci">Correo Electrónico</span>
+                                        </div>
+                                        <div class="col-3 mb-1  text-start d-flex align-items-center ">
 
-                                <div class="row lh-sm">
-                                    <div class="col-6">
-                                        Correo:<span class="text-primary fw-bold mb-3" id="correo">
-                                            pagos@isboomshop.com
-                                        </span>
-                                        <span class="text-start">
+                                        </div>
+                                        <div class="col-9 mb-1  d-flex align-items-center justify-content-center">
+                                            <span class="" id="tlf">pay@isboomshop.com</span>
+                                        </div>
+                                        <div class="col-3 mb-1  text-start d-flex align-items-center ">
 
-                                            <div class="tooltip-x">
-                                                <i onclick="myFunction('correo','myTooltip-correo')"
-                                                    onmouseout="outFunc('myTooltip-correo')" class="bi bi-clipboard copy">
-                                                    <span class="tooltiptext" id="myTooltip-correo">Copy to
-                                                        clipboard</span>
+                                            <div class="tooltip-x ">
+                                                <!--                                                    <i onclick="myFunction('nombre','myTooltip-nombre')"
+                                                                                                onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
+                                                                                                <span class="tooltiptext" id="myTooltip-nombre">Copy to
+                                                                                                    clipboard</span>
 
-                                                </i>
+                                                                                            </i>-->
+                                                <button class="copy rounded-pill">Copiar</button>
                                             </div>
-                                        </span>
-                                    </div>
-
-                                    <div class="col-6">Nombre: <span class="text-start text-primary fw-bold "
-                                            id="nombre">
-                                            BOOMSHOP
-                                        </span>
-                                        <span class="text-start">
-
-                                            <div class="tooltip-x">
-                                                <i onclick="myFunction('nombre','myTooltip-nombre')"
-                                                    onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
-                                                    <span class="tooltiptext" id="myTooltip-nombre">Copy to
-                                                        clipboard</span>
-
-                                                </i>
-                                            </div>
-                                        </span>
+                                        </div>
                                     </div>
 
 
@@ -550,10 +530,15 @@
 
 
 
+
+
+
                                 <hr>
-                                <div class="text-center mt-4">
-                                    <img src="{{ route('image.show', ['image' => $paymentMethod->image]) }}"
-                                        class="w-25">
+                                <div class=" mt-2 mb-2">
+                                    <div class="cuadrado text-center ">2</div> Ingresa correctamente los datos de tu pago
+                                    en
+                                    el
+                                    formulario.
                                 </div>
 
 
@@ -575,20 +560,21 @@
                                         <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                     @endif
 
-                                    <label for="user_id" class="form-label ">ID de Usuario:</label>
-                                    <input type="text" name="user_id" class="form-control mb-4" required>
-                                    <label for="binance_alias" class="form-label ">Alias de Binance:</label>
-                                    <input type="text" name="binance_alias" class="form-control mb-4" required>
-                                    <label for="order_id" class="form-label">ID de Orden</label>
-                                    <input type="number" name="order_id" class="form-control mb-4" required>
-                                    <div class="row mb-4">
+
+                                    <input type="text" name="user_id" class="form-control mb-4"
+                                        placeholder="ID de Usuario en Binance" required>
+                                    <input type="text" name="binance_alias" class="form-control mb-4"
+                                        placeholder="Alias de Binance" required>
+                                    <input type="number" name="order_id" class="form-control mb-4"
+                                        placeholder="ID de Orden" required>
+                                    <div class="row mb-2">
                                         <div class="col-8">
                                             <input id="code" name="code" class="form-control" type="text"
-                                                placeholder="CODIGO DE DESCUENTO">
+                                                placeholder="Código de Descuento">
                                         </div>
                                         <div class="col-4">
                                             <button type="button" onclick="validateCode()" id="validate-btn"
-                                                class="btn w-100 btn-secondary">
+                                                class="btn w-100 btn-blue">
                                                 Aplicar
                                             </button>
                                         </div>
@@ -604,13 +590,13 @@
                                                 required hidden>
                                         </div>
                                         @if ($bundle->discount > 0)
-                                            <div class="col-12 text-end mb-3 mt-3">
-                                                <span class="">MONTO TOTAL A PAGAR</span><br>
+                                            <div class="col-12 text-end mb-2 mt-2">
+                                                <span class="">Monto Total: </span>
                                                 <span class="text-decoration-line-through text-muted">
                                                     {{ $bundle->price * $paymentMethod->valuation->value }}
                                                     USD</span> <br>
                                                 <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold"
+                                                    <span class="fw-bold boom-color-yellow"
                                                         id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
                                                     <span class="fw-bold"> USDT</span>
                                                 </span>
@@ -623,10 +609,10 @@
 
                                             </div>
                                         @else
-                                            <div class="col-12 text-end mb-3 mt-3">
-                                                <span class="">MONTO TOTAL A PAGAR: </span><br>
+                                            <div class="col-12 text-end mb-3 mt-2">
+                                                <span class="">Monto Total: </span>
                                                 <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold"
+                                                    <span class="fw-bold boom-color-yellow"
                                                         id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
                                                     <span class="fw-bold"> USDT</span>
                                                 </span>
@@ -640,7 +626,8 @@
 
                                             </div>
                                         @endif
-                                        <p type="button" data-bs-toggle="modal" class="text-center mt-2"
+                                        <p type="button" data-bs-toggle="modal"
+                                            class="text-center mt-2 text-decoration-underline text-primary"
                                             data-bs-target="#exampleModal">¿Cómo hacer
                                             pago con Binance?</p>
 
@@ -792,32 +779,28 @@
                         @if ($paymentMethod->method == 'Reserve')
                             <p class="fw-bold  text-center">Envía tu pago con Rpay al Siguiente usuario
                             </p>
-                            <div class="row flex-row d-flex justify-content-center">
-                                <div class="col-xxl-6 col-xl-10 col-lg-8 col-md-8 col-sm-10 col-12">
-                                    <div class="row">
-                                        <div class="col-4 col-sm-3 col-xxl-4">Usuario: </div>
-                                        <div class="col-6 col-sm-8 col-lg-8 col-lg-6 col-xxl-7 col-xl-8  text-primary fw-bold"
-                                            id="user"><i class="bi bi-cash"></i> boomshop
+                            <div class=" text-center">
+                                <div class="row">
+
+                                    <div class="col text-primary fw-bold" id="user">
+                                        <span class="boom-color-lightgray">Usuario:</span> <br>
+                                        <i class="bi bi-cash"></i> boomshop
+                                        <div class="tooltip-x">
+                                            <i onclick="myFunction('user','myTooltip-user')"
+                                                onmouseout="outFunc('myTooltip-user')" class="bi bi-clipboard copy">
+                                                <span class="tooltiptext" id="myTooltip-user">Copiar al
+                                                    portapapeles</span>
+
+                                            </i>
                                         </div>
-                                        <div class="col-1 text-start">
-
-                                            <div class="tooltip-x">
-                                                <i onclick="myFunction('user','myTooltip-user')"
-                                                    onmouseout="outFunc('myTooltip-user')" class="bi bi-clipboard copy">
-                                                    <span class="tooltiptext" id="myTooltip-user">Copiar al
-                                                        portapapeles</span>
-
-                                                </i>
-                                            </div>
-                                        </div>
-
-
                                     </div>
+
                                 </div>
                             </div>
+
                             <hr>
                             <div class="text-center mt-4 mb-4">
-                                <img src="{{ route('image.show', ['image' => $paymentMethod->image]) }}" class="w-25">
+                                <img src="{{ route('image.show', ['image' => $paymentMethod->image]) }}" class="w-50">
                             </div>
 
 

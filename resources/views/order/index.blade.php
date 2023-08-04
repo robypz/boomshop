@@ -22,10 +22,10 @@
                         <input type="number" name="id" class="form-control">
                     </div>
                     <div class="col-1 text-end">
-                        <label for="game" class="form-label fs-4 ">Juego</label>
+                        <label for="game" class="form-label fs-4 ">Product</label>
                     </div>
                     <div class="col">
-                        <select name="game_id" class="form-select">
+                        <select name="product_id" class="form-select">
                             <option value="" selected disabled>Seleccione</option>
                             @foreach ($products as $product)
                                 <option value="{{$product->id}}">{{$product->name}}</option>

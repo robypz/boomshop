@@ -101,6 +101,7 @@
 
 
 
+
 @media (max-width: 575.98px) {
     .game-title {
         font-size: 12pt;
@@ -110,9 +111,9 @@
 
 body {
     background-image: url('../../public/images/background/Fondos\ BOOM_1.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    //background-attachment: fixed;
+    //background-repeat: no-repeat;
+    //background-size: cover;
     font-family: Montserrat-Regular;
     color: $boom-lightgray;
 
@@ -559,8 +560,9 @@ hr {
 
 .input + .label {
     cursor: pointer;
-    min-width: 150px;
-    min-height: 80px;
+    width: 100%;
+    min-width: 118.5px;
+    min-height: 70px;
 }
 
 input[type="text"],
@@ -622,6 +624,31 @@ option:hover {
     }
 }*/
 
+.cuadrado{
+    width: 18px;
+    height: 18px;
+    background-color: $boom-blue;
+    border-radius: 10%;
+    font-family: sans-serif;
+    display: inline-block;
+    padding-top: 2px;
+}
+
+.payment-data{
+    width: 220px;
+}
+.payment-data-binance{
+    width: 300px;
+}
+.copy{
+    height: 20px;
+    font-size: 9pt;
+    background-color: $boom-blue;
+    border: 0px;
+    color: $boom-lightgray;
+    cursor: pointer;
+}
+
 .payment-button {
     background-color: $boom-darkgray;
     color: white;
@@ -634,11 +661,13 @@ option:hover {
     border-radius: calc(0.375rem - -1px);
     height: 70px;
     //max-height: 80px;
+    cursor: pointer;
 }
 
 .payment-button label img {
     max-height: 70px;
     //max-width: 150px;
+    cursor: pointer;
 }
 
 .payment-button:hover {
@@ -652,16 +681,21 @@ option:hover {
 
 .button {
 
-    min-height: 80px;
+    height: 70px;
     background-color: $boom-darkgray;
     color: white;
-    //display: flex;
-    //align-content: center;
-    //align-items: center;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
     transition: 300ms;
     border-radius: 10px;
     border: 2px solid #333333;
     font-family: Montserrat-Regular;
+}
+
+.button .label{
+    text-align: center;
 }
 
 .button:hover {
@@ -785,3 +819,12 @@ input[type=number] {
 .payment-methods{
     min-height: 240px;
 }
+
+.product-description-image {
+    display: none;
+  }
+  @include media-breakpoint-up(sm) {
+    .product-description-image {
+      display: inline;
+    }
+  }
