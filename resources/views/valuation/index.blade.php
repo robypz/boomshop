@@ -20,7 +20,7 @@
                 <th scope="row">{{$valuation->id}}</th>
                 <td>{{$valuation->name}}</td>
                 <td>{{$valuation->value}}</td>
-                <td><a href="{{route('valuation.edit',['id' => $valuation->id])}}"><button class="btn btn-warning">Editar</button></a></td>
+                <td><a href="{{route('valuation.edit',['id' => $valuation->id])}}"><button class="btn btn-blue btn-sm">Editar</button></a></td>
             </tr>
             @endforeach
         </tbody>

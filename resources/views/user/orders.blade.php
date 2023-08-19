@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container py-4">
+    <div class="container py-4 main">
         <div class="text-center">
             <h2 class="footer-title">Historial de Compras</h2>
             <hr>
@@ -156,10 +156,10 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <div class="col-6 col-md-7 col-xxl-5">
+                                    <div class="col-6 col-sm-6 col-md-7 col-lg-6 col-xxl-5">
 
                                         <div class="row">
-                                            <div class="col text-end fs-6 boom-color-yellow fw-bold">
+                                            <div class="col text-end fs-6 fw-bold">
                                                 Monto
                                             </div>
                                             <div class="col-1">
@@ -168,7 +168,7 @@
                                         </div>
                                     </div>
                                     <div class="col fw-bold fs-6">
-                                        {{ $order->payment->data['amount'] }}
+                                        <span class="boom-color-yellow">{{ $order->payment->data['amount'] }}</span>
                                         @if ($order->payment->paymentMethod->method == 'Pago Móvil')
                                             VES
                                         @endif

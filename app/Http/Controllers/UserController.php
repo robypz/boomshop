@@ -14,9 +14,14 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(5);
+        if ($request->filled('user_id')) {
+            $users = User::where('id',$request->user_id)->paginate(12);
+        }
+        else {
+            $users = User::paginate(12);
+        }
 
         return view('user.index', ['users' => $users]);
     }
@@ -94,7 +99,7 @@ class UserController extends Controller
             ->where('orders.user_id', $user->id)
             ->groupBy('product_id')
             ->orderBy('total', 'desc')
-            ->take(3)
+            ->take(4)
             ->get();
 
         return view('user.profile', compact('user', 'pendingOrders', 'successOrders', 'favoriteBundles'));
@@ -143,7 +148,7 @@ class UserController extends Controller
         ->where('orders.user_id', $id)
         ->groupBy('product_id')
         ->orderBy('total', 'desc')
-        ->take(3)
+        ->take(4)
         ->get();
 
         return $favoriteBundles;

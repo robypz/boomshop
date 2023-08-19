@@ -24,31 +24,20 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        /*$orders = order::all();
-        $products = product::all();
-
-        if (isset($_GET['id']) && $_GET['id'] != '') {
-            $orders = order::where('id',$_GET['id'])->get();
-        }
-        if (isset($_GET['product_id']) && $_GET['product_id'] != '') {
-            $orders = order::select('orders.*')->join('bundles', 'orders.bundle_id', '=', 'bundles.id')
-                ->where('bundles.product_id', '=', $_GET['product_id'])
-                ->get();
-        }*/
 
         $q = Order::query()->select('orders.*');
 
-        if (isset($_GET['id']) && $_GET['id'] != '') {
-            $q->where('orders.id', $_GET['id']);
+        if ($request->filled('id')) {
+            $q->where('orders.id', $request->id);
         }
 
-        if (isset($_GET['product_id']) && $_GET['product_id'] != '') {
-            $q->join('bundles', 'orders.bundle_id', '=', 'bundles.id')->where('bundles.product_id', $_GET['product_id']);
+        if ($request->filled('product_id')) {
+            $q->join('bundles', 'orders.bundle_id', '=', 'bundles.id')->where('bundles.product_id', $request->product_id);
         }
 
-        $orders = $q->orderBy('updated_at', 'desc')->get();
+        $orders = $q->orderBy('updated_at', 'desc')->paginate(12);
 
         $products = Product::all();
 
@@ -96,7 +85,9 @@ class OrderController extends Controller
             $order->account_info = ['region_id' => $request->region_id, 'account_id' => $request->account_id];
         } elseif ($order->bundle->product->category->category == "Tarjetas") {
             $order->account_info = [];
-        } else {
+        }
+
+        else {
             $order->account_info = ['account_id' => $request->account_id];
         }
 
@@ -191,33 +182,39 @@ class OrderController extends Controller
     {
         $order = order::find($id);
 
-        if ($order->orderStatus->status == 'Pendiente') {
-            $order->asist_by = auth()->user()->id;
-            $order->order_status_id = 3;
-            $order->save();
-        }
-
-        $order = order::find($id);
-
-        if ($order->orderStatus->status == 'Procesando') {
-            if ($order->asist_by == auth()->user()->id or auth()->user()->hasRole(['admin', 'super-admin'])) {
-                if ($order->bundle->product->need_access) {
-                    $accountInfo = ['user_id' => $order->account_info['user_id']];
-                } elseif ($order->bundle->product->need_region_id) {
-                    $accountInfo = ['account_id' => $order->account_info['account_id'], 'region_id' => $order->account_info['region_id']];
-                } elseif ($order->bundle->product->category->category == "Tarjetas") {
-                    $accountInfo = [];
-                } else {
-                    $accountInfo = ['account_id' => $order->account_info['account_id']];
-                }
+        if ($order) {
+            if ($order->orderStatus->status == 'Pendiente') {
+                $order->asist_by = auth()->user()->id;
+                $order->order_status_id = 3;
+                $order->save();
             }
-        } else {
-            $accountInfo = $order->account_info;
+
+            $order = order::find($id);
+
+            if ($order->orderStatus->status == 'Procesando') {
+                if ($order->asist_by == auth()->user()->id or auth()->user()->hasRole(['admin', 'super-admin'])) {
+                    if ($order->bundle->product->need_access) {
+                        $accountInfo = ['user_id' => $order->account_info['user_id']];
+                    } elseif ($order->bundle->product->need_region_id) {
+                        $accountInfo = ['account_id' => $order->account_info['account_id'], 'region_id' => $order->account_info['region_id']];
+                    } elseif ($order->bundle->product->category->category == "Tarjetas") {
+                        $accountInfo = [];
+                    } else {
+                        $accountInfo = ['account_id' => $order->account_info['account_id']];
+                    }
+                }
+            } else {
+                $accountInfo = $order->account_info;
+            }
+
+            $orderStatuses = OrderStatus::all();
+
+            return view('order.show', ['order' => $order, 'orderStatuses' => $orderStatuses, 'accountInfo' => $accountInfo]);
+        }
+        else {
+            return redirect(route('order.index'));
         }
 
-        $orderStatuses = OrderStatus::all();
-
-        return view('order.show', ['order' => $order, 'orderStatuses' => $orderStatuses, 'accountInfo' => $accountInfo]);
     }
 
     /**

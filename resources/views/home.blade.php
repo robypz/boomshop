@@ -38,41 +38,43 @@
                     <div class="container">
                         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-6">
                             @foreach ($favoriteProducts as $Favoriteproduct)
-                                <div class="col mb-4">
-                                    <a href="{{ route('product.show', ['id' => $Favoriteproduct->product->id]) }}">
-                                        <div class="game">
-                                            <div class="myimg-container img-container text-center">
-                                                @if ($Favoriteproduct->product->category->category == 'Tarjetas')
-                                                    <img class="card-img-top mycard-img-top w-75"
-                                                        src="{{ route('image.show', ['image' => $Favoriteproduct->product->image]) }}"
-                                                        alt="Card image cap">
-                                                @else
-                                                    <img class="card-img-top mycard-img-top"
-                                                        src="{{ route('image.show', ['image' => $Favoriteproduct->product->image]) }}"
-                                                        alt="Card image cap">
-                                                @endif
+                                @if ($Favoriteproduct->product->available)
+                                    <div class="col mb-4">
+                                        <a href="{{ route('product.show', ['id' => $Favoriteproduct->product->id]) }}">
+                                            <div class="game">
+                                                <div class="myimg-container img-container text-center">
+                                                    @if ($Favoriteproduct->product->category->category == 'Tarjetas')
+                                                        <img class="card-img-top mycard-img-top w-75"
+                                                            src="{{ route('image.show', ['image' => $Favoriteproduct->product->image]) }}"
+                                                            alt="Card image cap">
+                                                    @else
+                                                        <img class="card-img-top mycard-img-top"
+                                                            src="{{ route('image.show', ['image' => $Favoriteproduct->product->image]) }}"
+                                                            alt="Card image cap">
+                                                    @endif
 
-                                            </div>
-
-                                            <div class="d-flex align-items-center justify-content-center game-name">
-                                                <div class="text-center">
-                                                    {{ $Favoriteproduct->product->name }}
                                                 </div>
+
+                                                <div class="d-flex align-items-center justify-content-center game-name">
+                                                    <div class="text-center">
+                                                        {{ $Favoriteproduct->product->name }}
+                                                    </div>
+                                                </div>
+
+
                                             </div>
 
+                                        </a>
 
-                                        </div>
-
-                                    </a>
-
-                                </div>
+                                    </div>
+                                @endif
                             @endforeach
 
 
                         </div>
                     </div>
                     <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                                                                                                      <h3 class="">Ver mas Juegos</h3>-->
+                                                                                                                                              <h3 class="">Ver mas Juegos</h3>-->
                 </section>
             </div>
         @endif
@@ -122,7 +124,7 @@
                 </div>
             </div>
             <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                                                              <h3 class="">Ver mas Juegos</h3>-->
+                                                                                                  <h3 class="">Ver mas Juegos</h3>-->
         </section>
     </div>
 
@@ -215,7 +217,8 @@
                             class="bi bi-star-fill"> </i><i class="bi bi-star-fill"> </i><i class="bi bi-star-fill"></i>
                     </h2>
                     <h3 class="fs-4 boom-color-lightgray ">Entérate de todo lo que opinan nuestros clientes, haciendo click
-                        <a class="text-decoration-underline" href="https://www.instagram.com/p/Ch5ThNPPK1v/" target="blank">AQUI</a>
+                        <a class="text-decoration-underline" href="https://www.instagram.com/p/Ch5ThNPPK1v/"
+                            target="blank">AQUI</a>
                     </h3>
 
                 </div>

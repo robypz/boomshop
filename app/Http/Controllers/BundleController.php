@@ -17,9 +17,9 @@ class BundleController extends Controller
     public function index()
     {
         if(isset($_GET['product_id'])&& $_GET['product_id']!=''){
-            $bundles = Bundle::where('product_id','=',$_GET['product_id'])->get();
+            $bundles = Bundle::where('product_id','=',$_GET['product_id'])->paginate(12);
         }else{
-            $bundles = Bundle::all();
+            $bundles = Bundle::paginate(12);
         }
 
         $products = Product::all('id','name');

@@ -33,7 +33,7 @@
                             <td>{{ $code->expiration_date }}</td>
                             <td>
                                 <a href=""><button type="button"
-                                        class="btn btn-warning">Editar</button></a>
+                                        class="btn btn-blue btn-sm">Editar</button></a>
                             </td>
                         </tr>
                     @endforeach

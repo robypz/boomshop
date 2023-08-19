@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="row" id="products">
                                         @foreach ($products as $product)
-                                            <div class="col">
+                                            <div class="col-12 col-sm-6">
                                                 <div class="form-check">
                                                     <input class="form-check-input products" type="checkbox"
                                                         id="product-{{ $product->id }}" name="valid_for[]"

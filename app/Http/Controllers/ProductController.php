@@ -21,8 +21,25 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('name','asc')->paginate(10);
-        return view('product.index',compact('products'));
+        $products = Product::orderBy('name', 'asc')->paginate(12);
+        return view('product.index', compact('products'));
+    }
+
+    public function catalog(Request $request)
+    {
+        $categories = Category::all();
+
+        if ($request->filled('category')) {
+            $products = Product::where('category_id', $request->category)->paginate(24);
+        } elseif ($request->filled('name')) {
+            $products = Product::where('name', 'like', '%' . $request->name . '%')->paginate(24);
+        } else {
+            $products = Product::orderBy('name', 'asc')->paginate(24);
+        }
+
+
+
+        return view('product.catalog', compact('products', 'categories'));
     }
 
     /**
@@ -60,6 +77,9 @@ class ProductController extends Controller
         $product->gif = null;
         $product->category_id = $request->category;
 
+        $product->customizable_field = $request->customizable_field;
+
+
         $image_path_name = time() . $image_path->getClientOriginalName();
         Storage::disk('images')->put($image_path_name, File::get($image_path));
         $product->image = $image_path_name;
@@ -91,12 +111,11 @@ class ProductController extends Controller
         $product = product::find($id);
         if ($product->available) {
             $bundles = Bundle::where('product_id', $id)->where('availability', 1)->get();
-            $paymentMethods = PaymentMethod::where('available',1)->get();
+            $paymentMethods = PaymentMethod::where('available', 1)->get();
             return view('product.show', ['product' => $product, 'paymentMethods' => $paymentMethods, 'bundles' => $bundles]);
-        }else {
+        } else {
             return redirect(route('home'));
         }
-
     }
 
     /**
@@ -109,7 +128,7 @@ class ProductController extends Controller
     {
         $product = product::find($id);
 
-        return view('product.edit',compact('product'));
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -124,6 +143,7 @@ class ProductController extends Controller
         $product = product::find($id);
 
         $product->available = $request->available;
+        $product->customizable_field = $request->customizable_field;
 
         $product->save();
 

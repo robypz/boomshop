@@ -98,16 +98,11 @@
 
 /*Layout*/
 
-
-
-
-
 @media (max-width: 575.98px) {
     .game-title {
         font-size: 12pt;
     }
 }
-
 
 body {
     background-image: url('../../public/images/background/Fondos\ BOOM_1.jpg');
@@ -135,6 +130,22 @@ body {
     color: $boom-lightgray;
 }
 
+.boom-bg-yellow {
+    background-color: $boom-yellow;
+}
+
+.boom-bg-blue {
+    background-color: $boom-blue;
+}
+
+.boom-bg-darkgray {
+    background-color: $boom-darkgray;
+}
+
+.boom-bg-lightgray {
+    background-color: $boom-lightgray;
+}
+
 .container {
     transition: all 300ms;
 }
@@ -143,22 +154,19 @@ a {
     text-decoration: none;
 }
 
-
 .mynavbar {
     background-color: $boom-darkgray;
 }
 
 .nav-item {
-    color: #FBFFFB;
+    color: $boom-lightgray;
 }
-
 
 nav .mynavar-toggler .bi {
     font-size: 125% !important;
     color: $boom-yellow;
     border: none !important;
 }
-
 
 .mymenu-options {
     text-decoration: none !important;
@@ -192,8 +200,6 @@ nav .mynavar-toggler .bi {
     color: $boom-darkgray !important;
 }
 
-
-
 @media (max-width:700px) {
     /*  .nav-content {}*/
 
@@ -202,9 +208,6 @@ nav .mynavar-toggler .bi {
         display: none;
     }
 }
-
-
-
 
 .imgSize {
     width: 100%;
@@ -227,8 +230,6 @@ span.mycarousel-control-next-icon {
     cursor: pointer;
 }
 
-
-
 .mycarousel-indicators button {
 
     border-radius: 50%;
@@ -242,13 +243,12 @@ span.mycarousel-control-next-icon {
 /*CARDS*/
 .game {
     background-color: black;
-    color: white;
+    color: $boom-lightgray;
     min-height: 200px;
     border-radius: 10px;
     border: 2px solid $boom-yellow;
     padding: 5px;
     transition: all 300ms;
-    color: white;
 }
 
 .game:hover .mycard-img-top,
@@ -285,8 +285,6 @@ span.mycarousel-control-next-icon {
     transition: all 300ms;
 }
 
-
-
 .card .mycard-img-top:hover,
 .card .mycard-img-top:focus {
     transition: 0.5s all ease-in-out;
@@ -300,7 +298,7 @@ span.mycarousel-control-next-icon {
     border-radius: 50%;
     width: 70px !important;
     height: 70px !important;
-    background-color: rgb(0, 0, 0);
+    background-color: black;
     text-align: center;
     display: flex;
     align-items: center;
@@ -310,8 +308,6 @@ span.mycarousel-control-next-icon {
 }
 
 /*DESCRIPTION*/
-
-
 
 .advantage {
     background-attachment: inherit;
@@ -325,8 +321,6 @@ span.mycarousel-control-next-icon {
     font-family: Montserrat-Bold;
 }
 
-
-
 @media (max-width:375px) {
 
 
@@ -335,42 +329,23 @@ span.mycarousel-control-next-icon {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-main {
-    min-height: 720px;
-}
-
-
 .login {
-    //background-image: url('../../public/images/background/13.png');
+    background-image: url('../../public/images/background/BOOMWEBSTIE\ BACKGROUND\ MODIFICADO.jpg');
     background-position: center;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
 
+}
+
+.password-confirm {
+    background-image: url('../../public/images/background/BOOM\ FONDO\ PAGINA\ degradado.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .centered-display {
@@ -381,7 +356,7 @@ main {
 }
 
 .register {
-    //background-image: url('../../public/images/background/13.png');
+    background-image: url('../../public/images/background/BOOMWEBSTIE\ BACKGROUND\ MODIFICADO.jpg');
     background-position: center;
     background-size: cover;
     display: flex;
@@ -436,8 +411,7 @@ a .recharge-data:hover {
 }
 
 .recharge-data {
-    background-color: rgba($color: black, $alpha: .7);
-    margin-bottom: 10px;
+    background-color: rgba($color: black, $alpha: .8);
 
 }
 
@@ -476,7 +450,7 @@ a .recharge-data:hover {
 }
 
 .unread-notification {
-    border: 1px solid $boom-yellow;
+    border: 2px solid $success;
     color: $boom-lightgray;
     border-radius: 10px;
 }
@@ -485,7 +459,6 @@ a .recharge-data:hover {
 .notification {
     color: $boom-lightgray;
     border-radius: 10px;
-    border: 1px solid $boom-darkgray;
 }
 
 .text-justify {
@@ -558,7 +531,7 @@ hr {
 }
 
 
-.input + .label {
+.input+.label {
     cursor: pointer;
     width: 100%;
     min-width: 118.5px;
@@ -624,7 +597,7 @@ option:hover {
     }
 }*/
 
-.cuadrado{
+.cuadrado {
     width: 18px;
     height: 18px;
     background-color: $boom-blue;
@@ -634,13 +607,15 @@ option:hover {
     padding-top: 2px;
 }
 
-.payment-data{
-    width: 220px;
-}
-.payment-data-binance{
+.payment-data {
     width: 300px;
 }
-.copy{
+
+.payment-data-binance {
+    width: 300px;
+}
+
+.copy {
     height: 20px;
     font-size: 9pt;
     background-color: $boom-blue;
@@ -678,7 +653,6 @@ option:hover {
     -moz-box-shadow: 0px 0px 43px -13px rgba(229, 229, 229, 0.97);
 }
 
-
 .button {
 
     height: 70px;
@@ -694,7 +668,7 @@ option:hover {
     font-family: Montserrat-Regular;
 }
 
-.button .label{
+.button .label {
     text-align: center;
 }
 
@@ -722,8 +696,6 @@ option:hover {
     }
 
 }
-
-
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -778,15 +750,15 @@ input[type=number] {
     font-family: Montserrat-Bold;
 }
 
-.min-text{
+.min-text {
     font-size: 10pt;
 }
 
-.password-reset{
+.password-reset {
     height: 38px;
 }
 
-.edit-avatar{
+.edit-avatar {
     background-color: $boom-yellow;
     color: $boom-darkgray;
     visibility: hidden;
@@ -794,37 +766,100 @@ input[type=number] {
 
 }
 
-.avatar{
+.avatar {
     transition: all 300ms;
     border: 2px solid transparent;
 }
 
 
-.avatar:hover{
+.avatar:hover {
     border: 2px solid $boom-yellow;
     border-radius: 5px;
-    .edit-avatar{
+
+    .edit-avatar {
         visibility: visible;
     }
 }
 
-.pre-footer{
+.pre-footer {
     background-color: $boom-blue;
 }
 
-.ms-bold{
+.ms-bold {
     font-family: Montserrat-Bold;
 }
 
-.payment-methods{
+.payment-methods {
     min-height: 240px;
+}
+
+.product-description {
+    display: none;
 }
 
 .product-description-image {
     display: none;
-  }
-  @include media-breakpoint-up(sm) {
+}
+
+@include media-breakpoint-up(lg) {
     .product-description-image {
-      display: inline;
+        display: inline;
     }
-  }
+}
+
+@include media-breakpoint-up(lg) {
+    .product-description {
+        display: inline;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .product-information {
+        display: none;
+    }
+}
+
+
+.btn-toggle {
+    padding: .25rem .5rem;
+    font-weight: 600;
+    color: var(--bs-emphasis-color);
+    background-color: transparent;
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus {
+    color: rgba(var(--bs-emphasis-color-rgb), .85);
+    background-color: var(--bs-tertiary-bg);
+}
+
+.btn-toggle::before {
+    width: 1.25em;
+    line-height: 0;
+    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgb%28255,206,0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+    transition: transform .35s ease;
+    transform-origin: .5em 50%;
+}
+
+[data-bs-theme="dark"] .btn-toggle::before {
+    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgb%28255,206,0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+}
+
+.btn-toggle[aria-expanded="true"] {
+    color: rgba(var(--bs-emphasis-color-rgb), .85);
+}
+
+.btn-toggle[aria-expanded="true"]::before {
+    transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
+    margin-left: 1.25rem;
+}
+
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+    background-color: var(--bs-tertiary-bg);
+}

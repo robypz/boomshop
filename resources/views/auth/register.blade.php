@@ -4,7 +4,7 @@
     <div class="register">
         <div class="card recharge-data">
             <div class="card-header recharge-data-header text-center">
-                <h3 class="fw-bold">Registrar Usuario</h3>
+                <h3 class="fw-bold">Registro de Usuario</h3>
             </div>
 
             <div class="card-body">

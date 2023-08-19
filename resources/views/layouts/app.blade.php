@@ -27,7 +27,7 @@
 
                 <a class="menu-options mymenu-options" href="{{ route('home') }}">Inicio</a>
                 <a class="menu-options mymenu-options" href="#">Gif Card</a>
-                <a class="menu-options mymenu-options" href="#">Novedades</a>
+                <a class="menu-options mymenu-options" href="{{route('news')}}">Novedades</a>
                 <a class="menu-options mymenu-options" href="{{ route('help') }}">Ayuda</a>
 
                 <div class="row">@auth
@@ -452,12 +452,14 @@
         @endhasanyrole
     @endauth
 
+    <script type="module">
+        $(document).ready(function() {
 
+            var height = $(window).height();
 
-
-
-
-
+            $('main').css('min-height', height-70);
+        });
+    </script>
 
 </body>
 

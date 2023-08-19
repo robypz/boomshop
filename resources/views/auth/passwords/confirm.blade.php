@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="password-confirm py-5 ">
+
             <div class="card recharge-data">
                 <div class="card-header recharge-data-header fs-5 fw-bold text-center">{{ __('Confirm Password') }}</div>
 
@@ -31,22 +30,29 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Confirm Password') }}
                                 </button>
 
+
+                            </div>
+                            <div class="col-12 text-center">
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
+<script type="module">
+    $(document).ready(function() {
+        var height = $(window).height();
+        $('.password-confirm').css('min-height', height-70);;
+    });
+</script>
 @endsection

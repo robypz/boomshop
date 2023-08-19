@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="password-confirm py-4">
+
             <div class="card recharge-data">
                 <div class="card-header recharge-data-header">{{ __('Verify Your Email Address') }}</div>
 
@@ -14,7 +13,7 @@
                         </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
+                    {{ __('Before proceeding, please check your email for a verification link.') }} <br>
                     {{ __('If you did not receive the email') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
@@ -22,7 +21,14 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
+
 </div>
+<script type="module">
+    $(document).ready(function() {
+
+        var height = $(window).height();
+
+        $('.password-confirm').css('min-height', height-70);
+    });
+</script>
 @endsection

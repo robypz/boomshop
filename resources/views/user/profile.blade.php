@@ -117,7 +117,8 @@
                 <div class="card recharge-data h-100">
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div class="col fs-3 text-center boom-color-yellow fw-bold d-dlex justify-content-center align-items-center">
+                            <div
+                                class="col fs-3 text-center boom-color-yellow fw-bold d-dlex justify-content-center align-items-center">
                                 Seguridad <i class="bi bi-shield-lock-fill fs-6"></i>
                             </div>
                         </div>
@@ -160,37 +161,39 @@
                                 </div>
                             </div>
 
-                            <div class="row row-cols-2 row-cols-md-3">
+                            <div class="row row-cols-2 row-cols-xxl-4">
                                 @foreach ($favoriteBundles as $favoriteBundle)
-                                    <div class="col mb-3">
-                                        <a href="{{ route('product.show', ['id' => $favoriteBundle->product->id]) }}">
-                                            <div class="game">
-                                                <div class="myimg-container img-container text-center">
-                                                    @if ($favoriteBundle->product->category->category == 'Tarjetas')
-                                                        <img class="card-img-top mycard-img-top w-75"
-                                                            src="{{ route('image.show', ['image' => $favoriteBundle->product->image]) }}"
-                                                            alt="Card image cap">
-                                                    @else
-                                                        <img class="card-img-top mycard-img-top"
-                                                            src="{{ route('image.show', ['image' => $favoriteBundle->product->image]) }}"
-                                                            alt="Card image cap">
-                                                    @endif
+                                    @if ($favoriteBundle->product->available)
+                                        <div class="col mb-3">
+                                            <a href="{{ route('product.show', ['id' => $favoriteBundle->product->id]) }}">
+                                                <div class="game">
+                                                    <div class="myimg-container img-container text-center">
+                                                        @if ($favoriteBundle->product->category->category == 'Tarjetas')
+                                                            <img class="card-img-top mycard-img-top w-75"
+                                                                src="{{ route('image.show', ['image' => $favoriteBundle->product->image]) }}"
+                                                                alt="Card image cap">
+                                                        @else
+                                                            <img class="card-img-top mycard-img-top"
+                                                                src="{{ route('image.show', ['image' => $favoriteBundle->product->image]) }}"
+                                                                alt="Card image cap">
+                                                        @endif
 
 
-                                                </div>
-
-                                                <div class="d-flex align-items-center justify-content-center game-name">
-                                                    <div class="text-center">
-                                                        {{ $favoriteBundle->product->name }}
                                                     </div>
+
+                                                    <div class="d-flex align-items-center justify-content-center game-name">
+                                                        <div class="text-center">
+                                                            {{ $favoriteBundle->product->name }}
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
 
+                                            </a>
 
-                                            </div>
-
-                                        </a>
-
-                                    </div>
+                                        </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>

@@ -86,43 +86,41 @@
                             cuenta:
                             </p>
                             <div
-                                class="container mb-3 text-center d-flex aling-items-center justify-content-end justify-content-lg-center">
-                                <div class="row row-cols-2 payment-data">
-                                    <div class="mb-1 col-6 d-flex align-items-center justify-content-center">
-                                        <span class="">Banesco</span>
+                                class="container mb-3 text-center d-flex aling-items-center justify-content-center justify-content-lg-center">
+                                <div class="row row-cols-2">
+                                    <div class="col text-end p-0 mb-1">
+                                        Titular <span class="text-primary">:</span>&nbsp;
                                     </div>
-                                    <div class="col mb-1  ">
 
+                                    <div class="col text-start p-0 mb-1">
+                                        Juan Enrique
                                     </div>
-                                    <div class="col-6  mb-1  d-flex align-items-center justify-content-center">
-                                        V-<span class="" id="ci">6189959</span>
+                                    <div class="col text-end p-0 mb-1">
+                                        Banco <span class="text-primary">:</span>&nbsp;
                                     </div>
-                                    <div class="col mb-1  text-start d-flex align-items-center ">
-                                        <div class="tooltip-x">
-                                            <!--<i onclick="myFunction('ci','myTooltip-ci')"
-                                                                                                onmouseout="outFunc('myTooltip-ci')" class="btn btn-primary pill copy">
-                                                                                                <span class="tooltiptext" id="myTooltip-ci">Copiar al
-                                                                                                    portapapeles</span>
-                                                                                                Copiar
-                                                                                            </i>-->
-                                            <button class="copy rounded-pill">Copiar</button>
-                                        </div>
+                                    <div class="col text-start p-0 mb-1">
+                                        <span class="bg-primary boom-color-darkgray fw-bold">Banesco</span>
                                     </div>
-                                    <div class="col-6 mb-1  d-flex align-items-center justify-content-center">
-                                        <span class="" id="tlf">04120328247</span>
+                                    <div class="col text-end p-0 mb-1">
+                                        Cadula <span class="text-primary">:</span>&nbsp;
                                     </div>
-                                    <div class="col mb-1  text-start d-flex align-items-center ">
+                                    <div class="col text-start p-0 mb-1">
+                                        V-<span class=""
+                                            id="ci">6189959</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i class="bi bi-clipboard"></i>
+                                    </div>
+                                    <div class="col text-end p-0 mb-1">
+                                        Teléfono <span class="text-primary">:</span>&nbsp;
+                                    </div>
 
-                                        <div class="tooltip-x ">
-                                            <!--<i onclick="myFunction('tlf','myTooltip-tlf')"
-                                                                                                onmouseout="outFunc('myTooltip-tlf')" class="bi bi-clipboard copy">
-                                                                                                <span class="tooltiptext" id="myTooltip-tlf">Copiar al
-                                                                                                    portapapeles</span>
+                                    <div class="col p-0 text-start mb-1">
+                                        <span class="" id="tlf">04120328247</span>&nbsp;
+                                        <i class="bi bi-clipboard"></i>
 
-                                                                                            </i>-->
-                                            <button class="copy rounded-pill">Copiar</button>
-                                        </div>
+                                        <!-- <button
+                                                        class="copy rounded-pill">Copiar</button>-->
                                     </div>
+
                                 </div>
 
 
@@ -235,38 +233,51 @@
                                         </div>
                                         @if ($bundle->discount > 0)
                                             <div class="col-12 text-end mb-3 mt-1">
-                                                <span class="">MONTO TOTAL A PAGAR</span><br>
-                                                <span class="text-decoration-line-through text-muted">
-                                                    {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                    VES</span> <br>
-                                                <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold boom-color-yellow"
-                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> VES</span>
-                                                </span>
-                                                <br>
-                                                <br>
-                                                <span class="fs-5" id="code-discount" hidden>
-                                                    <span class="fw-bold" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> VES</span>
-                                                </span>
-
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span class="">Monto Total </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <span class="text-decoration-line-through text-muted">
+                                                            {{ $bundle->price * $paymentMethod->valuation->value }}
+                                                            VES</span> <br>
+                                                        <span class="fs-5" id="amount-container">
+                                                            <span class="fw-bold boom-color-yellow"
+                                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                            <span class="fw-bold"> VES</span>
+                                                        </span>
+                                                        <br>
+                                                        <br>
+                                                        <span class="fs-6" id="code-discount" hidden>
+                                                            <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                            <span class="fw-bold"> VES</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         @else
                                             <div class="col-12 text-end mb-3 mt-1">
-                                                <span class="">Monto Total: </span>
-                                                <span class="fs-6" id="amount-container">
-                                                    <span class="fw-bold boom-color-yellow"
-                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> VES</span>
-                                                </span>
+                                                <div class="row">
+                                                    <div class="col p-0">
+                                                        <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                    </div>
+                                                    <div class="col p-0 text-start">
+                                                        <span class="fs-6" id="amount-container">
+                                                            <span class="fw-bold boom-color-yellow"
+                                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                            <span class="fw-bold"> VES</span>
+                                                        </span>
 
-                                                <br>
+                                                        <br>
 
-                                                <span class="fs-5" id="code-discount" hidden>
-                                                    <span class="fw-bold" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> VES</span>
-                                                </span>
+                                                        <span class="fs-6" id="code-discount" hidden>
+                                                            <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                            <span class="fw-bold"> VES</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+
 
                                             </div>
                                         @endif
@@ -343,11 +354,11 @@
 
                                         <div class="tooltip-x ">
                                             <!--                                                    <i onclick="myFunction('nombre','myTooltip-nombre')"
-                                                                                            onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
-                                                                                            <span class="tooltiptext" id="myTooltip-nombre">Copy to
-                                                                                                clipboard</span>
+                                                                                                                    onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
+                                                                                                                    <span class="tooltiptext" id="myTooltip-nombre">Copy to
+                                                                                                                        clipboard</span>
 
-                                                                                        </i>-->
+                                                                                                                </i>-->
                                             <button class="copy rounded-pill">Copiar</button>
                                         </div>
                                     </div>
@@ -381,10 +392,12 @@
                                     <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                 @endif
 
-                                <input type="text" name="name" required class="form-control mb-4" placeholder="Nombre del titular de la cuenta Zelle">
+                                <input type="text" name="name" required class="form-control mb-4"
+                                    placeholder="Nombre del titular de la cuenta Zelle">
 
 
-                                <input type="number" name="confirmation_code" class="form-control mb-4" placeholder="Código de confirmación" required>
+                                <input type="number" name="confirmation_code" class="form-control mb-4"
+                                    placeholder="Código de confirmación" required>
                                 <label for="confirmation_code" hidden class="form-label">Monto</label>
                                 <div class="row mb-4">
                                     <div class="col-8">
@@ -408,42 +421,42 @@
                                             required hidden>
                                     </div>
                                     @if ($bundle->discount > 0)
-                                    <div class="col-12 text-end mb-3 mt-1">
-                                        <span class="">MONTO TOTAL A PAGAR</span><br>
-                                        <span class="text-decoration-line-through text-muted">
-                                            {{ $bundle->price * $paymentMethod->valuation->value }}
-                                            VES</span> <br>
-                                        <span class="fs-5" id="amount-container">
-                                            <span class="fw-bold boom-color-yellow"
-                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                            <span class="fw-bold"> USD</span>
-                                        </span>
-                                        <br>
-                                        <br>
-                                        <span class="fs-5" id="code-discount" hidden>
-                                            <span class="fw-bold" id="code-discount-amount"></span>
-                                            <span class="fw-bold"> USD</span>
-                                        </span>
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <span class="">MONTO TOTAL A PAGAR</span><br>
+                                            <span class="text-decoration-line-through text-muted">
+                                                {{ $bundle->price * $paymentMethod->valuation->value }}
+                                                VES</span> <br>
+                                            <span class="fs-5" id="amount-container">
+                                                <span class="fw-bold boom-color-yellow"
+                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                <span class="fw-bold"> USD</span>
+                                            </span>
+                                            <br>
+                                            <br>
+                                            <span class="fs-5" id="code-discount" hidden>
+                                                <span class="fw-bold" id="code-discount-amount"></span>
+                                                <span class="fw-bold"> USD</span>
+                                            </span>
 
-                                    </div>
-                                @else
-                                    <div class="col-12 text-end mb-3 mt-1">
-                                        <span class="">Monto Total: </span>
-                                        <span class="fs-6" id="amount-container">
-                                            <span class="fw-bold boom-color-yellow"
-                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                            <span class="fw-bold"> USD</span>
-                                        </span>
+                                        </div>
+                                    @else
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <span class="">Monto Total: </span>
+                                            <span class="fs-6" id="amount-container">
+                                                <span class="fw-bold boom-color-yellow"
+                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                <span class="fw-bold"> USD</span>
+                                            </span>
 
-                                        <br>
+                                            <br>
 
-                                        <span class="fs-5" id="code-discount" hidden>
-                                            <span class="fw-bold" id="code-discount-amount"></span>
-                                            <span class="fw-bold"> USD</span>
-                                        </span>
+                                            <span class="fs-5" id="code-discount" hidden>
+                                                <span class="fw-bold" id="code-discount-amount"></span>
+                                                <span class="fw-bold"> USD</span>
+                                            </span>
 
-                                    </div>
-                                @endif
+                                        </div>
+                                    @endif
                                     <!-- Button trigger modal -->
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
@@ -515,11 +528,11 @@
 
                                             <div class="tooltip-x ">
                                                 <!--                                                    <i onclick="myFunction('nombre','myTooltip-nombre')"
-                                                                                                onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
-                                                                                                <span class="tooltiptext" id="myTooltip-nombre">Copy to
-                                                                                                    clipboard</span>
+                                                                                                                        onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
+                                                                                                                        <span class="tooltiptext" id="myTooltip-nombre">Copy to
+                                                                                                                            clipboard</span>
 
-                                                                                            </i>-->
+                                                                                                                    </i>-->
                                                 <button class="copy rounded-pill">Copiar</button>
                                             </div>
                                         </div>
@@ -930,6 +943,9 @@
                             </form>
                         @endif
                     </div>
+                    <div id="cronometer" class="fs-4 text-center">
+                        <span id="minutes" class="fw-bold">00</span><span class="fw-bold boom-color-yellow">&nbsp;:&nbsp;</span><span id="seconds" class="fw-bold">00</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1042,6 +1058,32 @@
 
                 });
 
+        }
+    </script>
+
+
+    <script>
+        var minutesLabel = document.getElementById("minutes");
+        var secondsLabel = document.getElementById("seconds");
+
+        var seconds = 900;
+        var x = setInterval(function() {
+            secondsLabel.innerHTML = pad(seconds % 60);
+            minutesLabel.innerHTML = pad(parseInt(seconds / 60));
+            seconds--;
+            if (seconds < 0) {
+                clearInterval(x);
+                window.location.href = 'http://127.0.0.1:8000';
+            }
+        }, 1000);
+
+        function pad(val) {
+            var valString = val + "";
+            if (valString.length < 2) {
+                return "0" + valString;
+            } else {
+                return valString;
+            }
         }
     </script>
 @endsection

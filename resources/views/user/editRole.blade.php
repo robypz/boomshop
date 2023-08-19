@@ -14,7 +14,7 @@
 
                             </div>
                             <div class="col-11 text-center">
-                                <b class="text-white fs-4">Editar Rol</b>
+                                <b class="fs-4">Editar Rol</b>
                             </div>
                         </div>
                     </div>

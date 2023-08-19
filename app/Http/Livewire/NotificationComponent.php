@@ -2,10 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\WithPagination;
 use Livewire\Component;
 
 class NotificationComponent extends Component
 {
+    use WithPagination;
+
     public $notifications,$count;
 
     protected $listeners = ['notification'];

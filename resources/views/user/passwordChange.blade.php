@@ -5,7 +5,7 @@
         <div class="window d-flex align-items-center justify-content-center">
             <div class="card recharge-data">
                 <div class="card-header recharge-data-header text-center">
-                    <h3><strong>Nuva Contraseña</strong></h3>
+                    <h3><strong>Nueva Contraseña</strong></h3>
                 </div>
 
                 <div class="card-body text-black">
@@ -13,7 +13,7 @@
                         @csrf
 
                         <div class="row mb-3 row-cols-1">
-                            <label for="password" class="col mb-1 text-primary">Nuva contraseña</label>
+                            <label for="password" class="col mb-1 boom-color-lightgray">Nueva contraseña</label>
 
                             <div class="col">
                                 <input id="password" type="password"
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="row mb-3 row-cols-1">
-                            <label for="password-confirm" class="col mb-1 text-primary">Confirmar contraseña</label>
+                            <label for="password-confirm" class="col mb-1 boom-color-lightgray">Confirmar contraseña</label>
 
                             <div class="col">
                                 <input id="password-confirm" type="password" class="form-control"
@@ -53,12 +53,4 @@
             </div>
         </div>
     </div>
-    <script type="module">
-        $(document).ready(function() {
-
-            var height = $(window).height();
-
-            $('.window').height(height-75);
-        });
-    </script>
 @endsection

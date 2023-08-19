@@ -69,7 +69,7 @@
                                         </div>
                                     @elseif ($order->orderStatus->status == 'Procesando')
                                         <div class="col text-center">
-                                            <div class="rounded-pill bg-info w-75 fw-bold">
+                                            <div class="rounded-pill bg-info w-75 fw-bold boom-color-darkgray">
                                                 {{ $order->orderStatus->status }}
                                             </div>
                                         </div>
@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <div class="col-6 col-sm- col-md-7 col-xxl-5">
+                                    <div class="col-6  col-md-7 col-xxl-5">
 
                                         <div class="row">
                                             <div class="col text-end fs-6 boom-color-yellow fw-bold">
@@ -189,7 +189,7 @@
                                         <div class="col">
                                             <hr>
                                             <p class="text-end mt-3">
-                                                <a class="btn btn-primary" data-bs-toggle="collapse"
+                                                <a class="btn btn-blue btn-sm" data-bs-toggle="collapse"
                                                     href="#collapseExample{{ $order->id }}" role="button"
                                                     aria-expanded="false" aria-controls="collapseExample">
                                                     Ver codigo

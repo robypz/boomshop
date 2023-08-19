@@ -17,6 +17,7 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,6 +36,11 @@ Auth::routes([
     'verify' => true
 ]);
 
+Route::get('email',function () {
+    $order = Order::find(10000);
+    return view('emails.rechargeSuccess',compact('order'));
+});
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -48,7 +54,9 @@ Route::group(
         Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
         Route::post('login', [LoginController::class, 'login']);
         Route::post('register', [RegisterController::class, 'register']);
-
+        Route::get('news',function () {
+            return view('news');
+        })->name('news');
 
 
 
@@ -60,6 +68,7 @@ Route::group(
 
         Route::prefix('product')->group(function () {
             Route::get('/show/{id}', [ProductController::class, 'show'])->name('product.show');
+            Route::get('/catalog/{name?}/{category?}', [ProductController::class, 'catalog'])->name('product.catalog');
         });
 
         Route::prefix('image')->group(function () {
@@ -192,7 +201,7 @@ Route::group(
                 });
 
                 Route::group(['middleware' => ['role:super-admin']], function () {
-                    Route::get('/index', [UserController::class, 'index'])->name('user.index');
+                    Route::get('/index/{user_id?}', [UserController::class, 'index'])->name('user.index');
                     Route::get('/editRole/{id}', [UserController::class, 'editRole'])->name('user.editRole');
                     Route::post('/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
                 });

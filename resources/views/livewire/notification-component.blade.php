@@ -13,7 +13,7 @@
     </div>
 
 
-    <div class="offcanvas offcanvas-start bg-black" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    <div class="offcanvas offcanvas-start sidebar" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
         id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title text-primary" id="offcanvasScrollingLabel">Notificaciones</h5>
@@ -21,7 +21,7 @@
         </div>
         <div class="offcanvas-body">
             @foreach ($notifications as $notification)
-                <div class="{{ !$notification->read_at ? 'unread-notification' : 'notification' }} mb-2"
+                <div class="recharge-data {{ !$notification->read_at ? 'unread-notification' : 'notification' }} mb-2"
                     wire:click="read('{{ $notification->id }}')">
                     <a href="{{ $notification->data['url'] }}">
                         <div class="p-3">
