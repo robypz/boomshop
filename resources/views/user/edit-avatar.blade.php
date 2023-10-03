@@ -7,10 +7,10 @@
                 <div class="card-header recharge-data-header text-center">
                     <h5>Elige un avatar</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-5">
                     <form action="{{ route('user.setAvatar') }}" method="post">
                         @csrf
-                        <div class="row my-3 row-cols-6">
+                        <div class="row my-3 row-cols-2 row-cols-md-4">
                             @foreach ($avatars as $avatar)
                                 <div class="col rounded p-1">
                                     <input type="radio" name="avatar" id="a-{{ $avatar->id }}"

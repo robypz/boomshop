@@ -120,6 +120,11 @@
         i {
             color: #FFCE00;
         }
+
+        a{
+            color: #FFCE00;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -306,32 +311,12 @@
 
                 <hr>
                 <div class="text-center">
-
-                    <ul class="nav flex-column list-unstyled">
-                        <li class="li-inline"><a href="https://www.instagram.com/boomshopve/" target="_blank"
-                                class="nav-link p-0 text-muted"><img
-                                    src="https://es.wikipedia.org/wiki/Archivo:Instagram_logo_2022.svg" alt=""
-                                    width="25px">
-                                BOOMSHOPVE</a></li>
-                        <li class="li-inline"><a href="https://www.facebook.com/boomshopve" target="_blank"
-                                class="nav-link p-0 text-muted"><i class="bi bi-facebook text-primary me-2 "></i>
-                                BOOMSHOPVE</a>
-                        </li>
-                        <li class="li-inline"><a href="" target="_blank" class="nav-link p-0 text-muted"><i
-                                    class="bi bi-whatsapp text-primary me-2 "></i>
-                                SOPORTE</a>
-                        </li>
-                    </ul>
-
+                    Consulta esta y más ordenes en tu <a href="{{route('user.orders')}}">Historial de Transacciones</a>.
                 </div>
 
             </div>
 
         </div>
-        <div class="container">
-            <iframe src="http://isboomshop.blogspot.com" frameborder="0" class="w-100 vh-100 news"></iframe>
-        </div>
-
         <footer class="text-center fw-bold text-dark">
             &copy; 2023 BOOMSHOP, Todos los derechos reservados.
         </footer>

@@ -76,7 +76,7 @@
                             <div class="col-12">
                                 <hr>
                             </div>
-                            @if ($order->bundle->product->category->category != 'Tarjetas')
+
                                 <div class="col-12">
                                     <p class="fs-4">Información de Cuenta</p>
                                 </div>
@@ -110,6 +110,16 @@
                                     <div class="col-6 fw-bold ">
                                         {{ $accountInfo['account_id'] }}
                                     </div>
+                                @elseif ($order->bundle->product->category->category == 'Tarjetas')
+                                <div class="col-5 col-xxl-3">
+                                    Usuario Boom
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $accountInfo['boom_user'] }}
+                                </div>
                                 @else
                                     <div class="col-5 col-xxl-3">
                                         ID de cuenta
@@ -125,7 +135,6 @@
                                 <div class="col-12">
                                     <hr>
                                 </div>
-                            @endif
 
                             <div class="col-12">
                                 <p class="fs-4">Detalles de Transacción</p>

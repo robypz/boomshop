@@ -30,11 +30,11 @@ class ProductController extends Controller
         $categories = Category::all();
 
         if ($request->filled('category')) {
-            $products = Product::where('category_id', $request->category)->paginate(24);
+            $products = Product::where('category_id', $request->category)->where('available',1)->paginate(18);
         } elseif ($request->filled('name')) {
-            $products = Product::where('name', 'like', '%' . $request->name . '%')->paginate(24);
+            $products = Product::where('name', 'like', '%' . $request->name . '%')->where('available',1)->paginate(18);
         } else {
-            $products = Product::orderBy('name', 'asc')->paginate(24);
+            $products = Product::orderBy('name', 'asc')->where('available',1)->paginate(18);
         }
 
 

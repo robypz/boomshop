@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container py-4">
-        <h2 class="fs-2 text-center fw-bold">Catalogo</h2>
+        <h2 class="fs-2 text-center ms-bold">Catálogo</h2>
 
         <div>
             <p class="d-inline-flex gap-1">
@@ -12,16 +12,16 @@
             <div class="collapse justify-content-center" id="collapseExample">
                 <form action="{{ route('product.catalog') }}" method="get" class="d-block">
                     <div class="row">
-                        <div class="col-12 col-xxl-1 p-1 text-start text-xxl-end">
+                        <div class="col-12 col-sm-2 col-lg-1 col-xxl-1 p-1 text-start text-md-end text-xxl-end mb-3">
                             <label for="name" class="form-label-sm ms-2 fw-bold">Nombre</label>
                         </div>
-                        <div class="col-12  col-xxl-4 mb-2">
+                        <div class="col-12 col-sm-10 col-lg-4  col-xxl-4 mb-3">
                             <input type="text" name="name" id="name" class="form-control-sm w-100">
                         </div>
-                        <div class="col-12 col-xxl-1  col-xxl-1 p-1 text-start fw-bold">
+                        <div class="col-12 col-sm-2 col-lg-1 col-xxl-1  col-xxl-1 p-1 text-start text-md-end fw-bold mb-3">
                             <label for="category" class="form-label-sm ms-2">Categoria</label>
                         </div>
-                        <div class="col-8 col-xxl-4 mb-2">
+                        <div class="col-8 col-sm-7 col-lg-4 col-xxl-4 mb-3">
                             <select name="category" id="category" class="form-select-sm w-100">
                                 <option value="">Todos</option>
                                 @foreach ($categories as $category)
@@ -29,7 +29,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-4 col-xxl-2 text-center text-xxl-center">
+                        <div class="col-4 col-sm-3 col-lg-2 col-xxl-2 text-center text-xxl-center mb-3">
                             <input type="submit" value="Buscar" class="btn btn-primary btn-sm w-75">
                         </div>
                     </div>

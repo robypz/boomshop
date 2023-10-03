@@ -5,7 +5,7 @@
         <div class="window d-flex align-items-center justify-content-center">
             <div class="card recharge-data">
                 <div class="card-header recharge-data-header text-center">
-                    <h3><strong>Nueva Contraseña</strong></h3>
+                    <h5><strong>Nueva Contraseña</strong></h5>
                 </div>
 
                 <div class="card-body text-black">

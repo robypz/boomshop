@@ -17,6 +17,16 @@
 </head>
 
 <body>
+
+    <div class="loading-body">
+        <div class="ticker">
+            <div class="nub c"></div>
+            <div class="tick c"></div>
+            <div class="tick c"></div>
+            <div class="tick c"></div>
+          </div>
+    </div>
+
     <div id="app">
 
         <nav class="navbar mynavbar">
@@ -27,7 +37,7 @@
 
                 <a class="menu-options mymenu-options" href="{{ route('home') }}">Inicio</a>
                 <a class="menu-options mymenu-options" href="#">Gif Card</a>
-                <a class="menu-options mymenu-options" href="{{route('news')}}">Novedades</a>
+                <a class="menu-options mymenu-options" href="{{ route('news') }}">Novedades</a>
                 <a class="menu-options mymenu-options" href="{{ route('help') }}">Ayuda</a>
 
                 <div class="row">@auth
@@ -98,7 +108,8 @@
                                                 <div class="col-6 p-1">
 
                                                     <a class="nav-link text-primary" href="{{ route('login') }}"> <button
-                                                            type="button" class="btn btn-primary rounded-pill fw-bold w-100">
+                                                            type="button"
+                                                            class="btn btn-primary rounded-pill fw-bold w-100">
                                                             <small>Iniciar Sesion</small>
                                                         </button></a>
 
@@ -119,15 +130,16 @@
                                     aria-current="page">
                                     <div class="row">
                                         @if (Auth::user()->avatar)
-                                        <div class="col-1">
-                                            <img class="rounded" src="{{ asset(Auth::user()->avatar->avatar) }}"
-                                                alt="" srcset="" width="32px">
-                                        </div>
+                                            <div class="col-1">
+                                                <img class="rounded" src="{{ asset(Auth::user()->avatar->avatar) }}"
+                                                    alt="" srcset="" width="32px">
+                                            </div>
                                         @else
-                                        <div class="col-1">
-                                            <img class="rounded" src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
-                                                alt="" srcset="" width="32px">
-                                        </div>
+                                            <div class="col-1">
+                                                <img class="rounded"
+                                                    src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
+                                                    alt="" srcset="" width="32px">
+                                            </div>
                                         @endif
 
                                         <div class="col">
@@ -201,8 +213,8 @@
                                     </a>
                                     <ul class="dropdown-menu user-dropdown">
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
-                                            href="{{ route('product.index') }}"><i
-                                                class="bi bi-list me-1"></i>Ver Todos</a>
+                                                href="{{ route('product.index') }}"><i class="bi bi-list me-1"></i>Ver
+                                                Todos</a>
                                         </li>
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
                                                 href="{{ route('product.create') }}"><i
@@ -319,8 +331,7 @@
                                     <ul class="dropdown-menu user-dropdown">
                                         @hasanyrole('super-admin|admin')
                                             <li><a class="dropdown-item text-primary user-dropdown-item"
-                                                    href="{{ route('avatar.index') }}"><i
-                                                        class="bi bi-list me-1"></i>Ver
+                                                    href="{{ route('avatar.index') }}"><i class="bi bi-list me-1"></i>Ver
                                                     Todos</a></li>
                                         @endhasanyrole
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
@@ -359,9 +370,7 @@
                         <p class="text-primary">&copy; 2023</p>
                     </div>
 
-                    <div class="col mb-3">
 
-                    </div>
 
                     <div class="col mb-3 ">
                         <h5 class="footer-title">Ubicación</h5>
@@ -407,22 +416,33 @@
                         </ul>
                     </div>
 
-                    <div class="col mb-3 ">
-                        <h5 class="footer-title">Redes Sociales</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item mb-2 "><a href="https://www.instagram.com/boomshopve/"
-                                    target="_blank" class="nav-link p-0 text-muted"><i
-                                        class="bi bi-instagram me-2  text-primary"></i>
-                                    BOOMSHOPVE</a></li>
-                            <li class="nav-item mb-2 "><a href="https://www.facebook.com/boomshopve" target="_blank"
-                                    class="nav-link p-0 text-muted"><i class="bi bi-facebook text-primary me-2 "></i>
-                                    BOOMSHOPVE</a>
-                            </li>
-                            <li class="nav-item mb-2 "><a href="" target="_blank"
-                                    class="nav-link p-0 text-muted"><i class="bi bi-whatsapp text-primary me-2 "></i>
-                                    SOPORTE</a>
-                            </li>
-                        </ul>
+                    <div class="col mb-3 d-flex justify-content-end">
+                        <div>
+                            <h5 class="footer-title">Redes Sociales</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2 "><a href="https://www.instagram.com/boomshopve/"
+                                        target="_blank" class="nav-link p-0 text-muted"><i
+                                            class="bi bi-instagram me-2  text-primary"></i>
+                                        BOOMSHOPVE</a></li>
+                                <li class="nav-item mb-2 "><a href="https://www.facebook.com/boomshopve"
+                                        target="_blank" class="nav-link p-0 text-muted"><i
+                                            class="bi bi-facebook text-primary me-2 "></i>
+                                        BOOMSHOPVE</a>
+                                </li>
+                                <li class="nav-item mb-2 "><a href="" target="_blank"
+                                        class="nav-link p-0 text-muted"><i
+                                            class="bi bi-whatsapp text-primary me-2 "></i>
+                                        SOPORTE</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col mb-3">
+                        <div class="w-100">
+                            <img src="{{ asset('images/Mascota Boomer transparente bordeless.png') }}" alt=""
+                                srcset="" style="height: 225px">
+                        </div>
                     </div>
                 </footer>
             </div>
@@ -438,26 +458,45 @@
             @livewireScripts
             @auth
                 <script type="module">
-
-                    let sound = new Audio('{{asset('sounds/mixkit-tile-game-reveal-960.wav')}}');
+                    let sound = new Audio('{{ asset('sounds/mixkit-tile-game-reveal-960.wav') }}');
                     Echo.private('App.Models.User.' + {{ auth()->user()->id }})
-                    .notification((notification) => {
-                        Livewire.emit('notification');
-                        sound.play();
-                    });
-
-
+                        .notification((notification) => {
+                            Livewire.emit('notification');
+                            sound.play();
+                        });
                 </script>
             @endauth
         @endhasanyrole
     @endauth
 
     <script type="module">
-        $(document).ready(function() {
+        var t = $('.tick')
+        var n = $('.nub')
+        var d = 80
 
-            var height = $(window).height();
+        function anim() {
+            t.each(function(i) {
+                //just edit this to be cool
+                var x = Math.sin(Date.now() / 900 + i / 1.3) * d;
+                var y = Math.cos(-Date.now() / 900 + i) * d;
+                //-----------------------
+                this.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+            })
 
-            $('main').css('min-height', height-70);
+            window.requestAnimationFrame(anim);
+        };
+        anim();
+
+        //
+
+
+        var height = $(window).height();
+
+        $('main').css('min-height', height - 70);
+        $('.loading-body').css('height', height);
+        window.onload = (function() {
+            $('.loading-body').css('display', 'none');
+            $('#app').css('display', 'block');
         });
     </script>
 

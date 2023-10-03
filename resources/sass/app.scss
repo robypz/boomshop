@@ -1,6 +1,49 @@
 // Variables
 @import 'variables';
 
+#app {
+    display: none;
+}
+
+.loading-body {
+
+    background-color: #000;
+}
+
+.c {
+    left: 45%;
+    top: 45%;
+    position: absolute;
+  }
+  .ticker {
+    height: 100%;
+    background: #323232;
+    -webkit-filter: blur(15px) contrast(30);
+  }
+  .nub {
+    -webkit-backface-visibility: hidden;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background: yellow;
+  }
+  .tick {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background: #00f;
+    -webkit-filter: saturate(0);
+    transform: rotate(180deg);
+    transform-origin: 0% 200%;
+  }
+  .bg {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(#0064ff, #0064cd, 45deg);
+  }
+
+
+
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 

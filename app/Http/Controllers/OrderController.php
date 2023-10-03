@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bundle;
 use App\Models\Code;
 use App\Models\product;
 use App\Models\Order;
@@ -14,8 +13,7 @@ use App\Notifications\orderRequest;
 use App\Notifications\ordersuccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
+
 
 class OrderController extends Controller
 {
@@ -71,105 +69,14 @@ class OrderController extends Controller
         $order = new Order();
 
         $order->user_id = Auth::id();
-
         $order->bundle_id = $request->bundle_id;
-
         $order->order_status_id = 2;
-
-        $bundle = Bundle::find($request->bundle_id);
-
-
-        if ($order->bundle->product->need_access) {
-            $order->account_info = ['user_id' => $request->user_id];
-        } elseif ($order->bundle->product->need_region_id) {
-            $order->account_info = ['region_id' => $request->region_id, 'account_id' => $request->account_id];
-        } elseif ($order->bundle->product->category->category == "Tarjetas") {
-            $order->account_info = [];
-        }
-
-        else {
-            $order->account_info = ['account_id' => $request->account_id];
-        }
-
-
-
+        $order->account_info = $this->checkBundleType($order, $request);
         $order->save();
+        $this->payOrder($order,$request);
+        $this->notifyOrder($order);
 
-        $paymentMethod = PaymentMethod::find($request->payment_method_id);
-
-        $payment = new Payment;
-
-        $payment->payment_method_id = $paymentMethod->id;
-
-        if ($paymentMethod->method == "Pago Móvil") {
-
-            $payment->data = [
-                'bank' => $request->bank,
-                'phone' => $request->phone,
-                'transaction_id' => $request->transaction_id,
-                'amount' => $request->amount,
-            ];
-        }
-
-        if ($paymentMethod->method == "Zelle") {
-
-            $payment->data = [
-                'name' => $request->name,
-                'confirmation_code' => $request->confirmation_code,
-                'amount' => $request->amount,
-            ];
-        }
-
-        if ($paymentMethod->method == "Binance (USDT)") {
-
-            $payment->data = [
-                'user_id' => $request->user_id,
-                'binance_alias' => $request->binance_alias,
-                'order_id' => $request->order_id,
-                'amount' => $request->amount,
-            ];
-        }
-        if ($paymentMethod->method == "Reserve") {
-
-            $payment->data = [
-                'reserve_user' => $request->reserve_user,
-                'transaction_id' => $request->transaction_id,
-                'amount' => $request->amount,
-            ];
-            if (!is_null($request->code && !empty($request->code))) {
-                $code = Code::where('code', $request->code)->first();
-                if ($code) {
-                    if ($code->expiration_date >= now()->toDateString()) {
-                        $used = order::query()->select('orders.*')->where('orders.user_id', auth()->user()->id)->join('payments', 'payments.order_id', '=', 'orders.id')->whereJsonContains('data->code', $code->code)->first();
-                        if (is_null($used)) {
-                            $array = array('code' => $code->code, 'code_discount' => $code->value);
-                            $payment->data += $array;
-                        }
-                    }
-                }
-            }
-            if ($bundle->discount > 0) {
-                $array = array('bundle_discount' => $bundle->discount);
-                $payment->data += $array;
-            }
-        }
-
-
-        $order->payment()->save($payment);
-
-        $users = User::all();
-
-        foreach ($users as $user) {
-            if ($user->hasRole(['super-admin', 'admin', 'operator'])) {
-                $user->notify(new orderRequest($order));
-            }
-        }
-
-        if ($order->bundle->product->category->category == "Tarjetas") {
-            return redirect(route('user.giftCards'));
-        } else {
-            return redirect(route('user.orders'));
-        }
+        return redirect(route('user.orders'));
     }
 
     /**
@@ -198,7 +105,7 @@ class OrderController extends Controller
                     } elseif ($order->bundle->product->need_region_id) {
                         $accountInfo = ['account_id' => $order->account_info['account_id'], 'region_id' => $order->account_info['region_id']];
                     } elseif ($order->bundle->product->category->category == "Tarjetas") {
-                        $accountInfo = [];
+                        $accountInfo = ['boom_user' => $order->account_info['boom_user']];
                     } else {
                         $accountInfo = ['account_id' => $order->account_info['account_id']];
                     }
@@ -210,11 +117,9 @@ class OrderController extends Controller
             $orderStatuses = OrderStatus::all();
 
             return view('order.show', ['order' => $order, 'orderStatuses' => $orderStatuses, 'accountInfo' => $accountInfo]);
-        }
-        else {
+        } else {
             return redirect(route('order.index'));
         }
-
     }
 
     /**
@@ -280,5 +185,110 @@ class OrderController extends Controller
         )->orderBy('id', 'desc')->get();
 
         return view('order.pending', ['orders' => $orders]);
+    }
+
+    private function checkBundleType($order, $request)
+    {
+        if ($order->bundle->product->need_access) {
+            return ['user_id' => $request->user_id];
+        } elseif ($order->bundle->product->need_region_id) {
+            return ['region_id' => $request->region_id, 'account_id' => $request->account_id];
+        } elseif ($order->bundle->product->category->category == "Tarjetas") {
+            return ['boom_user' => $request->user()->nick];
+        } else {
+            return ['account_id' => $request->account_id];
+        }
+    }
+
+    private function payOrder($order, $request)
+    {
+        $payment = new Payment;
+        $payment->payment_method_id = $request->payment_method_id;
+        $payment->data = $this->setPaymentMethod($request,$payment,$order);
+        $order->payment()->save($payment);
+    }
+
+    private function setPaymentMethod($request,$payment,$order)
+    {
+        $paymentMethod = PaymentMethod::find($request->payment_method_id);
+
+        if ($paymentMethod->method == "Pago Móvil") {
+
+            $payment->data = [
+                'bank' => $request->bank,
+                'phone' => $request->phone,
+                'transaction_id' => $request->transaction_id,
+                'amount' => $request->amount,
+            ];
+
+        }
+
+        if ($paymentMethod->method == "Zelle") {
+
+            $payment->data = [
+                'name' => $request->name,
+                'confirmation_code' => $request->confirmation_code,
+                'amount' => $request->amount,
+            ];
+
+        }
+
+        if ($paymentMethod->method == "Binance (USDT)") {
+
+            $payment->data = [
+                'user_id' => $request->user_id,
+                'binance_alias' => $request->binance_alias,
+                'order_id' => $request->order_id,
+                'amount' => $request->amount,
+            ];
+
+        }
+        if ($paymentMethod->method == "Reserve") {
+
+            $payment->data = [
+                'reserve_user' => $request->reserve_user,
+                'transaction_id' => $request->transaction_id,
+                'amount' => $request->amount,
+            ];
+
+        }
+        $this->applyDiscounts($request,$payment,$order);
+        return $payment->data;
+    }
+
+    private function applyDiscounts($request,$payment,$order)
+    {
+        if (!is_null($request->code && !empty($request->code))) {
+            $code = Code::where('code', $request->code)->first();
+            if ($code) {
+                if ($code->expiration_date >= now()->toDateString()) {
+                    $used = order::query()->select('orders.*')->where('orders.user_id', auth()->user()->id)->join('payments', 'payments.order_id', '=', 'orders.id')->whereJsonContains('data->code', $code->code)->first();
+                    if (is_null($used)) {
+                        $array = array('code' => $code->code, 'code_discount' => $code->value);
+                        $payment->data += $array;
+                    }
+                }
+            }
+        }
+        if ($order->bundle->discount > 0) {
+            $array = array('bundle_discount' => $order->bundle->discount);
+            $payment->data += $array;
+        }
+    }
+
+    private function notifyOrder($order){
+        $users = User::all();
+
+        foreach ($users as $user) {
+            if ($user->hasRole(['super-admin', 'admin', 'operator'])) {
+                $user->notify(new orderRequest($order));
+            }
+        }
+
+        if ($order->bundle->product->category->category == "Tarjetas") {
+            return redirect(route('user.giftCards'));
+        } else {
+            return redirect(route('user.orders'));
+        }
     }
 }
