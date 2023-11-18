@@ -39,7 +39,7 @@
                         </select>
 
                         <label for="price" class="form-label">Precio</label>
-                        <input type="number" name="price" step="0.01" min="1.00" value="{{$bundle->price}}" class="form-control mb-4" required>
+                        <input type="number" name="price" step="0.01" min="0.01" value="{{$bundle->price}}" class="form-control mb-4" required>
 
                         <label for="discount" class="form-label">Descuento</label>
                         <input type="number" name="discount" min="0" max="100" step="1" value="{{$bundle->discount}}" class="form-control mb-4" required>

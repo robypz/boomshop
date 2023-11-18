@@ -10,7 +10,7 @@
             </form>
         <hr>
         <div class="table-responsive">
-            <table class="table boom-table">
+            <table class="table boom-table boom-bg-darkgray">
                 <thead class="boom-table-header">
                     <tr>
                         <th scope="col">ID</th>

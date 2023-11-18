@@ -91,22 +91,23 @@
                         @if ($product->name == 'Free Fire')
                             <div class="product-information">
                                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                Información
-                            </button>
-                            <div class="collapse" id="dashboard-collapse">
-                                <p class="fs-2 text-center"><b>FREE FIRE<b><br>
+                                    data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                    Información
+                                </button>
+                                <div class="collapse" id="dashboard-collapse">
+                                    <p class="fs-2 text-center"><b>FREE FIRE<b><br>
 
-                                </p>
+                                    </p>
 
-                                <p class="text-center fw-normal">
-                                    Es un shooter para móviles multijugador de supervivencia del género Battle Royale en el
-                                    que te enfrentas a otros 49 jugadores.
-                                    <br>
-                                    Disfrutarás diferentes modos de juegos para compartir con tus amistades o el mundo.
+                                    <p class="text-center fw-normal">
+                                        Es un shooter para móviles multijugador de supervivencia del género Battle Royale en
+                                        el
+                                        que te enfrentas a otros 49 jugadores.
+                                        <br>
+                                        Disfrutarás diferentes modos de juegos para compartir con tus amistades o el mundo.
 
-                                </p>
-                            </div>
+                                    </p>
+                                </div>
                             </div>
 
                             <div class="product-description">
@@ -188,7 +189,7 @@
                             </p>
                         @endif
 
-                        @if ($product->name == 'Mobile Legends Bang Bang')
+                        @if ($product->name == 'Mobile Legends')
                             <p class="text-center fw-bold fs-2">MOBILE LEGENDS BANG BANG</p>
 
                             <p class="text-center">Mobile Legends: Bang Bang, el juego MOBA destacado para móviles del
@@ -274,7 +275,6 @@
             </div>
             <form method="POST" action="{{ route('payment.create') }}">
                 @csrf
-                <input type="number" hidden name="game_id" value="{{ $product->id }}">
                 @if ($product->category->category == 'Recargas' && $product->need_access == false)
                     <div class="col">
                         <div class="row row-cols-1">
@@ -403,6 +403,68 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                @elseif ($product->category->category == 'Recargas' && $product->need_access == true)
+                    <div class="col">
+                        <div class="row row-cols-1">
+
+
+                            <div class="col">
+                                <div class="card recharge-data mb-3">
+                                    <div class="card-header recharge-data-header">
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <div class="fs-4 icon-bg">
+                                                    <i class="bi bi-person-badge boom-color-lightgray  fs-4"></i>
+                                                </div>
+
+                                            </div>
+                                            <div class="col text-center">
+                                                <b class="fs-4">Información de Cuenta</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-2">
+                                        <div class="row mb-3">
+                                            <div
+                                                class="col-12 col-md-4 d-flex align-items-center justify-content-start justify-content-md-end">
+                                                <label for="phone" class="">Teléfono</label>
+                                            </div>
+                                            <div class="col-12 col-md-8 d-flex">
+                                                <link rel="stylesheet"
+                                                    href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
+                                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                                <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
+
+                                                <input id="phone" type="tel" name="phone"
+                                                    class="form-control">
+
+                                                <script>
+                                                    var input = document.querySelector("#phone");
+                                                    const iti = window.intlTelInput(input, {
+                                                        // Opciones del plugin
+                                                        initialCountry: "auto",
+                                                        geoIpLookup: function(callback) {
+                                                            $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+                                                                var countryCode = (resp && resp.country) ? resp.country : "";
+                                                                callback(countryCode);
+                                                            });
+                                                        },
+                                                        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"
+                                                    });
+                                                    input.addEventListener("countrychange", function() {
+                                                        var data = iti.getSelectedCountryData();
+                                                        input.value = "+"+data.dialCode;
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endif
 
                 <div class="col">
@@ -480,17 +542,17 @@
                                 @foreach ($paymentMethods as $paymentMethod)
                                     @if ($paymentMethod->available)
                                         <div class="col p-3 d-flex align-items-center justify-content-center">
-                                            <div class="payment-button position-relative">
+                                            <div class="payment-button position-relative w-100">
                                                 <input class="" type="radio" hidden name="payment_method_id"
                                                     id="payment-{{ $paymentMethod->id }}" class="payment"
                                                     value="{{ $paymentMethod->id }}" required>
 
                                                 <label
                                                     class="d-flex align-items-center justify-content-center text-center p-2"
-                                                    style="width: 100%" for="payment-{{ $paymentMethod->id }}">
+                                                    for="payment-{{ $paymentMethod->id }}">
                                                     <img class=""
                                                         src="{{ route('image.show', ['image' => $paymentMethod->image]) }}"
-                                                        alt="" width="80%" srcset="">
+                                                        alt="" width="70%" srcset="">
                                                 </label>
                                                 <span
                                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary check">

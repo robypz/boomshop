@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="col fw-bold fs-6">
                                         <span class="boom-color-yellow">{{ $order->payment->data['amount'] }}</span>
-                                        @if ($order->payment->paymentMethod->method == 'Pago Móvil')
+                                        @if ($order->payment->paymentMethod->method == 'Pago Móvil' || 'PuntoYaBDV')
                                             VES
                                         @endif
                                         @if ($order->payment->paymentMethod->method == 'Binance (USDT)')

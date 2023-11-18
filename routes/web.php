@@ -140,7 +140,9 @@ Route::group(
 
             Route::prefix('payment')->group(function () {
 
-                Route::POST('/create', [PaymentController::class, 'create'])->name('payment.create');
+                Route::post('/create', [PaymentController::class, 'create'])->name('payment.create');
+                Route::get('/pagoMóvilBDV', [PaymentController::class, 'mobilePaymentBDV'])->name('payment.mobilePaymentBDV');
+                Route::post('/payWithPuntoYaBDV', [PaymentController::class, 'payWithPuntoYaBDV'])->name('payment.payWithPuntoYaBDV');
             });
 
             Route::prefix('order')->group(function () {

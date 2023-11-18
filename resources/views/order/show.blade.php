@@ -80,15 +80,24 @@
                                 <div class="col-12">
                                     <p class="fs-4">Información de Cuenta</p>
                                 </div>
+                                <div class="col-5  col-xxl-3">
+                                    <span>Usuario de BOOM</span>
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    <a href="#">{{$order->user->nick}}</a>
+                                </div>
                                 @if ($order->bundle->product->need_access)
                                     <div class="col-12">
                                         <p class="fs-4">Informacion de Cuenta</p>
                                     </div>
                                     <div class="col-4 col-xxl-3">
-                                        ID de usuario BOOM:
+                                        Teléfono:
                                     </div>
                                     <div class="col-6 fw-bold ">
-                                        {{ $accountInfo['user_id'] }}
+                                        {{ $accountInfo['phone'] }}
                                     </div>
                                 @elseif ($order->bundle->product->need_region_id)
                                     <div class="col-5 col-xxl-3">
@@ -110,17 +119,7 @@
                                     <div class="col-6 fw-bold ">
                                         {{ $accountInfo['account_id'] }}
                                     </div>
-                                @elseif ($order->bundle->product->category->category == 'Tarjetas')
-                                <div class="col-5 col-xxl-3">
-                                    Usuario Boom
-                                </div>
-                                <div class="col-1">
-                                    :
-                                </div>
-                                <div class="col-6 fw-bold ">
-                                    {{ $accountInfo['boom_user'] }}
-                                </div>
-                                @else
+                                @elseif ($order->bundle->product->category->category != 'Tarjetas')
                                     <div class="col-5 col-xxl-3">
                                         ID de cuenta
                                     </div>
@@ -182,7 +181,36 @@
                                     {{ $order->payment->data['code_discount'] }} %
                                 </div>
                             @endif
+                            @if ($order->payment->paymentMethod->method == 'PuntoYaBDV')
+                                <div class="col-5  col-xxl-3">
+                                    Description
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $order->payment->data['description'] }}
+                                </div>
+                                <div class="col-5  col-xxl-3">
+                                    Referencia
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $order->payment->data['transactionId'] }}
+                                </div>
 
+                                <div class="col-5  col-xxl-3">
+                                    Monto
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $order->payment->data['amount'] }}VES
+                                </div>
+                            @endif
 
 
                             @if ($order->payment->paymentMethod->method == 'Pago Móvil')

@@ -24,7 +24,7 @@
             <div class="tick c"></div>
             <div class="tick c"></div>
             <div class="tick c"></div>
-          </div>
+        </div>
     </div>
 
     <div id="app">
@@ -36,9 +36,9 @@
                 </a>
 
                 <a class="menu-options mymenu-options" href="{{ route('home') }}">Inicio</a>
-                <a class="menu-options mymenu-options" href="#">Gif Card</a>
+                <a class="menu-options mymenu-options" href="{{ route('help') }}">Nosotros</a>
                 <a class="menu-options mymenu-options" href="{{ route('news') }}">Novedades</a>
-                <a class="menu-options mymenu-options" href="{{ route('help') }}">Ayuda</a>
+                <a class="menu-options mymenu-options" href="{{ route('help.transactionsAndPayments') }}">Ayuda</a>
 
                 <div class="row">@auth
                         @hasanyrole('super-admin|admin|operator')
@@ -407,10 +407,6 @@
                                     class="nav-link p-0 text-muted">BOOM</a></li>
                             <li class="nav-item mb-2  "><a href="{{ route('help.transactionsAndPayments') }}"
                                     class="nav-link p-0 text-muted">Transacciones y Pagos</a></li>
-                            <li class="nav-item mb-2  "><a href="{{ route('help.paymentMethods') }}"
-                                    class="nav-link p-0 text-muted">Métodos de Pago</a></li>
-                            <li class="nav-item mb-2  "><a href="{{ route('help.tutorials') }}"
-                                    class="nav-link p-0 text-muted">Tutoriales</a></li>
                             <li class="nav-item mb-2  "><a href="{{ route('help.termsAndConditions') }}"
                                     class="nav-link p-0 text-muted">Términos y Condiciones</a></li>
                         </ul>

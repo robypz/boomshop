@@ -13,8 +13,9 @@ window._ = _;
 import jQuery from 'jquery';
 window.$ = jQuery;
 
-import * as Popper from '@popperjs/core'
-window.Popper = Popper
+/*import * as Popper from '@popperjs/core'
+window.Popper = Popper;*/
+
 
 import 'bootstrap';
 

@@ -122,6 +122,11 @@
 
 
                 </div>
+                <div class="text-center mt-3">
+                    @if ($products->links())
+                        <a href="{{route('product.index')}}" class="btn btn-primary fw.bold">Ver mas...</a>
+                    @endif
+                </div>
             </div>
             <!--  <i class="> <i class="bi bi-eye"></i></i>
                                                                                                   <h3 class="">Ver mas Juegos</h3>-->

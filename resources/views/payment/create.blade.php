@@ -141,7 +141,7 @@
                                         <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                         <input type="text" name="region_id" hidden value="{{ $region_id }}">
                                     @elseif ($bundle->product->need_access)
-                                        <input type="number" name="user_id" hidden value="{{ $user_id }}">
+                                        <input type="tel" name="phone" hidden value="{{ $phone }}">
                                     @else
                                         <input type="text" name="account_id" hidden value="{{ $account_id }}">
                                     @endif
@@ -421,42 +421,55 @@
                                             required hidden>
                                     </div>
                                     @if ($bundle->discount > 0)
-                                        <div class="col-12 text-end mb-3 mt-1">
-                                            <span class="">MONTO TOTAL A PAGAR</span><br>
-                                            <span class="text-decoration-line-through text-muted">
-                                                {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                VES</span> <br>
-                                            <span class="fs-5" id="amount-container">
-                                                <span class="fw-bold boom-color-yellow"
-                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
-                                            <br>
-                                            <br>
-                                            <span class="fs-5" id="code-discount" hidden>
-                                                <span class="fw-bold" id="code-discount-amount"></span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
-
+                                    <div class="col-12 text-end mb-3 mt-1">
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="">Monto Total </span>
+                                            </div>
+                                            <div class="col">
+                                                <span class="text-decoration-line-through text-muted">
+                                                    {{ $bundle->price * $paymentMethod->valuation->value }}
+                                                    USD</span> <br>
+                                                <span class="fs-5" id="amount-container">
+                                                    <span class="fw-bold boom-color-yellow"
+                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                    <span class="fw-bold"> USD</span>
+                                                </span>
+                                                <br>
+                                                <br>
+                                                <span class="fs-6" id="code-discount" hidden>
+                                                    <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                    <span class="fw-bold"> USD</span>
+                                                </span>
+                                            </div>
                                         </div>
-                                    @else
-                                        <div class="col-12 text-end mb-3 mt-1">
-                                            <span class="">Monto Total: </span>
-                                            <span class="fs-6" id="amount-container">
-                                                <span class="fw-bold boom-color-yellow"
-                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
+                                    </div>
+                                @else
+                                    <div class="col-12 text-end mb-3 mt-1">
+                                        <div class="row">
+                                            <div class="col p-0">
+                                                <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                            </div>
+                                            <div class="col p-0 text-start">
+                                                <span class="fs-6" id="amount-container">
+                                                    <span class="fw-bold boom-color-yellow"
+                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                    <span class="fw-bold"> USD</span>
+                                                </span>
 
-                                            <br>
+                                                <br>
 
-                                            <span class="fs-5" id="code-discount" hidden>
-                                                <span class="fw-bold" id="code-discount-amount"></span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
-
+                                                <span class="fs-6" id="code-discount" hidden>
+                                                    <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                    <span class="fw-bold"> USD</span>
+                                                </span>
+                                            </div>
                                         </div>
-                                    @endif
+
+
+
+                                    </div>
+                                @endif
                                     <!-- Button trigger modal -->
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
@@ -603,42 +616,55 @@
                                                 required hidden>
                                         </div>
                                         @if ($bundle->discount > 0)
-                                            <div class="col-12 text-end mb-2 mt-2">
-                                                <span class="">Monto Total: </span>
-                                                <span class="text-decoration-line-through text-muted">
-                                                    {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                    USD</span> <br>
-                                                <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold boom-color-yellow"
-                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> USDT</span>
-                                                </span>
-                                                <br>
-                                                <br>
-                                                <span class="fs-5" id="code-discount" hidden>
-                                                    <span class="fw-bold" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> USDT</span>
-                                                </span>
-
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <span class="">Monto Total </span>
+                                                </div>
+                                                <div class="col">
+                                                    <span class="text-decoration-line-through text-muted">
+                                                        {{ $bundle->price * $paymentMethod->valuation->value }}
+                                                        USDT</span> <br>
+                                                    <span class="fs-5" id="amount-container">
+                                                        <span class="fw-bold boom-color-yellow"
+                                                            id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                        <span class="fw-bold"> USDT</span>
+                                                    </span>
+                                                    <br>
+                                                    <br>
+                                                    <span class="fs-6" id="code-discount" hidden>
+                                                        <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                        <span class="fw-bold"> USDT</span>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        @else
-                                            <div class="col-12 text-end mb-3 mt-2">
-                                                <span class="">Monto Total: </span>
-                                                <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold boom-color-yellow"
-                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> USDT</span>
-                                                </span>
+                                        </div>
+                                    @else
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <div class="row">
+                                                <div class="col p-0">
+                                                    <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col p-0 text-start">
+                                                    <span class="fs-6" id="amount-container">
+                                                        <span class="fw-bold boom-color-yellow"
+                                                            id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                        <span class="fw-bold"> USDT</span>
+                                                    </span>
 
-                                                <br>
+                                                    <br>
 
-                                                <span class="fs-5" id="code-discount" hidden>
-                                                    <span class="fw-bold" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> USDT</span>
-                                                </span>
-
+                                                    <span class="fs-6" id="code-discount" hidden>
+                                                        <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                        <span class="fw-bold"> USDT</span>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        @endif
+
+
+
+                                        </div>
+                                    @endif
                                         <p type="button" data-bs-toggle="modal"
                                             class="text-center mt-2 text-decoration-underline text-primary"
                                             data-bs-target="#exampleModal">¿Cómo hacer

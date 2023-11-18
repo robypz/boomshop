@@ -14,20 +14,23 @@
     left: 45%;
     top: 45%;
     position: absolute;
-  }
-  .ticker {
+}
+
+.ticker {
     height: 100%;
     background: #323232;
     -webkit-filter: blur(15px) contrast(30);
-  }
-  .nub {
+}
+
+.nub {
     -webkit-backface-visibility: hidden;
     width: 100px;
     height: 100px;
     border-radius: 100%;
     background: yellow;
-  }
-  .tick {
+}
+
+.tick {
     width: 70px;
     height: 70px;
     border-radius: 100%;
@@ -35,12 +38,13 @@
     -webkit-filter: saturate(0);
     transform: rotate(180deg);
     transform-origin: 0% 200%;
-  }
-  .bg {
+}
+
+.bg {
     height: 100%;
     width: 100%;
     background: linear-gradient(#0064ff, #0064cd, 45deg);
-  }
+}
 
 
 
@@ -157,6 +161,15 @@ body {
 
 }
 
+.msrt-regular{
+    font-family: Montserrat-Regular;
+}
+.msrt-regular{
+    font-family: Montserrat-Black;
+}
+
+
+
 .boom-color-yellow {
     color: $boom-yellow;
 }
@@ -182,7 +195,7 @@ body {
 }
 
 .boom-bg-darkgray {
-    background-color: $boom-darkgray;
+    background-color: $boom-darkgray !important;
 }
 
 .boom-bg-lightgray {
@@ -906,3 +919,46 @@ input[type=number] {
 .btn-toggle-nav a:focus {
     background-color: var(--bs-tertiary-bg);
 }
+
+.boom-btn{
+    background-color: $primary;
+    color: black;
+    transition: 300ms;
+    border: 0px;
+    padding: 5px;
+    font-size: 11pt;
+}
+
+.boom-btn-secondary{
+    background-color: $boom-darkyellow;
+    color: $boom-lightgray;
+    transition: 300ms;
+    border: 0px;
+    padding: 5px;
+    font-size: 11pt;
+}
+.boom-btn:hover{
+    color: black;
+}
+
+.boom-statics{
+    font-size: 50px;
+}
+
+.box{
+    min-height: 150px;
+}
+
+.stars{
+    height: 50px;
+}
+
+.hide-mobile{
+    display: none;
+}
+
+@include media-breakpoint-up(sm) {
+    .hide-mobile {
+      display: block;
+    }
+  }

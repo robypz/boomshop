@@ -34,7 +34,7 @@
                                                     <img class="rounded " src="{{ asset($user->avatar->avatar) }}"
                                                         width="150px" alt="" srcset="">
                                                     <figcaption
-                                                        class="figure-caption text-center boom-color-lightgray fs-5">
+                                                        class="figure-caption text-center boom-color-lightgray fs-5 mt-3">
                                                         {{ $user->nick }}</figcaption>
                                                     <span
                                                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill  edit-avatar">
@@ -123,14 +123,14 @@
                             </div>
                         </div>
 
-                        <div class="row row-cols-2">
+                        <div class="row">
                             <div class="col password-reset d-flex align-items-center">
                                 <div class="text-end">
                                     Contraseña: <span class="fw-bold">********</span>
                                 </div>
 
                             </div>
-                            <div class="col text-start">
+                            <div class="col-5 text-start">
                                 <a href="{{ route('user.changePasswordRequest') }}"><button type="button"
                                         class="btn btn-blue">Cambiar</button></a>
 

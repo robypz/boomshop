@@ -14,7 +14,6 @@ use App\Notifications\ordersuccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class OrderController extends Controller
 {
     /**
@@ -66,14 +65,14 @@ class OrderController extends Controller
             'password' => 'required|min:8',
         ]);*/
 
-        $order = new Order();
+        $order = new Order;
 
         $order->user_id = Auth::id();
         $order->bundle_id = $request->bundle_id;
         $order->order_status_id = 2;
         $order->account_info = $this->checkBundleType($order, $request);
         $order->save();
-        $this->payOrder($order,$request);
+        $this->payOrder($order, $request);
         $this->notifyOrder($order);
 
         return redirect(route('user.orders'));
@@ -101,7 +100,7 @@ class OrderController extends Controller
             if ($order->orderStatus->status == 'Procesando') {
                 if ($order->asist_by == auth()->user()->id or auth()->user()->hasRole(['admin', 'super-admin'])) {
                     if ($order->bundle->product->need_access) {
-                        $accountInfo = ['user_id' => $order->account_info['user_id']];
+                        $accountInfo = ['phone' => $order->account_info['phone']];
                     } elseif ($order->bundle->product->need_region_id) {
                         $accountInfo = ['account_id' => $order->account_info['account_id'], 'region_id' => $order->account_info['region_id']];
                     } elseif ($order->bundle->product->category->category == "Tarjetas") {
@@ -147,12 +146,7 @@ class OrderController extends Controller
 
 
         $order->save();
-
-        if ($order->orderStatus->status == 'Exitoso' && $order->bundle->product->need_access) {
-            $data = ['email' => 'No disponible', 'password' => 'No disponible'];
-            $order->account_info = $data;
-            $order->save();
-        } elseif ($order->orderStatus->status == 'Exitoso') {
+        if ($order->orderStatus->status == 'Exitoso') {
             if ($order->bundle->product->category->category == "Tarjetas") {
                 $order->account_info = ["code" => $request->code];
                 $order->save();
@@ -190,7 +184,7 @@ class OrderController extends Controller
     private function checkBundleType($order, $request)
     {
         if ($order->bundle->product->need_access) {
-            return ['user_id' => $request->user_id];
+            return ['phone' => $request->phone];
         } elseif ($order->bundle->product->need_region_id) {
             return ['region_id' => $request->region_id, 'account_id' => $request->account_id];
         } elseif ($order->bundle->product->category->category == "Tarjetas") {
@@ -204,13 +198,22 @@ class OrderController extends Controller
     {
         $payment = new Payment;
         $payment->payment_method_id = $request->payment_method_id;
-        $payment->data = $this->setPaymentMethod($request,$payment,$order);
+        $payment->data = $this->setPaymentMethod($request, $payment, $order);
         $order->payment()->save($payment);
     }
 
-    private function setPaymentMethod($request,$payment,$order)
+    private function setPaymentMethod($request, $payment, $order)
     {
         $paymentMethod = PaymentMethod::find($request->payment_method_id);
+
+        if ($paymentMethod->method == "PuntoYaBDV") {
+
+            $payment->data = [
+                'transactionId' => $request->transactionId,
+                'description' => $request->description,
+                'amount' => $request->amount,
+            ];
+        }
 
         if ($paymentMethod->method == "Pago Móvil") {
 
@@ -220,7 +223,6 @@ class OrderController extends Controller
                 'transaction_id' => $request->transaction_id,
                 'amount' => $request->amount,
             ];
-
         }
 
         if ($paymentMethod->method == "Zelle") {
@@ -230,7 +232,6 @@ class OrderController extends Controller
                 'confirmation_code' => $request->confirmation_code,
                 'amount' => $request->amount,
             ];
-
         }
 
         if ($paymentMethod->method == "Binance (USDT)") {
@@ -241,7 +242,6 @@ class OrderController extends Controller
                 'order_id' => $request->order_id,
                 'amount' => $request->amount,
             ];
-
         }
         if ($paymentMethod->method == "Reserve") {
 
@@ -250,13 +250,12 @@ class OrderController extends Controller
                 'transaction_id' => $request->transaction_id,
                 'amount' => $request->amount,
             ];
-
         }
-        $this->applyDiscounts($request,$payment,$order);
+        $this->applyDiscounts($request, $payment, $order);
         return $payment->data;
     }
 
-    private function applyDiscounts($request,$payment,$order)
+    private function applyDiscounts($request, $payment, $order)
     {
         if (!is_null($request->code && !empty($request->code))) {
             $code = Code::where('code', $request->code)->first();
@@ -276,7 +275,8 @@ class OrderController extends Controller
         }
     }
 
-    private function notifyOrder($order){
+    private function notifyOrder($order)
+    {
         $users = User::all();
 
         foreach ($users as $user) {

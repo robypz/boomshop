@@ -29,32 +29,30 @@ class PaymentController extends Controller
     {
 
         $actual = new DateTime();
-        $cierre = new DateTime('22:00');
+        $cierre = new DateTime('23:00');
         if ($actual >= $cierre) {
             return redirect(route('close'));
         } else {
-            $bundle = Bundle::find($request->bundle_id);
+            $bundle = Bundle::findOrFail($request->bundle_id);
+            $data = $this->setData($request, $bundle);
+
             $paymentMethod = PaymentMethod::findOrFail($request->payment_method_id);
 
-            /*if($request->payment_method_id==null){
-                redirect(route('product.show',['id' => $bundle->product->id]));
-            }*/
-
-            if($bundle->product->need_region_id){
-                $account_id = $request->account_id;
-                $region_id = $request->region_id;
-                return view('payment.create', ['bundle' => $bundle, 'paymentMethod' => $paymentMethod, 'account_id' => $account_id,'region_id' => $region_id]);
-            }elseif($bundle->product->need_access){
-                return view('payment.create', ['bundle' => $bundle, 'paymentMethod' => $paymentMethod, 'user_id' => $request->user()->id]);
-            }
-            else{
-                $account_id = $request->account_id;
-                return view('payment.create', ['bundle' => $bundle, 'paymentMethod' => $paymentMethod, 'account_id' => $account_id]);
+            if ($paymentMethod->method == "PuntoYaBDV") {
+                return view('payment.mobilePaymentBDV', ['bundle' => $bundle, 'data' => $data, 'paymentMethod' => $paymentMethod]);
+            } else {
+                if ($bundle->product->need_region_id) {
+                    $account_id = $request->account_id;
+                    $region_id = $request->region_id;
+                    return view('payment.create', ['bundle' => $bundle, 'paymentMethod' => $paymentMethod, 'account_id' => $account_id, 'region_id' => $region_id]);
+                } elseif ($bundle->product->need_access) {
+                    return view('payment.create', ['bundle' => $bundle, 'paymentMethod' => $paymentMethod, 'phone' => $request->phone]);
+                } else {
+                    $account_id = $request->account_id;
+                    return view('payment.create', ['bundle' => $bundle, 'paymentMethod' => $paymentMethod, 'account_id' => $account_id]);
+                }
             }
         }
-
-
-
     }
 
     /**
@@ -66,6 +64,18 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function setData($request, $bundle)
+    {
+
+        if ($bundle->product->need_region_id) {
+            return ['account_id' => $request->account_id, 'region_id' => $request->region_id];
+        } elseif ($bundle->product->need_access) {
+            return ['phone' => $request->phone];
+        } else {
+            return ['account_id' => $request->account_id];
+        }
     }
 
     /**
@@ -111,5 +121,16 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function mobilePaymentBDV()
+    {
+        return view('payment.mobilePaymentBDV');
+    }
+
+    public function payWithPuntoYaBDV(Request $request)
+    {
+        $bundle = Bundle::find($request->bundle_id);
+        return view('payment.payWithPuntoYaBDV', ['request' => $request, 'bundle' => $bundle]);
     }
 }
