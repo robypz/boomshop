@@ -162,6 +162,8 @@ class CodeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $code = Code::find($id);
+        $code->delete();
+        return redirect(route('code.index'));
     }
 }

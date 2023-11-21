@@ -17,18 +17,18 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->filled('user_id')) {
-            $users = User::where('id',$request->user_id)->paginate(12);
-        }
-        else {
+            $users = User::where('id', $request->user_id)->paginate(12);
+        } else {
             $users = User::paginate(12);
         }
 
         return view('user.index', ['users' => $users]);
     }
 
-    public function show()
+    public function show($id)
     {
-        # code...
+        $user = User::find($id);
+        return view('user.show', ['user' => $user]);
     }
 
     public function edit()
@@ -116,18 +116,18 @@ class UserController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
-        $user= User::find($request->user()->id);
+        $user = User::find($request->user()->id);
 
         $user->password = Hash::make($request->password);
         $user->update();
-        return redirect(route('user.profile'))->with('password','changed');
+        return redirect(route('user.profile'))->with('password', 'changed');
     }
 
     public function editAvatar()
     {
         $avatars = Avatar::all();
 
-        return view('user.edit-avatar',compact('avatars'));
+        return view('user.edit-avatar', compact('avatars'));
     }
 
     public function setAvatar(Request $request)
@@ -139,17 +139,17 @@ class UserController extends Controller
         $user->update();
 
         return redirect(route('user.profile'));
-
     }
 
-    public static function favoriteProducts($id) {
+    public static function favoriteProducts($id)
+    {
         $favoriteBundles = Bundle::select('product_id', DB::raw('count(*) as total'))
-        ->join('orders', 'bundles.id', '=', 'orders.bundle_id')
-        ->where('orders.user_id', $id)
-        ->groupBy('product_id')
-        ->orderBy('total', 'desc')
-        ->take(4)
-        ->get();
+            ->join('orders', 'bundles.id', '=', 'orders.bundle_id')
+            ->where('orders.user_id', $id)
+            ->groupBy('product_id')
+            ->orderBy('total', 'desc')
+            ->take(4)
+            ->get();
 
         return $favoriteBundles;
     }

@@ -32,8 +32,8 @@
                             </td>
                             <td>{{ $code->expiration_date }}</td>
                             <td>
-                                <a href=""><button type="button"
-                                        class="btn btn-blue btn-sm">Editar</button></a>
+                                <a href="{{route('code.destroy',['id'=>$code->id])}}"><button type="button"
+                                        class="btn btn-danger btn-sm">Eliminar</button></a>
                             </td>
                         </tr>
                     @endforeach

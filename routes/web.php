@@ -187,7 +187,7 @@ Route::group(
 
             Route::prefix('user')->group(function () {
 
-                Route::get('/show', [UserController::class, 'show'])->name('user.show');
+
                 Route::get('/edit', [UserController::class, 'edit'])->name('user.edit');
                 Route::post('/update', [UserController::class, 'update'])->name('user.update');
                 Route::get('/orders', [UserController::class, 'orders'])->name('user.orders');
@@ -199,6 +199,7 @@ Route::group(
                 Route::post('/setAvatar', [UserController::class, 'setAvatar'])->name('user.setAvatar');
 
                 Route::group(['middleware' => ['role:super-admin|admin|operator']], function () {
+                    Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
                     Route::get('/ordersInProcess', [UserController::class, 'ordersInProcess'])->name('user.ordersInProcess');
                 });
 
@@ -207,6 +208,7 @@ Route::group(
                     Route::get('/editRole/{id}', [UserController::class, 'editRole'])->name('user.editRole');
                     Route::post('/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
                 });
+
             });
 
 
@@ -229,6 +231,7 @@ Route::group(
                     Route::get('/index', [CodeController::class, 'index'])->name('code.index');
                     Route::get('/create', [CodeController::class, 'create'])->name('code.create');
                     Route::post('/store', [CodeController::class, 'store'])->name('code.store');
+                    Route::get('/destroy/{id}', [CodeController::class, 'destroy'])->name('code.destroy');
                 });
 
                 Route::post('/validate', [CodeController::class, 'validateCode'])->name('code.validate');

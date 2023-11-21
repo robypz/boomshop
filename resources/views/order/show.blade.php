@@ -87,7 +87,32 @@
                                     :
                                 </div>
                                 <div class="col-6 fw-bold ">
-                                    <a href="#">{{$order->user->nick}}</a>
+                                    <a href="{{route('user.show',['id' =>$order->user->id])}}" target="_blank" data-bs-toggle="modal" data-bs-target="#exampleModal">{{$order->user->nick}}</a>
+
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header recharge-data-header">
+                                              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body recharge-data">
+                                                <p><span class="fw-bold">Nombre:</span> {{ $order->user->name }}</p>
+                                                <p><span class="fw-bold">Apellido:</span> {{ $order->user->name }}</p>
+                                                <p><span class="fw-bold">Correo:</span> {{ $order->user->name }}</p>
+                                                <p><span class="fw-bold">Rol:</span>
+                                                    @foreach ($order->user->roles as $role)
+                                                        {{ $role->name }}
+                                                    @endforeach
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer recharge-data">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                 </div>
                                 @if ($order->bundle->product->need_access)
                                     <div class="col-12">

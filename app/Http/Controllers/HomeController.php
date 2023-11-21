@@ -24,12 +24,13 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('available', '1')->paginate(3);
+        $gifcards = Product::where('category_id', '1')->where('available', '1')->get();
 
         if (auth()->user()) {
             $favoriteProducts = UserController::favoriteProducts(auth()->user()->id);
-            return view('home', ['products' => $products, 'favoriteProducts' => $favoriteProducts]);
+            return view('home', ['products' => $products, 'favoriteProducts' => $favoriteProducts,'gifcards' => $gifcards]);
         } else {
-            return view('home', ['products' => $products]);
+            return view('home', ['products' => $products,'gifcards' => $gifcards]);
         }
     }
 

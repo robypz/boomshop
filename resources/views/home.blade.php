@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                                                                                                              <h3 class="">Ver mas Juegos</h3>-->
+                                                                                                                                                      <h3 class="">Ver mas Juegos</h3>-->
                 </section>
             </div>
         @endif
@@ -122,14 +122,15 @@
 
 
                 </div>
-                <div class="text-center mt-3">
-                    @if ($products->links())
-                        <a href="{{route('product.index')}}" class="btn btn-primary fw.bold">Ver mas...</a>
-                    @endif
+                @if ($products->links())
+                <div class="text-center">
+                    <a href="{{route('product.catalog')}}" class="btn btn-primary">Ver mas</a>
                 </div>
+                @endif
+
             </div>
             <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                                                                  <h3 class="">Ver mas Juegos</h3>-->
+                                                                                                      <h3 class="">Ver mas Juegos</h3>-->
         </section>
     </div>
 
@@ -150,21 +151,19 @@
 
             <div class="row row-cols-2 row-cols-sm-2 row-cols-md-6 mt-5 mb-3 ">
 
-                @foreach ($products as $product)
-                    @if ($product->category->category == 'Tarjetas')
-                        <div class="col mb-3 text-center">
-                            <a class="boom-color-lightgray" href="{{ route('product.show', ['id' => $product->id]) }}">
-                                <img class="gift-card" style="width: 100%;"
-                                    src="{{ route('image.show', ['image' => $product->image]) }}" alt="">
-                                <br>
+                @foreach ($gifcards as $gifcard)
+                    <div class="col mb-3 text-center">
+                        <a class="boom-color-lightgray" href="{{ route('product.show', ['id' => $gifcard->id]) }}">
+                            <img class="gift-card" style="width: 100%;"
+                                src="{{ route('image.show', ['image' => $gifcard->image]) }}" alt="">
+                            <br>
 
-                                <caption>
-                                    <p class=" fs-6  fw-bold mt-2">{{ $product->name }}</p>
-                                </caption>
-                            </a>
+                            <caption>
+                                <p class=" fs-6  fw-bold mt-2">{{ $gifcard->name }}</p>
+                            </caption>
+                        </a>
 
-                        </div>
-                    @endif
+                    </div>
                 @endforeach
 
                 <div class="col mb-3 text-center">

@@ -107,7 +107,14 @@
                                     <div class="col text-start p-0 mb-1">
                                         V-<span class=""
                                             id="ci">6189959</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <i class="bi bi-clipboard"></i>
+                                        <div class="tooltip-x ">
+                                            <i class="bi bi-clipboard" onclick="copy('ci','myTooltip-ci')"
+                                                onmouseout="outFunc('myTooltip-ci')">
+                                                <span class="tooltiptext" id="myTooltip-ci">Copiar al
+                                                    portapapeles</span>
+
+                                            </i>
+                                        </div>
                                     </div>
                                     <div class="col text-end p-0 mb-1">
                                         Teléfono <span class="text-primary">:</span>&nbsp;
@@ -115,10 +122,16 @@
 
                                     <div class="col p-0 text-start mb-1">
                                         <span class="" id="tlf">04120328247</span>&nbsp;
-                                        <i class="bi bi-clipboard"></i>
+                                        <div class="tooltip-x ">
+                                            <i class="bi bi-clipboard" onclick="copy('tlf','myTooltip-tlf')"
+                                                onmouseout="outFunc('myTooltip-tlf')">
+                                                <span class="tooltiptext" id="myTooltip-tlf">Copiar al
+                                                    portapapeles</span>
+                                            </i>
+                                        </div>
 
                                         <!-- <button
-                                                        class="copy rounded-pill">Copiar</button>-->
+                                                                                                                        class="copy rounded-pill">Copiar</button>-->
                                     </div>
 
                                 </div>
@@ -227,33 +240,47 @@
                                     <div class="row">
                                         <div class="col">
                                             <input type="number" name="amount" step="0.01"
-                                                class="form-control mb-4"
-                                                value="{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}"
+                                                class="form-control mb-4" id="form-amount"
+                                                value="{{ number_format(($bundle->price + $bundle->price * 0.01 - ($bundle->price + $bundle->price * 0.01) * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}"
                                                 required hidden>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row p-0">
+                                                <div class="col-6 text-end p-0">
+                                                    <span class="">Sub total&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col text-start p-0">
+                                                    @if ($bundle->discount != 0)
+                                                        <span
+                                                            class="text-muted text-decoration-line-through">{{ number_format($bundle->price * $paymentMethod->valuation->value, 2) }}&nbsp;VES</span>
+                                                    @endif
+                                                    {{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}&nbsp;VES
+                                                </div>
+                                            </div>
                                         </div>
                                         @if ($bundle->discount > 0)
                                             <div class="col-12 text-end mb-3 mt-1">
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <span class="">Monto Total </span>
+                                                    <div class="col p-0">
+                                                        <span class="">Monto Total&nbsp;:&nbsp;</span>
                                                     </div>
-                                                    <div class="col">
-                                                        <span class="text-decoration-line-through text-muted">
-                                                            {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                            VES</span> <br>
-                                                        <span class="fs-5" id="amount-container">
+                                                    <div class="col p-0 text-start">
+                                                        <span class="fs-6" id="amount-container">
                                                             <span class="fw-bold boom-color-yellow"
-                                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                                id="amount">{{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
                                                             <span class="fw-bold"> VES</span>
                                                         </span>
+
                                                         <br>
-                                                        <br>
+
                                                         <span class="fs-6" id="code-discount" hidden>
-                                                            <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                            <span class="fw-bold text-primary"
+                                                                id="code-discount-amount"></span>
                                                             <span class="fw-bold"> VES</span>
                                                         </span>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         @else
                                             <div class="col-12 text-end mb-3 mt-1">
@@ -264,14 +291,15 @@
                                                     <div class="col p-0 text-start">
                                                         <span class="fs-6" id="amount-container">
                                                             <span class="fw-bold boom-color-yellow"
-                                                                id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
+                                                                id="amount">{{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
                                                             <span class="fw-bold"> VES</span>
                                                         </span>
 
                                                         <br>
 
                                                         <span class="fs-6" id="code-discount" hidden>
-                                                            <span class="fw-bold text-primary" id="code-discount-amount"></span>
+                                                            <span class="fw-bold text-primary"
+                                                                id="code-discount-amount"></span>
                                                             <span class="fw-bold"> VES</span>
                                                         </span>
                                                     </div>
@@ -282,49 +310,59 @@
                                             </div>
                                         @endif
 
-                                    </div>
-
-                                    <!-- Button trigger modal -->
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
-                                            data-bs-target="#refunds">
-                                            <span class="fw-bold btn-color fs-6">Pagar</span>
-                                        </button>
-                                    </div>
 
 
-                                    <!-- Modal -->
-                                    <div class="modal fade " id="refunds" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="refundsLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content boom-notice">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title  fw-bold text-primary text-center"
-                                                        id="refundsLabel">
-                                                        Sin Reembolsos
-                                                    </h1>
-                                                    <i type="button" class="bi bi-x-lg text-primary"
-                                                        data-bs-dismiss="modal" aria-label="Close"></i>
-                                                </div>
-                                                <div class="modal-body text-justify">
-                                                    <p>
-                                                        Usted es responsable de asegurarse de que leyó la descripción e
-                                                        instrucciones del servicio a adquirir y asegura que el monto de la
-                                                        transacción ingresado o mostrado en su pantalla sea correcto antes
-                                                        de
-                                                        confirmar la transacción. Una vez que se confirme la transacción, se
-                                                        considerará irrevocable y no podrá cancelar, detener o realizar un
-                                                        reembolso de esa transacción.
-                                                    </p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="{{ route('product.show', ['id' => $bundle->product->id]) }}">
-                                                        <button type="button" class="btn btn-blue"
-                                                            data-bs-dismiss="modal">Volver</button>
-                                                    </a>
 
-                                                    <button type="submit" class="btn btn-primary">Entendido</button>
+                                        <div class="text-center">
+
+                                        </div>
+
+                                        <!-- Button trigger modal -->
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
+                                                data-bs-target="#refunds">
+                                                <span class="fw-bold btn-color">Pagar</span>
+                                            </button>
+                                        </div>
+
+
+                                        <!-- Modal -->
+                                        <div class="modal fade " id="refunds" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="refundsLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content boom-notice">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title  fw-bold" id="refundsLabel">Sin
+                                                            Reembolsos
+                                                        </h1>
+                                                        <i type="button" class="bi bi-x-lg" data-bs-dismiss="modal"
+                                                            aria-label="Close"></i>
+                                                    </div>
+                                                    <div class="modal-body ">
+                                                        <p>
+                                                            Usted es responsable de asegurarse de que leyó la descripción e
+                                                            instrucciones del servicio a adquirir y asegura que el monto de
+                                                            la
+                                                            transacción ingresado o mostrado en su pantalla sea correcto
+                                                            antes
+                                                            de
+                                                            confirmar la transacción. Una vez que se confirme la
+                                                            transacción, se
+                                                            considerará irrevocable y no podrá cancelar, detener o realizar
+                                                            un
+                                                            reembolso de esa transacción.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a
+                                                            href="{{ route('product.show', ['id' => $bundle->product->id]) }}">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Volver</button>
+                                                        </a>
+
+                                                        <button type="submit" class="btn btn-primary">Entendido</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -342,24 +380,30 @@
                                 class="container mb-3 text-center d-flex aling-items-center justify-content-end justify-content-lg-center">
                                 <div class="row row-cols-2 payment-data-binance">
                                     <div class="col-9  mb-1  d-flex align-items-center justify-content-center">
-                                        <span class="text-primary" id="ci">Olvin de Barros</span>
+                                        <span class="text-primary" id="name">Olvin de Barros</span>
                                     </div>
                                     <div class="col-3 mb-1  text-start d-flex align-items-center ">
-                                        <button class="copy rounded-pill">Copiar</button>
+                                        <div class="tooltip-x ">
+                                            <button class="copy rounded-pill" onclick="copy('name','myTooltip-name')"
+                                                onmouseout="outFunc('myTooltip-name')">
+                                                <span class="tooltiptext" id="myTooltip-name">Copiar al
+                                                    portapapeles</span>
+                                                Copiar
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="col-9 mb-1  d-flex align-items-center justify-content-center">
-                                        <span class="" id="tlf">pay@isboomshop.com</span>
+                                        <span class="" id="email">pay@isboomshop.com</span>
                                     </div>
                                     <div class="col-3 mb-1  text-start d-flex align-items-center ">
 
                                         <div class="tooltip-x ">
-                                            <!--                                                    <i onclick="myFunction('nombre','myTooltip-nombre')"
-                                                                                                                    onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
-                                                                                                                    <span class="tooltiptext" id="myTooltip-nombre">Copy to
-                                                                                                                        clipboard</span>
-
-                                                                                                                </i>-->
-                                            <button class="copy rounded-pill">Copiar</button>
+                                            <button class="copy rounded-pill" onclick="copy('email','myTooltip-email')"
+                                                onmouseout="outFunc('myTooltip-email')">
+                                                <span class="tooltiptext" id="myTooltip-email">Copiar al
+                                                    portapapeles</span>
+                                                Copiar
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -417,59 +461,83 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="number" name="amount" step="0.01" class="form-control mb-4"
-                                            value="{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}"
+                                            id="form-amount"
+                                            value="{{ number_format(($bundle->price + $bundle->price * 0.01 - ($bundle->price + $bundle->price * 0.01) * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}"
                                             required hidden>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="row p-0">
+                                            <div class="col-6 text-end p-0">
+                                                <span class="">Sub total&nbsp;:&nbsp;</span>
+                                            </div>
+                                            <div class="col text-start p-0">
+                                                @if ($bundle->discount != 0)
+                                                    <span
+                                                        class="text-muted text-decoration-line-through">{{ number_format($bundle->price * $paymentMethod->valuation->value, 2) }}&nbsp;USD</span>
+                                                @endif
+                                                {{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}&nbsp;USD
+                                            </div>
+                                        </div>
+                                    </div>
                                     @if ($bundle->discount > 0)
-                                    <div class="col-12 text-end mb-3 mt-1">
-                                        <div class="row">
-                                            <div class="col">
-                                                <span class="">Monto Total </span>
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <div class="row">
+                                                <div class="col p-0">
+                                                    <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col p-0 text-start">
+                                                    <span class="fs-6" id="amount-container">
+                                                        <span class="fw-bold boom-color-yellow"
+                                                            id="amount">{{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
+
+                                                    <br>
+
+                                                    <span class="fs-6" id="code-discount" hidden>
+                                                        <span class="fw-bold text-primary"
+                                                            id="code-discount-amount"></span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <span class="text-decoration-line-through text-muted">
-                                                    {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                    USD</span> <br>
-                                                <span class="fs-5" id="amount-container">
-                                                    <span class="fw-bold boom-color-yellow"
-                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> USD</span>
-                                                </span>
-                                                <br>
-                                                <br>
-                                                <span class="fs-6" id="code-discount" hidden>
-                                                    <span class="fw-bold text-primary" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> USD</span>
-                                                </span>
-                                            </div>
+
                                         </div>
-                                    </div>
-                                @else
-                                    <div class="col-12 text-end mb-3 mt-1">
-                                        <div class="row">
-                                            <div class="col p-0">
-                                                <span class="">Monto Total&nbsp;:&nbsp;</span>
-                                            </div>
-                                            <div class="col p-0 text-start">
-                                                <span class="fs-6" id="amount-container">
-                                                    <span class="fw-bold boom-color-yellow"
-                                                        id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                    <span class="fw-bold"> USD</span>
-                                                </span>
+                                    @else
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <div class="row">
+                                                <div class="col p-0">
+                                                    <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col p-0 text-start">
+                                                    <span class="fs-6" id="amount-container">
+                                                        <span class="fw-bold boom-color-yellow"
+                                                            id="amount">{{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
 
-                                                <br>
+                                                    <br>
 
-                                                <span class="fs-6" id="code-discount" hidden>
-                                                    <span class="fw-bold text-primary" id="code-discount-amount"></span>
-                                                    <span class="fw-bold"> USD</span>
-                                                </span>
+                                                    <span class="fs-6" id="code-discount" hidden>
+                                                        <span class="fw-bold text-primary"
+                                                            id="code-discount-amount"></span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
+                                                </div>
                                             </div>
+
+
+
                                         </div>
+                                    @endif
 
 
+
+
+                                    <div class="text-center">
 
                                     </div>
-                                @endif
+
                                     <!-- Button trigger modal -->
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
@@ -484,9 +552,10 @@
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="refundsLabel"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content recharge-data">
+                                            <div class="modal-content boom-notice">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title  fw-bold" id="refundsLabel">Sin Reembolsos
+                                                    <h1 class="modal-title  fw-bold" id="refundsLabel">Sin
+                                                        Reembolsos
                                                     </h1>
                                                     <i type="button" class="bi bi-x-lg" data-bs-dismiss="modal"
                                                         aria-label="Close"></i>
@@ -494,11 +563,15 @@
                                                 <div class="modal-body ">
                                                     <p>
                                                         Usted es responsable de asegurarse de que leyó la descripción e
-                                                        instrucciones del servicio a adquirir y asegura que el monto de la
-                                                        transacción ingresado o mostrado en su pantalla sea correcto antes
+                                                        instrucciones del servicio a adquirir y asegura que el monto de
+                                                        la
+                                                        transacción ingresado o mostrado en su pantalla sea correcto
+                                                        antes
                                                         de
-                                                        confirmar la transacción. Una vez que se confirme la transacción, se
-                                                        considerará irrevocable y no podrá cancelar, detener o realizar un
+                                                        confirmar la transacción. Una vez que se confirme la
+                                                        transacción, se
+                                                        considerará irrevocable y no podrá cancelar, detener o realizar
+                                                        un
                                                         reembolso de esa transacción.
                                                     </p>
                                                 </div>
@@ -511,7 +584,6 @@
                                                     <button type="submit" class="btn btn-primary">Entendido</button>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -540,13 +612,12 @@
                                         <div class="col-3 mb-1  text-start d-flex align-items-center ">
 
                                             <div class="tooltip-x ">
-                                                <!--                                                    <i onclick="myFunction('nombre','myTooltip-nombre')"
-                                                                                                                        onmouseout="outFunc('myTooltip-nombre')" class="bi bi-clipboard copy">
-                                                                                                                        <span class="tooltiptext" id="myTooltip-nombre">Copy to
-                                                                                                                            clipboard</span>
-
-                                                                                                                    </i>-->
-                                                <button class="copy rounded-pill">Copiar</button>
+                                                <button class="copy rounded-pill" onclick="copy('tlf','myTooltip-tlf')"
+                                                    onmouseout="outFunc('myTooltip-tlf')">
+                                                    <span class="tooltiptext" id="myTooltip-tlf">Copiar al
+                                                        portapapeles</span>
+                                                    Copiar
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -611,60 +682,85 @@
                                     <div class="row">
                                         <div class="col">
                                             <input type="number" name="amount" step="0.01"
-                                                class="form-control mb-4"
-                                                value="{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}"
+                                                class="form-control mb-4" id="form-amount"
+                                                value="{{ number_format(($bundle->price + $bundle->price * 0.01 - ($bundle->price + $bundle->price * 0.01) * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}"
                                                 required hidden>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="row p-0">
+                                                <div class="col-6 text-end p-0">
+                                                    <span class="">Sub total&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col text-start p-0">
+                                                    @if ($bundle->discount != 0)
+                                                        <span
+                                                            class="text-muted text-decoration-line-through">{{ number_format($bundle->price * $paymentMethod->valuation->value, 2) }}&nbsp;USDT</span>
+                                                    @endif
+                                                    {{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}&nbsp;USDT
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row p-0">
+                                                <div class="col-6 text-end p-0">
+                                                    <span class="">Fees(1%)&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col text-start p-0">
+                                                    {{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value * 0.01, 2) }}&nbsp;USDT
+                                                </div>
+                                            </div>
+                                        </div>
                                         @if ($bundle->discount > 0)
-                                        <div class="col-12 text-end mb-3 mt-1">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <span class="">Monto Total </span>
+                                            <div class="col-12 text-end mb-3 mt-1">
+                                                <div class="row">
+                                                    <div class="col p-0">
+                                                        <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                    </div>
+                                                    <div class="col p-0 text-start">
+                                                        <span class="fs-6" id="amount-container">
+                                                            <span class="fw-bold boom-color-yellow"
+                                                                id="amount">{{ number_format(($bundle->price + $bundle->price * 0.01 - ($bundle->price + $bundle->price * 0.01) * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
+                                                            <span class="fw-bold"> USDT</span>
+                                                        </span>
+
+                                                        <br>
+
+                                                        <span class="fs-6" id="code-discount" hidden>
+                                                            <span class="fw-bold text-primary"
+                                                                id="code-discount-amount"></span>
+                                                            <span class="fw-bold"> USDT</span>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <div class="col">
-                                                    <span class="text-decoration-line-through text-muted">
-                                                        {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                        USDT</span> <br>
-                                                    <span class="fs-5" id="amount-container">
-                                                        <span class="fw-bold boom-color-yellow"
-                                                            id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                        <span class="fw-bold"> USDT</span>
-                                                    </span>
-                                                    <br>
-                                                    <br>
-                                                    <span class="fs-6" id="code-discount" hidden>
-                                                        <span class="fw-bold text-primary" id="code-discount-amount"></span>
-                                                        <span class="fw-bold"> USDT</span>
-                                                    </span>
-                                                </div>
+
                                             </div>
-                                        </div>
-                                    @else
-                                        <div class="col-12 text-end mb-3 mt-1">
-                                            <div class="row">
-                                                <div class="col p-0">
-                                                    <span class="">Monto Total&nbsp;:&nbsp;</span>
-                                                </div>
-                                                <div class="col p-0 text-start">
-                                                    <span class="fs-6" id="amount-container">
-                                                        <span class="fw-bold boom-color-yellow"
-                                                            id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                        <span class="fw-bold"> USDT</span>
-                                                    </span>
+                                        @else
+                                            <div class="col-12 text-end mb-3 mt-1">
+                                                <div class="row">
+                                                    <div class="col p-0">
+                                                        <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                    </div>
+                                                    <div class="col p-0 text-start">
+                                                        <span class="fs-6" id="amount-container">
+                                                            <span class="fw-bold boom-color-yellow"
+                                                                id="amount">{{ number_format(($bundle->price + $bundle->price * 0.01 - ($bundle->price + $bundle->price * 0.01) * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
+                                                            <span class="fw-bold"> USDT</span>
+                                                        </span>
 
-                                                    <br>
+                                                        <br>
 
-                                                    <span class="fs-6" id="code-discount" hidden>
-                                                        <span class="fw-bold text-primary" id="code-discount-amount"></span>
-                                                        <span class="fw-bold"> USDT</span>
-                                                    </span>
+                                                        <span class="fs-6" id="code-discount" hidden>
+                                                            <span class="fw-bold text-primary"
+                                                                id="code-discount-amount"></span>
+                                                            <span class="fw-bold"> USDT</span>
+                                                        </span>
+                                                    </div>
                                                 </div>
+
+
+
                                             </div>
-
-
-
-                                        </div>
-                                    @endif
+                                        @endif
                                         <p type="button" data-bs-toggle="modal"
                                             class="text-center mt-2 text-decoration-underline text-primary"
                                             data-bs-target="#exampleModal">¿Cómo hacer
@@ -811,6 +907,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </form>
                             </div>
                         @endif
@@ -881,46 +978,83 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="number" name="amount" step="0.01" class="form-control mb-4"
-                                            value="{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}"
+                                            id="form-amount"
+                                            value="{{ number_format(($bundle->price + $bundle->price * 0.01 - ($bundle->price + $bundle->price * 0.01) * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}"
                                             required hidden>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="row p-0">
+                                            <div class="col-6 text-end p-0">
+                                                <span class="">Sub total&nbsp;:&nbsp;</span>
+                                            </div>
+                                            <div class="col text-start p-0">
+                                                @if ($bundle->discount != 0)
+                                                    <span
+                                                        class="text-muted text-decoration-line-through">{{ number_format($bundle->price * $paymentMethod->valuation->value, 2) }}&nbsp;USD</span>
+                                                @endif
+                                                {{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}&nbsp;USD
+                                            </div>
+                                        </div>
+                                    </div>
                                     @if ($bundle->discount > 0)
-                                        <div class="col-12 text-end mb-3 mt-3">
-                                            <span class="">MONTO TOTAL A PAGAR</span><br>
-                                            <span class="text-decoration-line-through text-muted">
-                                                {{ $bundle->price * $paymentMethod->valuation->value }}
-                                                USD</span> <br>
-                                            <span class="fs-5" id="amount-container">
-                                                <span class="fw-bold"
-                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
-                                            <br>
-                                            <br>
-                                            <span class="fs-5" id="code-discount" hidden>
-                                                <span class="fw-bold" id="code-discount-amount"></span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <div class="row">
+                                                <div class="col p-0">
+                                                    <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col p-0 text-start">
+                                                    <span class="fs-6" id="amount-container">
+                                                        <span class="fw-bold boom-color-yellow"
+                                                            id="amount">{{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
+
+                                                    <br>
+
+                                                    <span class="fs-6" id="code-discount" hidden>
+                                                        <span class="fw-bold text-primary"
+                                                            id="code-discount-amount"></span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
+                                                </div>
+                                            </div>
 
                                         </div>
                                     @else
-                                        <div class="col-12 text-end mb-3 mt-3">
-                                            <span class="">MONTO TOTAL A PAGAR: </span><br>
-                                            <span class="fs-5" id="amount-container">
-                                                <span class="fw-bold"
-                                                    id="amount">{{ ($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value }}</span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
+                                        <div class="col-12 text-end mb-3 mt-1">
+                                            <div class="row">
+                                                <div class="col p-0">
+                                                    <span class="">Monto Total&nbsp;:&nbsp;</span>
+                                                </div>
+                                                <div class="col p-0 text-start">
+                                                    <span class="fs-6" id="amount-container">
+                                                        <span class="fw-bold boom-color-yellow"
+                                                            id="amount">{{ number_format(($bundle->price - $bundle->price * ($bundle->discount / 100)) * $paymentMethod->valuation->value, 2) }}</span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
 
-                                            <br>
+                                                    <br>
 
-                                            <span class="fs-5" id="code-discount" hidden>
-                                                <span class="fw-bold" id="code-discount-amount"></span>
-                                                <span class="fw-bold"> USD</span>
-                                            </span>
+                                                    <span class="fs-6" id="code-discount" hidden>
+                                                        <span class="fw-bold text-primary"
+                                                            id="code-discount-amount"></span>
+                                                        <span class="fw-bold"> USD</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
 
                                         </div>
                                     @endif
+
+
+
+
+                                    <div class="text-center">
+
+                                    </div>
+
                                     <!-- Button trigger modal -->
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal"
@@ -935,9 +1069,10 @@
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="refundsLabel"
                                         aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content recharge-data">
+                                            <div class="modal-content boom-notice">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title  fw-bold" id="refundsLabel">Sin Reembolsos
+                                                    <h1 class="modal-title  fw-bold" id="refundsLabel">Sin
+                                                        Reembolsos
                                                     </h1>
                                                     <i type="button" class="bi bi-x-lg" data-bs-dismiss="modal"
                                                         aria-label="Close"></i>
@@ -945,11 +1080,15 @@
                                                 <div class="modal-body ">
                                                     <p>
                                                         Usted es responsable de asegurarse de que leyó la descripción e
-                                                        instrucciones del servicio a adquirir y asegura que el monto de la
-                                                        transacción ingresado o mostrado en su pantalla sea correcto antes
+                                                        instrucciones del servicio a adquirir y asegura que el monto de
+                                                        la
+                                                        transacción ingresado o mostrado en su pantalla sea correcto
+                                                        antes
                                                         de
-                                                        confirmar la transacción. Una vez que se confirme la transacción, se
-                                                        considerará irrevocable y no podrá cancelar, detener o realizar un
+                                                        confirmar la transacción. Una vez que se confirme la
+                                                        transacción, se
+                                                        considerará irrevocable y no podrá cancelar, detener o realizar
+                                                        un
                                                         reembolso de esa transacción.
                                                     </p>
                                                 </div>
@@ -962,7 +1101,6 @@
                                                     <button type="submit" class="btn btn-primary">Entendido</button>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -970,14 +1108,16 @@
                         @endif
                     </div>
                     <div id="cronometer" class="fs-4 text-center">
-                        <span id="minutes" class="fw-bold">00</span><span class="fw-bold boom-color-yellow">&nbsp;:&nbsp;</span><span id="seconds" class="fw-bold">00</span>
+                        <span id="minutes" class="fw-bold">00</span><span
+                            class="fw-bold boom-color-yellow">&nbsp;:&nbsp;</span><span id="seconds"
+                            class="fw-bold">00</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function myFunction(id, toltipD) {
+        function copy(id, toltipD) {
             var copyText = document.getElementById(id).innerText;
             navigator.clipboard.writeText(copyText);
 
@@ -989,7 +1129,8 @@
             var tooltip = document.getElementById(toltipD);
             tooltip.innerHTML = "Copiar al portapapeles";
         }
-
+    </script>
+    <script>
         function myFunction(res) {
             if (res.status == '204') {
                 var code = document.getElementById('code');
@@ -1099,7 +1240,7 @@
             seconds--;
             if (seconds < 0) {
                 clearInterval(x);
-                window.location.href = 'http://127.0.0.1:8000';
+                window.location.href = 'http://boomshop.test';
             }
         }, 1000);
 
