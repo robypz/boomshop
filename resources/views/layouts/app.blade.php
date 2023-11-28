@@ -412,7 +412,7 @@
                         </ul>
                     </div>
 
-                    <div class="col mb-3 d-flex justify-content-end">
+                    <div class="col mb-3 d-flex justify-content-xxl-end justify-content-start">
                         <div>
                             <h5 class="footer-title">Redes Sociales</h5>
                             <ul class="nav flex-column">
@@ -435,7 +435,7 @@
 
                     </div>
                     <div class="col mb-3">
-                        <div class="w-100">
+                        <div class="w-100 d-flex justify-content-end">
                             <img src="{{ asset('images/Mascota Boomer transparente bordeless.png') }}" alt=""
                                 srcset="" style="height: 225px">
                         </div>
