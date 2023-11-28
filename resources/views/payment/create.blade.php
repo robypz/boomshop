@@ -1240,7 +1240,7 @@
             seconds--;
             if (seconds < 0) {
                 clearInterval(x);
-                window.location.href = 'http://boomshop.test';
+                window.location.href = 'https://isboomshop.com';
             }
         }, 1000);
 

@@ -27,8 +27,8 @@
                                 <img class="game-card-image mt-3 mb-2 w-50 product-description-image"
                                     src="{{ asset('disk/' . $product->image) }}">
                             @else
-                                <img
-                                    class="game-card-image mt-3 mb-2 w-75 product-description-image" src="{{ asset('disk/' . $product->image) }}">
+                                <img class="game-card-image mt-3 mb-2 w-75 product-description-image"
+                                    src="{{ asset('disk/' . $product->image) }}">
                             @endif
 
                         </p>
@@ -39,236 +39,24 @@
 
                         </p>
                         <p class="text-justify fw-normal">
-                            <!--{{ $product->description }}-->
-                        </p>
-
-
-                        @if ($product->name == 'Call Of Duty Mobile (Venezuela)')
-                            <p class="fs-2 text-center"><b>CALL OF DUTY: MOBILE<b><br>
-                                        (Venezuela)
-                            </p>
-
-                            <p class="text-center fw-normal">
-                                Juega diferentes formas de juego como el clásico modo multijugador o el modo Battle
-                                Royale.
-                                Además de eso, puedes personalizar tus armas y llevar a tu equipo a la victoria con los
-                                gráficos más destacados. ¡Podrás disfrutar de emocionantes momentos con tus amigos!
-
-                            </p>
-
-                            <p class="text-center fw-bold">Este servicio de recarga SÓLO se aplica a los jugadores de
-                                CODM en Venezuela.</p>
-
-                            <p class="text-justify fw-normal">Las compras del Pase de Batalla son válidas para cuentas
-                                que actualmente no tienen una
-                                suscripción de Pase de Batalla existente. Verifica el estado de tu suscripción iniciando
-                                sesión en tu cuenta en el juego.
-                            </p>
-
-
-
-                            <b>Para saber tu ID de Jugador debes ir a:<b>
-                                    <ul class="list-unstyled">
-                                        <li class="fw-normal">→ Lobby del Juego</li>
-                                        <li class="fw-normal">→ Configuración</li>
-                                        <li class="fw-normal">→ Legal y Privacidad</li>
-                                        <li class="fw-normal">→ Copia tu Player ID de 6-7 Dígitos.</li>
-                                    </ul>
-
-                                    <span class="mb-2 mt-2 d-block">Asegúrese de ingresar su ID de Jugador
-                                        correctamente.</span>
-
-                                    <p>¿Cómo saber si puedo recargar mi cuenta por ID desde Venezuela?</p>
-                                    <p> - Tu Pase de Batalla debe costar 360 CP (Imagen de referencia).</p>
-                                    <p class="text-center">
-                                        <img src="{{ asset('images/cod/COD MOBILE ID REF.jpeg') }}" alt=""
-                                            srcset="" class="w-50">
-                                    </p>
-
-                                    <p>- Tu cuenta de Call of Duty debe ser creada únicamente en <b>VENEZUELA<b>.</p>
-                        @endif
-
-                        @if ($product->name == 'Free Fire')
                             <div class="product-information">
                                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
                                     data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
                                     Información
                                 </button>
                                 <div class="collapse" id="dashboard-collapse">
-                                    <p class="fs-2 text-center"><b>FREE FIRE<b><br>
-
-                                    </p>
-
-                                    <p class="text-center fw-normal">
-                                        Es un shooter para móviles multijugador de supervivencia del género Battle Royale en
-                                        el
-                                        que te enfrentas a otros 49 jugadores.
-                                        <br>
-                                        Disfrutarás diferentes modos de juegos para compartir con tus amistades o el mundo.
-
-                                    </p>
+                                    @php
+                                        echo $product->description
+                                    @endphp
                                 </div>
                             </div>
 
                             <div class="product-description">
-                                <p class="fs-2 text-center"><b>FREE FIRE<b><br>
-
-                                </p>
-
-                                <p class="text-center fw-normal">
-                                    Es un shooter para móviles multijugador de supervivencia del género Battle Royale en el
-                                    que te enfrentas a otros 49 jugadores.
-                                    <br>
-                                    Disfrutarás diferentes modos de juegos para compartir con tus amistades o el mundo.
-
-                                </p>
+                                @php
+                                echo $product->description
+                            @endphp
                             </div>
-                        @endif
-
-                        @if ($product->name == 'Genshin Impact')
-                            <p class="fs-2 text-center"><b>GENSHIN IMPACT<b><br>
-
-                            </p>
-
-                            <p class="text-center fw-normal">
-                                Genshin Impact es un RPG gratuito de mundo abierto en el que podremos explorar un mundo
-                                vasto lleno de mazmorras, secretos y aventuras que vivir. Con una descripción tan vaga,
-                                uno no puede llegar a entender qué es lo que lo hace destacar frente a los otros tantos
-                                RPGs ya existentes.
-                            </p>
-
-                            <p class="fw-normal">Es seguro y fácil. Simplemente ingrese su ID de usuario de Genshin
-                                Impact y Servidor,
-                                seleccione los artículos que desea comprar, complete el pago y listo, al confirmar su
-                                pago su recarga llegará directamente su cuenta.
-                            </p>
-
-                            <p class="fw-normal">
-                                <b>Bendición Lunar</b><br>
-
-                                Por cada compra de Bendición Lunar, obtendrás 300 Cristales Génesis y una Bendición
-                                Lunar que durará 30 días.
-                                Mientras dure su efecto, podrás iniciar sesión para recibir 90 Protogemas diarias.
-                            </p>
-
-                            <p>
-                                <b>Importante:</b>
-                            <ul class="list-unstyled fw-normal">
-                                <li class="mb-2 ms-4"> <b>1)</b> La duración de la Bendición Lunar solo se puede
-                                    extender si su duración restante
-                                    es
-                                    menor o igual a 180 días.
-                                </li>
-
-                                <li class="mb-2 ms-4">
-                                    <b>2)</b> No puedes comprar una bendición adicional si la duración restante aún
-                                    excede los
-                                    180
-                                    días. Si debido a circunstancias excepcionales compras repetidamente una Bendición
-                                    Lunar, su duración no se extenderá, y se te reembolsará 330 Cristales génesis
-                                    directamente.
-                                </li>
-
-                                <li class="mb-2 ms-4">
-                                    <b>3)</b> No se reembolsará ninguna Protogema que no se haya obtenido mediante
-                                    inicio de
-                                    sesión
-                                    durante la duración de la bendición.
-                                </li>
-
-                                <li class="mb-2 ms-4">
-                                    <b>4)</b>
-                                    Las cuentas con un Rango de Aventura inferior a 5 no pueden ver temporalmente el
-                                    número de días restantes de su Bono mensual.
-                                </li>
-                            </ul>
-
-
-
-
-                            </p>
-                        @endif
-
-                        @if ($product->name == 'Mobile Legends')
-                            <p class="text-center fw-bold fs-2">MOBILE LEGENDS BANG BANG</p>
-
-                            <p class="text-center">Mobile Legends: Bang Bang, el juego MOBA destacado para móviles del
-                                mundo. </p>
-
-                            <p class="text-center">¡Tu teléfono ansía la batalla! Participa en batallas 5v5 en tiempo real y
-                                contra oponentes
-                                reales.
-                            </p>
-
-                            <p class="text-center">
-                                El objetivo principal del juego es llevar a tu ejército por los diferentes carriles,
-                                mientras se destruye cada torre que se cruce y que impida realizar el recorrido
-                                correspondiente hasta la base de nuestro interés. De igual manera, es necesario considerar
-                                que solo se pueden ejercer ataques a las torretas cuando tu equipo esté lo suficientemente
-                                cercano a ellas, porque en el caso contrario tú pasarás a ser el objetivo de todos los
-                                ataques y adicionalmente podrías dañar tus niveles y estatus, así como también tu ranking
-                                dentro de la partida y el site de Mobile Legends.
-                            </p>
-                        @endif
-
-                        @if ($product->name == 'PUBG Mobile')
-                            <P class="text-center fs-2 fw-bold">
-                                PUBG MOBILE
-                            </P>
-
-                            <p class="fw-normal text-center">
-                                <b>PUBG MOBILE</b> es un juego móvil de battle royale. Prepara tus armas de fuego, responde
-                                al
-                                llamado de la batalla en <b>PUBG MOBILE</b> y dispara a discreción. <b>PUBG MOBILE</b> tiene
-                                muchos mapas
-                                y mecánicas de juego que te brindan una emocionante experiencia de supervivencia.
-                            </p>
-
-                            <p class="fw-normal text-center">
-                                Juega con amigos y personas reales de todo el mundo.
-                            </p>
-                        @endif
-
-                        @if ($product->name == 'Call Of Duty Mobile (Global)')
-                            <P class="text-center fs-2 fw-bold">
-                                CALL OF DUTY MOBILE <br> (GLOBAL)
-                            </P>
-
-                            <p class="fw-normal text-center">
-                                Juega diferentes formas de juego como el clásico modo multijugador o el modo Battle Royale.
-                            </p>
-
-                            <p class="fw-bold text-center">
-                                Este servicio de recarga está disponible a jugadores de CODM en todo el mundo.
-                            </p>
-
-                            <p class="fw-normal">
-                                Nuestro sistema le permite tener la seguridad y garantía que necesita para poder realizar su
-                                recarga de forma interna, utilizando el método oficial “Activision” (ingreso mediante la
-                                plataforma de Call Of Duty) ingresando su correo y contraseña.
-                            </p>
-
-                            <p class="fw-normal">
-                                <b>Sistema de Seguridad:</b> Al recargar su cuenta con éxito, el sistema “BOOM” eliminará
-                                automáticamente los datos ingresados por el usuario.
-                            </p>
-
-                            <p class="fw-normal">
-                                <b>IMPORTANTE:</b> Para una seguridad extra, recomendamos actualizar su clave de acceso una
-                                vez obtenida la recarga.
-                            </p>
-
-                            <p>
-                                <b>¿No tengo vinculada mi cuenta con Activision?</b> <br>
-
-                                <a href="">→ Ver Tutorial de Vinculación</a> <br>
-
-
-                                Asegúrese de ingresar sus datos correctamente.
-                            </p>
-                        @endif
-
-
+                        </p>
 
                     </div>
                 </div>
@@ -347,8 +135,7 @@
                                                         class="col-12 col-md-3 col-form-label text-md-end text-start">ID de
                                                         Servidor</label>
                                                     <div class="col-md-8 col-10">
-                                                        <select name="region_id" id="region_id"
-                                                            class="form-select col-6">
+                                                        <select name="region_id" id="region_id" class="form-select col-6">
                                                             <option value="America">America</option>
                                                             <option value="Europe">Europe</option>
                                                             <option value="Asia">Asia</option>
@@ -550,8 +337,7 @@
                                                 <label
                                                     class="d-flex align-items-center justify-content-center text-center p-2"
                                                     for="payment-{{ $paymentMethod->id }}">
-                                                    <img class=""
-                                                        src="{{ asset('disk/'. $paymentMethod->image) }}"
+                                                    <img class="" src="{{ asset('disk/' . $paymentMethod->image) }}"
                                                         alt="" width="70%" srcset="">
                                                 </label>
                                                 <span
