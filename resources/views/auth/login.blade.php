@@ -11,7 +11,6 @@
             <div class="card-body text-black">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-
                     <div class="row mb-3 row-cols-1">
                         <label for="email" class="col col-form-label boom-color-lightgray"><strong>Correo
                                 electronico</strong></label>

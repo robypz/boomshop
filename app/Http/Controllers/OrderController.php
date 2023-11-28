@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Code;
-use App\Models\product;
+use App\Models\Product;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\PaymentMethod;
 use App\Models\OrderStatus;
 use App\Models\User;
-use App\Notifications\orderRequest;
-use App\Notifications\ordersuccess;
+use App\Notifications\OrderRequest;
+use App\Notifications\Ordersuccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

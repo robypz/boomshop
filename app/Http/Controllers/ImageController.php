@@ -12,10 +12,9 @@ class ImageController extends Controller
 
     public function store($image)
     {
-        $image_path_name = time() . $image->getClientOriginalName();
-        Storage::disk('images')->put($image_path_name, File::get($image));
+        $path = $image->store('images');
 
-        return $image_path_name;
+        return $path;
     }
 
     public function show($image)

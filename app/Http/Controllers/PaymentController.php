@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bundle;
-use App\Models\product;
 use App\Models\PaymentMethod;
 use DateTime;
 use Illuminate\Http\Request;

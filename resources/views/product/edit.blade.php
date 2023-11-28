@@ -25,6 +25,12 @@
                         <div class="col-12 mb-3">
                             <input class="form-control" type="text" name="customizable_field" value="{{$product->customizable_field}}">
                         </div>
+                        <div class="col">
+                            <label for="available" class="form-label">Imagen</label>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input class="form-control" type="file" name="file">
+                        </div>
                         <div class="col mb-3 text-center">
                             <input type="submit" value="Actualizar" class="btn btn-primary">
                         </div>

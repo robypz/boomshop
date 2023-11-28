@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\PaymentMethod;
 use App\Models\Valuation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class PaymentMethodController extends Controller

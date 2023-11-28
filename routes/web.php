@@ -10,14 +10,11 @@ use App\Http\Controllers\ValuationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use App\http\Controllers\Auth\LoginController;
-use App\http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -36,11 +33,6 @@ Auth::routes([
     'verify' => true
 ]);
 
-Route::get('email',function () {
-    $order = Order::find(10000);
-    return view('emails.rechargeSuccess',compact('order'));
-});
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -48,12 +40,6 @@ Route::group(
     ],
     function () {
 
-
-
-        Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-        Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-        Route::post('login', [LoginController::class, 'login']);
-        Route::post('register', [RegisterController::class, 'register']);
         Route::get('news',function () {
             return view('news');
         })->name('news');

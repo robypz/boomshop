@@ -100,7 +100,7 @@
                                     <div class="game">
                                         <div class="myimg-container img-container">
                                             <img class="card-img-top mycard-img-top"
-                                                src="{{ route('image.show', ['image' => $product->image]) }}"
+                                                src="{{ asset('disk/' . $product->image) }}"
                                                 alt="Card image cap">
 
                                         </div>
@@ -155,7 +155,7 @@
                     <div class="col mb-3 text-center">
                         <a class="boom-color-lightgray" href="{{ route('product.show', ['id' => $gifcard->id]) }}">
                             <img class="gift-card" style="width: 100%;"
-                                src="{{ route('image.show', ['image' => $gifcard->image]) }}" alt="">
+                                src="{{ asset('disk/' . $gifcard->image) }}" alt="">
                             <br>
 
                             <caption>

@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Bundle;
 use App\Models\Category;
-use App\Models\product;
-use App\Models\Payment;
+use App\Models\Product;
 use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,7 +26,7 @@ class ProductController extends Controller
 
     public function catalog(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::paginate(18);
 
         if ($request->filled('category')) {
             $products = Product::where('category_id', $request->category)->where('available',1)->paginate(18);
@@ -62,10 +61,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request...
-
-        $image_path = $request->file('image');
-        $gif_path = $request->file('gif');
 
         $product = new Product;
 
@@ -79,14 +74,9 @@ class ProductController extends Controller
 
         $product->customizable_field = $request->customizable_field;
 
+        $product->image = $request->file('image')->store('images');
 
-        $image_path_name = time() . $image_path->getClientOriginalName();
-        Storage::disk('images')->put($image_path_name, File::get($image_path));
-        $product->image = $image_path_name;
-
-        $gif_path_name = time() . $gif_path->getClientOriginalName();
-        Storage::disk('images')->put($gif_path_name, File::get($gif_path));
-        $product->gif = $gif_path_name;
+        $product->gif = $request->file('gif')->store('images');
 
         $product->save();
 
@@ -144,6 +134,11 @@ class ProductController extends Controller
 
         $product->available = $request->available;
         $product->customizable_field = $request->customizable_field;
+        if (!empty($request->file('file'))) {
+            Storage::delete($product->image);
+            $product->image = $request->file->store('images');
+        }
+
 
         $product->save();
 

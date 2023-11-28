@@ -48,11 +48,11 @@
                                     <div class="myimg-container img-container text-center">
                                         @if ($product->category->category == 'Tarjetas')
                                             <img class="card-img-top mycard-img-top w-75"
-                                                src="{{ route('image.show', ['image' => $product->image]) }}"
+                                                src="{{ asset('disk/' . $product->image) }}"
                                                 alt="Card image cap">
                                         @else
                                             <img class="card-img-top mycard-img-top"
-                                                src="{{ route('image.show', ['image' => $product->image]) }}"
+                                                src="{{ asset('disk/' . $product->image) }}"
                                                 alt="Card image cap">
                                         @endif
 
@@ -76,6 +76,7 @@
 
 
             </div>
+            {{$products->links()}}
         </div>
     </div>
 @endsection

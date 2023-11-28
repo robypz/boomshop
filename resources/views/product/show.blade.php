@@ -25,10 +25,10 @@
 
                             @if ($product->category->category == 'Tarjetas')
                                 <img class="game-card-image mt-3 mb-2 w-50 product-description-image"
-                                    src="{{ route('image.show', ['image' => $product->image]) }}">
+                                    src="{{ asset('disk/' . $product->image) }}">
                             @else
                                 <img
-                                    class="game-card-image mt-3 mb-2 w-75 product-description-image"src="{{ route('image.show', ['image' => $product->image]) }}">
+                                    class="game-card-image mt-3 mb-2 w-75 product-description-image" src="{{ asset('disk/' . $product->image) }}">
                             @endif
 
                         </p>
@@ -455,7 +455,7 @@
                                                     });
                                                     input.addEventListener("countrychange", function() {
                                                         var data = iti.getSelectedCountryData();
-                                                        input.value = "+"+data.dialCode;
+                                                        input.value = "+" + data.dialCode;
                                                     });
                                                 </script>
                                             </div>

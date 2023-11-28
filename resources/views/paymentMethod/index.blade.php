@@ -23,7 +23,7 @@
                             <th scope="row">{{ $paymentMethod->id }}</th>
                             <td>{{ $paymentMethod->method }}</td>
                             <td>{{ $paymentMethod->valuation->name }}</td>
-                            <td><img src="{{ route('image.show', ['image' => $paymentMethod->image]) }}" alt="Error al cargar imagen"  width="240px">
+                            <td><img src="{{ asset('disk/' . $paymentMethod->image) }}" alt="Error al cargar imagen"  width="240px">
                             </td>
                             <td>@if ($paymentMethod->available)
                                 Si
