@@ -551,7 +551,7 @@
                                                     class="d-flex align-items-center justify-content-center text-center p-2"
                                                     for="payment-{{ $paymentMethod->id }}">
                                                     <img class=""
-                                                        src="{{ route('image.show', ['image' => $paymentMethod->image]) }}"
+                                                        src="{{ asset('disk/'. $paymentMethod->image) }}"
                                                         alt="" width="70%" srcset="">
                                                 </label>
                                                 <span
