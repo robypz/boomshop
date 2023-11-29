@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="BOOM es una página que ofrece servicios de recargas para videojuegos y streaming.">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="{{ asset('assets/images/LOGO COMPLETO TRANSP.png') }}">
