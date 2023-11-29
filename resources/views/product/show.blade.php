@@ -25,10 +25,10 @@
 
                             @if ($product->category->category == 'Tarjetas')
                                 <img class="game-card-image mt-3 mb-2 w-50 product-description-image"
-                                    src="{{ asset('disk/' . $product->image) }}">
+                                    src="{{ asset($product->image) }}">
                             @else
                                 <img class="game-card-image mt-3 mb-2 w-75 product-description-image"
-                                    src="{{ asset('disk/' . $product->image) }}">
+                                    src="{{ asset($product->image) }}">
                             @endif
 
                         </p>

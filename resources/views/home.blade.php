@@ -45,11 +45,11 @@
                                                 <div class="myimg-container img-container text-center">
                                                     @if ($Favoriteproduct->product->category->category == 'Tarjetas')
                                                         <img class="card-img-top mycard-img-top w-75"
-                                                            src="{{ asset('disk/' . $Favoriteproduct->product->image) }}"
+                                                            src="{{ asset($Favoriteproduct->product->image) }}"
                                                             alt="Card image cap">
                                                     @else
                                                         <img class="card-img-top mycard-img-top"
-                                                            src="{{ asset('disk/' . $Favoriteproduct->product->image) }}"
+                                                            src="{{ asset($Favoriteproduct->product->image) }}"
                                                             alt="Card image cap">
                                                     @endif
 
@@ -100,7 +100,7 @@
                                     <div class="game">
                                         <div class="myimg-container img-container">
                                             <img class="card-img-top mycard-img-top"
-                                                src="{{ asset('disk/' . $product->image) }}"
+                                                src="{{ asset($product->image) }}"
                                                 alt="Card image cap">
 
                                         </div>
@@ -155,7 +155,7 @@
                     <div class="col mb-3 text-center">
                         <a class="boom-color-lightgray" href="{{ route('product.show', ['id' => $gifcard->id]) }}">
                             <img class="gift-card" style="width: 100%;"
-                                src="{{ asset('disk/' . $gifcard->image) }}" alt="">
+                                src="{{ asset($gifcard->image)}}" alt="">
                             <br>
 
                             <caption>

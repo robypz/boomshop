@@ -170,11 +170,11 @@
                                                     <div class="myimg-container img-container text-center">
                                                         @if ($favoriteBundle->product->category->category == 'Tarjetas')
                                                             <img class="card-img-top mycard-img-top w-75"
-                                                                src="{{ asset('disk/' . $favoriteBundle->product->image) }}"
+                                                                src="{{ asset($favoriteBundle->product->image) }}"
                                                                 alt="Card image cap">
                                                         @else
                                                             <img class="card-img-top mycard-img-top"
-                                                                src="{{ asset('disk/' . $favoriteBundle->product->image) }}"
+                                                                src="{{ asset($favoriteBundle->product->image) }}"
                                                                 alt="Card image cap">
                                                         @endif
 
