@@ -229,25 +229,25 @@
                 <div class="col d-flex align-items-center justify-content-center">
                     <div class="row text-center recharge-data p-3 rounded">
                         <div class="col p-1 d-flex aling-items-center">
-                            <div><img src="{{ asset('images/paymentMethods/16758822201670799988PAGO MOVIL BOOM.png') }}"
+                            <div><img src="{{ asset('assets/images/paymentMethods/16758822201670799988PAGO MOVIL BOOM.png') }}"
                                     alt="" style="max-width: 100px"></div>
                         </div>
                         <div class="col p-1 d-flex aling-items-center">
                             <div>
-                                <img src="{{ asset('images/paymentMethods/1676659553632px-Binance_logo.svg.png') }}"
+                                <img src="{{ asset('assets/images/paymentMethods/1676659553632px-Binance_logo.svg.png') }}"
                                     alt="" style="max-width: 100px">
                             </div>
                         </div>
                         <div class="col p-1 d-flex aling-items-center">
                             <div>
-                                <img src="{{ asset('images/paymentMethods/1677308404ZELLE PNG BOOM.png') }}"
+                                <img src="{{ asset('assets/images/paymentMethods/1677308404ZELLE PNG BOOM.png') }}"
                                     alt="" style="max-width: 100px">
                             </div>
 
                         </div>
                         <div class="col p-1 d-flex aling-items-center">
                             <div>
-                                <img src="{{ asset('images/paymentMethods/1681202258reserve_white.png') }}"
+                                <img src="{{ asset('assets/images/paymentMethods/1681202258reserve_white.png') }}"
                                     alt="" style="max-width: 100px">
                             </div>
 
