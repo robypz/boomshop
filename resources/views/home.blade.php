@@ -168,7 +168,7 @@
 
                 <div class="col mb-3 text-center">
                     <img class="gift-card" style="width: 100%;"
-                        src="{{ asset('images/gifCard/APPLE GIFT CARD (US).png') }}" alt="">
+                        src="{{ asset('assets/images/gifCard/APPLE GIFT CARD (US).png') }}" alt="">
                     <br>
 
                     <caption>
@@ -176,7 +176,7 @@
                     </caption>
                 </div>
                 <div class="col mb-3 text-center">
-                    <img class="gift-card" style="width: 100%;" src="{{ asset('images/gifCard/NETFLIX (US).png') }}"
+                    <img class="gift-card" style="width: 100%;" src="{{ asset('assets/images/gifCard/NETFLIX (US).png') }}"
                         alt="">
                     <br>
 
@@ -185,7 +185,7 @@
                     </caption>
                 </div>
                 <div class="col mb-3 text-center">
-                    <img class="gift-card" style="width: 100%;" src="{{ asset('images/gifCard/GOOGLE PLAY (US).png') }}"
+                    <img class="gift-card" style="width: 100%;" src="{{ asset('assets/images/gifCard/GOOGLE PLAY (US).png') }}"
                         alt="">
                     <br>
                     <caption>
@@ -194,14 +194,14 @@
                 </div>
                 <div class="col mb-3 text-center">
                     <img class="gift-card" style="width: 100%;"
-                        src="{{ asset('images/gifCard/PLAYSTATION NETWORK CARD (US).png') }}" alt="">
+                        src="{{ asset('assets/images/gifCard/PLAYSTATION NETWORK CARD (US).png') }}" alt="">
                     <br>
                     <caption>
                         <p class=" fs-6  fw-bold mt-2">PlayStation Network Card (US)</p>
                     </caption>
                 </div>
                 <div class="col mb-3 text-center">
-                    <img class="gift-card" style="width: 100%;" src="{{ asset('images/gifCard/STEAM (USD).png') }}"
+                    <img class="gift-card" style="width: 100%;" src="{{ asset('assets/images/gifCard/STEAM (USD).png') }}"
                         alt="">
                     <br>
                     <caption>
