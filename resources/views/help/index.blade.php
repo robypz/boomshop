@@ -25,7 +25,7 @@
                     </section>
                 </div>
                 <div class="col text-center mb-3 hide-mobile">
-                    <img src="{{ asset('images/Mascota Boomer transparente.png') }}" alt="" width="225">
+                    <img src="{{ asset('assets/images/Mascota Boomer transparente.png') }}" alt="" width="225">
                 </div>
             </div>
         </div>

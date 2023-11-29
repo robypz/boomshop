@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ asset('images/LOGO COMPLETO TRANSP.png') }}">
+    <link rel="icon" href="{{ asset('assets/images/LOGO COMPLETO TRANSP.png') }}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -32,7 +32,7 @@
         <nav class="navbar mynavbar">
             <div class="container">
                 <a class="navbar-brand p-0 m-0" href="{{ route('home') }}">
-                    <img src="{{ asset('images/LOGO COMPLETO TRANSP.png') }}" alt="..." height="55" />
+                    <img src="{{ asset('assets/images/LOGO COMPLETO TRANSP.png') }}" alt="..." height="55" />
                 </a>
 
                 <a class="menu-options mymenu-options" href="{{ route('home') }}">Inicio</a>
@@ -82,7 +82,7 @@
                                     <div class="container text-center">
                                         <div class="row">
                                             <div class="col-12">
-                                                <img src="{{ asset('images/iphone.png') }}" width="60%" />
+                                                <img src="{{ asset('assets/images/iphone.png') }}" width="60%" />
                                             </div>
                                             <p class="lite-text">
                                                 Sea el primero en ser informado acerca de increibles
@@ -137,7 +137,7 @@
                                         @else
                                             <div class="col-1">
                                                 <img class="rounded"
-                                                    src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
+                                                    src="{{ asset('assets/images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
                                                     alt="" srcset="" width="32px">
                                             </div>
                                         @endif
@@ -363,7 +363,7 @@
                 <footer class="row row-cols-1 row-cols-sm-1 row-cols-md-5 py-5">
                     <div class="col mb-3 text-center">
                         <a href="#" class="mb-3 link-dark text-decoration-none text-center">
-                            <img src="{{ asset('images/LOGO COMPLETO TRANSP.png') }}" alt="" srcset=""
+                            <img src="{{ asset('assets/images/LOGO COMPLETO TRANSP.png') }}" alt="" srcset=""
                                 width="200px">
                             <span class="text-primary footer-text-logo d-block">BOOMSHOP</span>
                         </a>
@@ -381,7 +381,7 @@
                                         <div class="col-1">
                                             @if ($properties['native'] == 'Venezuela')
                                                 <img class="d-flex"
-                                                    src="{{ asset('images/locations/Flag_of_Venezuela.svg.png') }}"
+                                                    src="{{ asset('assets/images/locations/Flag_of_Venezuela.svg.png') }}"
                                                     alt="" srcset="" width="25px">
                                             @endif
                                         </div>
@@ -436,7 +436,7 @@
                     </div>
                     <div class="col mb-3">
                         <div class="w-100 d-flex justify-content-end">
-                            <img src="{{ asset('images/Mascota Boomer transparente bordeless.png') }}" alt=""
+                            <img src="{{ asset('assets/images/Mascota Boomer transparente bordeless.png') }}" alt=""
                                 srcset="" style="height: 225px">
                         </div>
                     </div>
@@ -454,7 +454,7 @@
             @livewireScripts
             @auth
                 <script type="module">
-                    let sound = new Audio('{{ asset('sounds/mixkit-tile-game-reveal-960.wav') }}');
+                    let sound = new Audio('{{ asset('assets/sounds/mixkit-tile-game-reveal-960.wav') }}');
                     Echo.private('App.Models.User.' + {{ auth()->user()->id }})
                         .notification((notification) => {
                             Livewire.emit('notification');

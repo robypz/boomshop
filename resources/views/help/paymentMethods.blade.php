@@ -6,17 +6,17 @@
         <div class="help-text">
             <ul class="list-unstyled">
                 <li class="help-item mb-4">
-                    <h3><img src="{{asset('images/paymentMethods/16758822201670799988PAGO MOVIL BOOM.png')}}" alt="" srcset=""></h3>
+                    <h3><img src="{{asset('assets/images/paymentMethods/16758822201670799988PAGO MOVIL BOOM.png')}}" alt="" srcset=""></h3>
                     <hr>
                 </li>
 
                 <li class="help-item  mb-4">
-                    <h3><img src="{{asset('images/paymentMethods/1676659553632px-Binance_logo.svg.png')}}" alt="" srcset=""></h3>
+                    <h3><img src="{{asset('assets/images/paymentMethods/1676659553632px-Binance_logo.svg.png')}}" alt="" srcset=""></h3>
                     <hr>
                 </li>
 
                 <li class="help-item mb-4">
-                    <h3><img src="{{asset('images/paymentMethods/1677308404ZELLE PNG BOOM.png')}}" alt="" srcset=""></h3>
+                    <h3><img src="{{asset('assets/images/paymentMethods/1677308404ZELLE PNG BOOM.png')}}" alt="" srcset=""></h3>
 
                     <hr>
                 </li>
