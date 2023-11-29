@@ -337,7 +337,7 @@
                                                 <label
                                                     class="d-flex align-items-center justify-content-center text-center p-2"
                                                     for="payment-{{ $paymentMethod->id }}">
-                                                    <img class="" src="{{ asset('disk/' . $paymentMethod->image) }}"
+                                                    <img class="" src="{{ asset($paymentMethod->image) }}"
                                                         alt="" width="70%" srcset="">
                                                 </label>
                                                 <span
