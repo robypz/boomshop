@@ -51,6 +51,12 @@
                             <div class="col">
                                 <div class="row mb-2">
                                     <div class="col">
+                                        ID: <span class="fw-bold">{{ $user->id }}</span>
+                                    </div>
+
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col">
                                         Nombre: <span class="fw-bold">{{ $user->name }} {{ $user->surname }}</span>
                                     </div>
 
