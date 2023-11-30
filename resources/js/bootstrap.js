@@ -59,8 +59,8 @@ window.Echo = new Echo({
 });*/
 
 import Echo from 'laravel-echo';
-
-window.Pusher = require('pusher-js');
+import Pusher from 'pusher-js';
+window.Pusher = Pusher;
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
