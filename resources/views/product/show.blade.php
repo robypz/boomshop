@@ -120,7 +120,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></i>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <img src="{{ route('image.show', ['image' => $product->gif]) }}"
+                                                            <img src="{{ asset($product->gif]) }}"
                                                                 alt="" width="100%">
                                                         </div>
                                                     </div>
