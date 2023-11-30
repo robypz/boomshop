@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'asset_url' => "https://isboomshop.com",
+    'asset_url' => "https://www.isboomshop.com",
 
     /*
     |--------------------------------------------------------------------------
