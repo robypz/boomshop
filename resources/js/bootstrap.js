@@ -57,6 +57,7 @@ window.Echo = new Echo({
     //forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
     enabledTransports: ['ws', 'wss'],
     wsPort: 6001,
+    wssPort: 6001,
     disableStats: true,
     forceTLS: true
 });
