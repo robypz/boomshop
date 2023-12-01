@@ -41,9 +41,6 @@ return [
                 'port' => 6001,
                 'scheme' => 'https'
             ],
-            'client_options' => [
-                // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html
-            ],
         ],
 
         'ably' => [
