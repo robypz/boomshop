@@ -39,7 +39,6 @@ return [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'host' => 'isboomshop.com',
                 'port' => 6001,
-                'useTLS' => true,
                 'encrypted' => true,
                 'scheme' => 'https',
                 'curl_options' => [
