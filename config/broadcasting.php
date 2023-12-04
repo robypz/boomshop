@@ -37,14 +37,14 @@ return [
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
-                'host' => 'isboomshop.com',
-                'port' => 6001,
-                'encrypted' => true,
-                'scheme' => 'https',
-                'curl_options' => [
+                'host' => env('PUSHER_HOST'),
+                'port' => env('PUSHER_PORT'),
+                'encrypted' => false,
+                'scheme' => env('PUSHER_SCHEME'),
+                /*'curl_options' => [
                     CURLOPT_SSL_VERIFYHOST => 0,
                     CURLOPT_SSL_VERIFYPEER => 0,
-                ],
+                ],*/
             ],
         ],
 
