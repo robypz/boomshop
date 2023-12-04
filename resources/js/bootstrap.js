@@ -57,5 +57,5 @@ window.Echo = new Echo({
     forceTLS: false,
     enabledTransports: ['ws', 'wss'],
     disableStats: false,
-    encrypted: false,
+    encrypted: true,
 });
