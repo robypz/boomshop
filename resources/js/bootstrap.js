@@ -52,9 +52,10 @@ window.Echo = new Echo({
     key: import.meta.env.VITE_PUSHER_APP_KEY,
     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER ?? 'mt1',
     wsHost: window.location.hostname,
-    //wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
+    wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
     forceTLS: true,
     encrypted: true,
     enabledTransports: ['ws', 'wss'],
+    disableStats: false,
 });
