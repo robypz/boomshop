@@ -43,7 +43,7 @@ return [
                 'port' => 443,
                 'scheme' => "https",
                 'encrypted' => true,
-                'useTLS' => true,
+                'useTLS' => false,
                 'curl_options' => [
                     CURLOPT_SSL_VERIFYHOST => 0,
                     CURLOPT_SSL_VERIFYPEER => 0,
