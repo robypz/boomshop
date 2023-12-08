@@ -131,7 +131,7 @@ return [
 
         'verify_peer' => false,
 
-        //'allow_self_signed' => true,
+        'allow_self_signed' => true,
     ],
 
     /*
