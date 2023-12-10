@@ -16,7 +16,7 @@
                                             <a href="{{ route('user.editAvatar') }}">
                                                 <figure class="figure position-relative avatar">
                                                     <img class="rounded "
-                                                        src="{{ asset('images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
+                                                        src="{{ asset('assets/images/avatars/R.4736402c763d8cd003b22408c95e4776.jpg') }}"
                                                         width="150px" alt="" srcset="">
                                                     <figcaption
                                                         class="figure-caption text-center boom-color-lightgray fs-5">
