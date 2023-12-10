@@ -202,7 +202,7 @@
                                 <div class="col-1">
                                     :
                                 </div>
-                                <div class="col-6 fw-bold >
+                                <div class="col-6 fw-bold" >
                                     {{ $order->payment->data['code_discount'] }} %
                                 </div>
                             @endif
