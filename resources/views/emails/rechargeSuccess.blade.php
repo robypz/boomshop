@@ -142,7 +142,7 @@
 
             <div class="w-80">
                 <div class="fs-1 boom-yellow text-center">
-                    <img src="{{ asset('images/LOGO COMPLETO TRANSP.png') }}" alt="" srcset=""
+                    <img src="{{ asset('assets/images/LOGO COMPLETO TRANSP.png') }}" alt="" srcset=""
                         width="64px">
                     <h2>¡Gracias!, {{ $order->user->nick }}.</h2>
 
