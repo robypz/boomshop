@@ -10,7 +10,7 @@ use App\Models\PaymentMethod;
 use App\Models\OrderStatus;
 use App\Models\User;
 use App\Notifications\OrderRequest;
-use App\Notifications\Ordersuccess;
+use App\Notifications\OrderSuccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

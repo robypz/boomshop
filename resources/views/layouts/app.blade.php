@@ -323,7 +323,7 @@
                                 </li>
                             @endhasanyrole
 
-                            @hasanyrole('super-admin|admin|operator')
+                            @hasanyrole('super-admin|admin')
                                 <li class="nav-item dropdown mb-2 ">
                                     <a class="dropdown-toggle fs-4 nav-item" href="#" role="link"
                                         data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-wallet2 me-2 "></i>
