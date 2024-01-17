@@ -31,6 +31,15 @@
                         <div class="col-12 mb-3">
                             <input class="form-control" type="file" name="file">
                         </div>
+                        <div class="col-12">
+                            <label for="description" class="form-label">Descripción</label>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <textarea class="form-control" name="description" id="description" rows="10">
+                                {{ old('description', $product->description) }}
+                            </textarea>
+                        </div>
+                        <br>
                         <div class="col mb-3 text-center">
                             <input type="submit" value="Actualizar" class="btn btn-primary">
                         </div>

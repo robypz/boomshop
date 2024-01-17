@@ -134,6 +134,7 @@ class ProductController extends Controller
 
         $product->available = $request->available;
         $product->customizable_field = $request->customizable_field;
+        $product->description = $request->description;
         if (!empty($request->file('file'))) {
             Storage::delete($product->image);
             $product->image = $request->file->store('images');

@@ -1002,3 +1002,14 @@ input[type=number] {
     visibility: visible;
     opacity: 1;
   }
+
+  .show-hide-password{
+    cursor: pointer;
+  }
+
+  .show-hide-password:hover{
+    color: $primary;
+  }
+  .show-hide-password::before{
+    display: none;
+  }
