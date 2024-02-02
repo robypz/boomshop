@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\BinanceController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -226,3 +227,5 @@ Route::group(
         });
     }
 );
+
+Route::get('makeOrder',[BinanceController::class, 'makeOrder']);
