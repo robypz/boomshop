@@ -31,7 +31,7 @@ class BinanceController extends Controller
             "orderTags" => [
                 "ifProfitSharing" => true
             ],
-            "merchantTradeNo" => "9825382937292",
+            "merchantTradeNo" => "98253829372924243",
             "orderAmount" => 25.17,
             "currency" => "USDT",
             "description" => "very good Ice Cream",
@@ -43,6 +43,9 @@ class BinanceController extends Controller
                 "goodsDetail" => "Greentea ice cream cone"
             ]
         ]);
+
+        echo $body;
+        die;
 
         $payload = $timestamp . "\n" . $nonce . "\n" . $body . "\n";
 
