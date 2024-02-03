@@ -23,7 +23,7 @@ class BinanceController extends Controller
     public function makeOrder()
     {
         $timestamp = time() * 1000;
-        $nonce = bin2hex(random_bytes(16));;
+        $nonce = bin2hex(random_bytes(16));
         $body = json_encode([
             "env" => [
                 "terminalType" => "WEB"
@@ -45,8 +45,7 @@ class BinanceController extends Controller
         ]) ;
 
         $payload = $timestamp . "\n" . $nonce . "\n" . $body . "\n";
-
-        $signature = strtoupper(bin2hex(hash_hmac("sha512", $payload, config('app.binancePayApiSecret'))));
+        $signature = strtoupper(hash_hmac("sha512", $payload, config('app.binancePayApiSecret')));
 
         $reponse =  $this->binance->post('order', [
             'headers' => [
