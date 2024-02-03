@@ -21,12 +21,6 @@ class BinanceController extends Controller
 
     public function makeOrder()
     {
-        if (env('BINANCE_PAY_API_KEY')) {
-            echo "existe";
-        }
-        echo "<br>";
-        die;
-
         $timestamp = now()->getTimestampMs();
         $nonce = substr(str_shuffle(md5(microtime())), 0, 32);
         $body = json_encode([
@@ -51,7 +45,7 @@ class BinanceController extends Controller
 
         $payload = $timestamp . "\n" . $nonce . "\n" . $body . "\n";
 
-        $signature = hexdec(strtoupper(hash_hmac("sha512", $payload, env('BINANCE_PAY_API_SECRET'))));
+        $signature = hexdec(strtoupper(hash_hmac("sha512", $payload, config('app.binancePayApiSecret'))));
 
         $reponse =  $this->binance->post('order', [
             'headers' => [
@@ -59,7 +53,7 @@ class BinanceController extends Controller
                 'Accept'     => 'application/json',
                 'BinancePay-Timestamp' => $timestamp,
                 'BinancePay-Nonce' => $nonce,
-                'BinancePay-Certificate-SN' => env('BINANCE_PAY_API_KEY'),
+                'BinancePay-Certificate-SN' => config('app.binancePayApiKey'),
                 'BinancePay-Signature' => $signature,
             ],
 

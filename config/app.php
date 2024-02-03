@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    'binancePayApiKey' => env('BINANCE_PAY_API_KEY'),
+    'binancePayApiSecret' => env('BINANCE_PAY_API_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
