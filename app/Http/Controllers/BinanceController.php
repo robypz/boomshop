@@ -45,7 +45,7 @@ class BinanceController extends Controller
         ];
 
         $payload = $timestamp . "\n" . $nonce . "\n" . json_encode($body) . "\n";
-        $signature = strtoupper(hash_hmac("sha512", $payload, config('app.binancePayApiSecret')));
+        $signature = strtoupper(bin2hex(hash_hmac("sha512", $payload, config('app.binancePayApiSecret'))));
 
         $reponse =  $this->binance->post('order', [
             'headers' => [
