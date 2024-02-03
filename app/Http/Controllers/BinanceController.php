@@ -21,8 +21,10 @@ class BinanceController extends Controller
 
     public function makeOrder()
     {
-        echo env('BINANCE_PAY_API_SECRET');
-        echo env('BINANCE_PAY_API_KEY');
+        if (env('BINANCE_PAY_API_KEY')) {
+            echo "existe";
+        }
+        echo "<br>";
         die;
 
         $timestamp = now()->getTimestampMs();
