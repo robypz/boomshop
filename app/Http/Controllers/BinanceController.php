@@ -22,9 +22,9 @@ class BinanceController extends Controller
 
     public function makeOrder()
     {
-        $timestamp = time()*1000;
+        $timestamp = time() * 1000;
         $nonce = bin2hex(random_bytes(16));;
-        $body = [
+        $body = json_encode([
             "env" => [
                 "terminalType" => "WEB"
             ],
@@ -42,9 +42,9 @@ class BinanceController extends Controller
                 "goodsName" => "Ice Cream",
                 "goodsDetail" => "Greentea ice cream cone"
             ]
-        ];
+        ]);
 
-        $payload = $timestamp . "\n" . $nonce . "\n" . json_encode($body) . "\n";
+        $payload = $timestamp . "\n" . $nonce . "\n" . $body . "\n";
 
         $signature = strtoupper(hash_hmac("sha512", $payload, config('app.binancePayApiSecret')));
 
@@ -58,7 +58,7 @@ class BinanceController extends Controller
                 'BinancePay-Signature' => $signature,
             ],
 
-            'body' => $body,
+            'json' => $body,
         ]);
 
         print_r($reponse);
