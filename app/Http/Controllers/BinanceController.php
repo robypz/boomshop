@@ -42,7 +42,7 @@ class BinanceController extends Controller
                 "goodsName" => "Ice Cream",
                 "goodsDetail" => "Greentea ice cream cone"
             ]
-        ]);
+        ],true);
 
         $payload = $timestamp . "\n" . $nonce . "\n" . $body . "\n";
         $signature = strtoupper(bin2hex(hash_hmac("sha512", $payload, config('app.binancePayApiSecret'), true)));
