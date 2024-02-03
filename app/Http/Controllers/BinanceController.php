@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
@@ -21,7 +22,7 @@ class BinanceController extends Controller
 
     public function makeOrder()
     {
-        $timestamp = now()->getTimestampMs();
+        $timestamp = Carbon::now()->valueOf();
         $nonce = substr(str_shuffle(md5(microtime())), 0, 32);
         $body = json_encode([
             "env" => [
