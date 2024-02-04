@@ -227,5 +227,7 @@ Route::group(
         });
     }
 );
+Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::get('makeOrder',[BinanceController::class, 'makeOrder']);
+});
 
-Route::get('makeOrder',[BinanceController::class, 'makeOrder']);
