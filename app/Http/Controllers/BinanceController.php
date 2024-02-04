@@ -29,7 +29,7 @@ class BinanceController extends Controller
             "env" => [
                 "terminalType" => "APP"
             ],
-            "merchantTradeNo" => "98253829373434",
+            "merchantTradeNo" => mt_rand(982538,9825382937292),
             "orderAmount" => 25.17,
             "currency" => "USDT",
             "description" => "very good Ice Cream",
