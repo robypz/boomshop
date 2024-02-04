@@ -57,7 +57,25 @@ class BinanceController extends Controller
                 'BinancePay-Signature' => $signature,
             ],
 
-            'body'  => json_encode($body),
+            'body'  => '{
+                "env": {
+                  "terminalType": "APP"
+                },
+                "orderTags": {
+                  "ifProfitSharing": true
+                },
+                "merchantTradeNo": "9825382937292",
+                "orderAmount": 25.17,
+                "currency": "USDT",
+                "description": "very good Ice Cream",
+                "goodsDetails": [{
+                  "goodsType": "01",
+                  "goodsCategory": "D000",
+                  "referenceGoodsId": "7876763A3B",
+                  "goodsName": "Ice Cream",
+                  "goodsDetail": "Greentea ice cream cone"
+                }]
+              }',
         ]);
 
         print_r($reponse);
