@@ -24,25 +24,25 @@ class BinanceController extends Controller
     {
         $timestamp = time() * 1000;
         $nonce = bin2hex(random_bytes(16));
-        $body = [
-            "env" => [
+        $body = array(
+            "env" => array(
                 "terminalType" => "WEB"
-            ],
-            "orderTags" => [
+            ),
+            "orderTags" => array(
                 "ifProfitSharing" => true
-            ],
+            ),
             "merchantTradeNo" => "98253829372924243",
             "orderAmount" => 25.17,
             "currency" => "USDT",
             "description" => "very good Ice Cream",
-            "goodsDetails" => [
+            "goodsDetails" => array(
                 "goodsType" => "01",
                 "goodsCategory" => "D000",
                 "referenceGoodsId" => "7876763A3B",
                 "goodsName" => "Ice Cream",
                 "goodsDetail" => "Greentea ice cream cone"
-            ]
-        ];
+            )
+        );
 
         $payload = $timestamp . "\n" . $nonce . "\n" . json_encode($body) . "\n";
         $signature = strtoupper(hash_hmac("SHA512", $payload, config('app.binancePayApiSecret')));
@@ -57,7 +57,7 @@ class BinanceController extends Controller
                 'BinancePay-Signature' => $signature,
             ],
 
-            'body'  => $body,
+            'body'  => json_encode($body),
         ]);
 
         print_r($reponse);
