@@ -24,32 +24,31 @@ class BinanceController extends Controller
     {
         $timestamp = time() * 1000;
         $nonce = bin2hex(random_bytes(16));
-        $json = '{
-            "env": {
-              "terminalType": "APP"
-            },
-            "orderTags": {
-              "ifProfitSharing": true
-            },
-            "merchantTradeNo": "9825382937292",
-            "orderAmount": 25.17,
-            "currency": "USDT",
-            "description": "very good Ice Cream",
-            "goodsDetails": [{
-              "goodsType": "01",
-              "goodsCategory": "D000",
-              "referenceGoodsId": "7876763A3B",
-              "goodsName": "Ice Cream",
-              "goodsDetail": "Greentea ice cream cone"
-            }]
-          }';
 
-        $body = json_decode($json);
+        $body = [
+            "env" => [
+                "terminalType" => "APP"
+            ],
+            "orderTags" => [
+                "ifProfitSharing" => true
+            ],
+            "merchantTradeNo" => "9825382937292",
+            "orderAmount" => 25.17,
+            "currency" => "USDT",
+            "description" => "very good Ice Cream",
+            "goodsDetails" => [[
+                "goodsType" => "01",
+                "goodsCategory" => "D000",
+                "referenceGoodsId" => "7876763A3B",
+                "goodsName" => "Ice Cream",
+                "goodsDetail" => "Greentea ice cream cone"
+            ]]
+        ];
 
-        $payload = $timestamp . "\n" . $nonce . "\n" . $json . "\n";
+        $payload = $timestamp . "\n" . $nonce . "\n" . json_encode($body) . "\n";
         $signature = strtoupper(hash_hmac("SHA512", $payload, config('app.binancePayApiSecret')));
 
-        $reponse =  $this->binance->request('POST','order', [
+        $reponse =  $this->binance->request('POST', 'order', [
             'headers' => [
                 'Content-Type' => 'application/json',
                 'BinancePay-Timestamp' => $timestamp,
