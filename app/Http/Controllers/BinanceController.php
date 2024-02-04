@@ -63,7 +63,7 @@ class BinanceController extends Controller
               "goodsDetail": "Greentea ice cream cone"
             }]
           }' . "\n";
-        $signature = strtoupper(hash_hmac("SHA512", $payload, config('app.binancePayApiSecret')));
+        $signature = strtoupper(hash_hmac("sha512", $payload, config('app.binancePayApiSecret')));
 
         $reponse =  $this->binance->post('order', [
             'headers' => [
