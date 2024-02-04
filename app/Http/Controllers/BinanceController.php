@@ -56,8 +56,6 @@ class BinanceController extends Controller
                 'BinancePay-Certificate-SN' => config('app.binancePayApiKey'),
                 'BinancePay-Signature' => $signature,
             ],
-
-            'json'  => [$body],
         ]);
 
         print_r($reponse);
