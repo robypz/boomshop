@@ -57,6 +57,6 @@ class BinanceController extends Controller
             'json' => $body,
         ]);
 
-        print_r($reponse);
+        print_r($reponse->getBody());
     }
 }
