@@ -29,9 +29,6 @@ class BinanceController extends Controller
             "env" => [
                 "terminalType" => "APP"
             ],
-            "orderTags" => [
-                "ifProfitSharing" => true
-            ],
             "merchantTradeNo" => "9825382937292",
             "orderAmount" => 25.17,
             "currency" => "USDT",
