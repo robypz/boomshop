@@ -57,7 +57,7 @@ class BinanceController extends Controller
                 'BinancePay-Signature' => $signature,
             ],
 
-            'json'  => [$body],
+            'json'  => $body,
         ]);
 
         print_r($reponse);
