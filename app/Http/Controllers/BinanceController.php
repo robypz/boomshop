@@ -68,7 +68,6 @@ class BinanceController extends Controller
         $reponse =  $this->binance->post('order', [
             'headers' => [
                 'content-type' => 'application/json',
-                'Accept' => 'application/json',
                 'BinancePay-Timestamp' => $timestamp,
                 'BinancePay-Nonce' => $nonce,
                 'BinancePay-Certificate-SN' => config('app.binancePayApiKey'),
