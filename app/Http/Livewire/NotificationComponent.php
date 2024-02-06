@@ -16,7 +16,7 @@ class NotificationComponent extends Component
 
     public function mount()
     {
-        $this->notifications = auth()->user()->notifications;
+        $this->notifications = auth()->user()->unreadNotifications;
         $this->count = auth()->user()->unreadNotifications->count();
     }
 

@@ -20,7 +20,7 @@ class BinanceController extends Controller
         ]);
     }
 
-    public function makeOrder()
+    public function createOrder()
     {
         $timestamp = time() * 1000;
         $nonce = bin2hex(random_bytes(16));
@@ -58,5 +58,9 @@ class BinanceController extends Controller
         ]);
 
         echo $reponse->getBody();
+    }
+
+    public function webhook(Request $request) {
+
     }
 }
