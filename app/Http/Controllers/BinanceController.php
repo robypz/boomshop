@@ -71,7 +71,7 @@ class BinanceController extends Controller
         return response()->json(["returnCode" => "SUCCESS", "returnMessage" => null], 200);
     }
 
-    public function cartificates()
+    public function certificates()
     {
 
         $timestamp = time() * 1000;
