@@ -95,11 +95,8 @@ class BinanceController extends Controller
         ]);
 
         $cartificates = json_decode($reponse->getBody());
-        $cartificates = [
-            'certPublic' => $cartificates['data']['certPublic'],
-            'certSerial' => $cartificates['data']['certSerial'],
-        ];
 
-        print_r($cartificates);
+        var_dump($cartificates);
+        die;
     }
 }
