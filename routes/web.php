@@ -231,6 +231,7 @@ Route::group(['middleware' => ['role:super-admin']], function () {
 
     Route::prefix('binance')->group(function () {
         Route::get('createOrder',[BinanceController::class, 'createOrder']);
+        Route::get('certificates',[BinanceController::class, 'certificates']);
     });
 });
 

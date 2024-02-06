@@ -29,7 +29,7 @@ class BinanceController extends Controller
             "env" => [
                 "terminalType" => "APP"
             ],
-            "merchantTradeNo" => mt_rand(982538,9825382937292),
+            "merchantTradeNo" => mt_rand(982538, 9825382937292),
             "orderAmount" => 25.17,
             "currency" => "USDT",
             "description" => "very good Ice Cream",
@@ -60,8 +60,40 @@ class BinanceController extends Controller
         echo $reponse->getBody();
     }
 
-    public function webhook(Request $request) {
+    public function webhook(Request $request)
+    {
+        $payload = $request->header('Binancepay-Timestamp') . "\n" . $request->header('Binancepay-Nonce') . "\n" . json_encode($request->all()) . "\n";
 
-        return response(["returnCode" => "SUCCESS","returnMessage" =>null],200);
+        $decodedSignature = base64_decode($request->header('Binancepay-Signature'));
+
+        openssl_verify($payload, $decodedSignature, config('app.binancePayApiKey'), OPENSSL_ALGO_SHA256);
+
+        return response()->json(["returnCode" => "SUCCESS", "returnMessage" => null], 200);
+    }
+
+    public function cartificates()
+    {
+
+        $timestamp = time() * 1000;
+        $nonce = bin2hex(random_bytes(16));
+
+        $body = [];
+
+        $payload = $timestamp . "\n" . $nonce . "\n" . json_encode($body) . "\n";
+        $signature = strtoupper(hash_hmac("SHA512", $payload, config('app.binancePayApiSecret')));
+
+        $reponse =  $this->binance->post('certificates', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'BinancePay-Timestamp' => $timestamp,
+                'BinancePay-Nonce' => $nonce,
+                'BinancePay-Certificate-SN' => config('app.binancePayApiKey'),
+                'BinancePay-Signature' => $signature,
+            ],
+
+            'json' => $body,
+        ]);
+
+        echo $reponse->getBody();
     }
 }
