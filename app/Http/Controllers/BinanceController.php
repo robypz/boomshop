@@ -62,11 +62,13 @@ class BinanceController extends Controller
 
     public function webhook(Request $request)
     {
+        $certificates = $this->certificates();
+
         $payload = $request->header('Binancepay-Timestamp') . "\n" . $request->header('Binancepay-Nonce') . "\n" . json_encode($request->all()) . "\n";
 
         $decodedSignature = base64_decode($request->header('Binancepay-Signature'));
 
-        openssl_verify($payload, $decodedSignature, config('app.binancePayApiKey'), OPENSSL_ALGO_SHA256);
+        openssl_verify($payload, $decodedSignature, $certificates['certPublic'], OPENSSL_ALGO_SHA256);
 
         return response()->json(["returnCode" => "SUCCESS", "returnMessage" => null], 200);
     }
@@ -100,6 +102,6 @@ class BinanceController extends Controller
             "certSerial" =>  $cartificates['data'][0]["certSerial"]
         ];
 
-        print_r($cartificates);
+        return $cartificates;
     }
 }
