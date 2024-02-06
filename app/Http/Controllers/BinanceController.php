@@ -94,6 +94,6 @@ class BinanceController extends Controller
             'json' => $body,
         ]);
 
-        echo json_decode($reponse->getBody());
+        print_r(json_decode($reponse->getBody()));
     }
 }
