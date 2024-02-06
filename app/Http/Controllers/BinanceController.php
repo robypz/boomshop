@@ -62,6 +62,6 @@ class BinanceController extends Controller
 
     public function webhook(Request $request) {
 
-        return response('',200);
+        return response(["returnCode" => "SUCCESS","returnMessage" =>null],200);
     }
 }
