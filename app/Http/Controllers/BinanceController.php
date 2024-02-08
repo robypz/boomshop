@@ -69,10 +69,12 @@ class BinanceController extends Controller
         $decodedSignature = base64_decode($request->header('Binancepay-Signature'));
 
         if (openssl_verify($payload, $decodedSignature, $certificates['certPublic'], OPENSSL_ALGO_SHA256)) {
+            return response()->json(["returnCode" => "SUCCESS", "returnMessage" => null], 200);
         } else {
+            return response()->json(null, 502);
         }
 
-        return response()->json(["returnCode" => "SUCCESS", "returnMessage" => null], 200);
+
     }
 
     public function certificates()
