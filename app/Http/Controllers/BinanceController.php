@@ -68,7 +68,9 @@ class BinanceController extends Controller
 
         $decodedSignature = base64_decode($request->header('Binancepay-Signature'));
 
-        openssl_verify($payload, $decodedSignature, $certificates['certPublic'], OPENSSL_ALGO_SHA256);
+        if (openssl_verify($payload, $decodedSignature, $certificates['certPublic'], OPENSSL_ALGO_SHA256)) {
+        } else {
+        }
 
         return response()->json(["returnCode" => "SUCCESS", "returnMessage" => null], 200);
     }
@@ -96,7 +98,8 @@ class BinanceController extends Controller
             'json' => $body,
         ]);
 
-        $cartificates = json_decode($reponse->getBody(),true);$cartificates['data'][0]['certPublic'];
+        $cartificates = json_decode($reponse->getBody(), true);
+        $cartificates['data'][0]['certPublic'];
         $cartificates = [
             "certPublic" =>  $cartificates['data'][0]["certPublic"],
             "certSerial" =>  $cartificates['data'][0]["certSerial"]
