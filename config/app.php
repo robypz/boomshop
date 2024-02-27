@@ -6,6 +6,7 @@ return [
 
     'binancePayApiKey' => env('BINANCE_PAY_API_KEY'),
     'binancePayApiSecret' => env('BINANCE_PAY_API_SECRET'),
+    'reCAPTCHA_key' =>  env('RECAPTCHA_SITE_KEY'),
 
     /*
     |--------------------------------------------------------------------------
