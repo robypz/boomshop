@@ -122,7 +122,7 @@
 
 
                 </div>
-                @if ($products->links())
+                @if (count($products) >= 6)
                 <div class="text-center">
                     <a href="{{route('product.catalog')}}" class="btn btn-primary">Ver mas</a>
                 </div>
@@ -209,7 +209,11 @@
                     </caption>
                 </div>
             </div>
-
+            @if (count($gifcards) >= 6)
+            <div class="text-center">
+                <a href="{{route('product.catalog')}}" class="btn btn-primary">Ver mas</a>
+            </div>
+            @endif
         </div>
     </section>
 

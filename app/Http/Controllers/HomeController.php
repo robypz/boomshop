@@ -23,8 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::where('available', '1')->paginate(3);
-        $gifcards = Product::where('category_id', '2')->where('available', '1')->get();
+        $products = Product::where('available', '1')->paginate(6);
+        $gifcards = Product::where('category_id', '2')->where('available', '1')->paginate(6);
 
         if (auth()->user()) {
             $favoriteProducts = UserController::favoriteProducts(auth()->user()->id);
