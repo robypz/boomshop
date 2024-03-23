@@ -11,6 +11,12 @@
                     @csrf
                     <div class="row">
                         <div class="col">
+                            <label for="name" class="form-label">Nombre</label>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input class="form-control" type="text" name="name" value="{{$product->name}}">
+                        </div>
+                        <div class="col">
                             <label for="available" class="form-label">Disponibilidad</label>
                         </div>
                         <div class="col-12 mb-3">
