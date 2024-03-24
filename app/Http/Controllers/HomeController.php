@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::where('available', '1')->paginate(12);
+        $products = Product::where('available', '1')->where('category_id', '1')->paginate(12);
         $gifcards = Product::where('category_id', '2')->where('available', '1')->paginate(12);
 
         if (auth()->user()) {
