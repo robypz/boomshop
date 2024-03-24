@@ -122,7 +122,7 @@
 
 
                 </div>
-                @if (count($products) >= 6)
+                @if (count($products) >= 12)
                 <div class="text-center">
                     <a href="{{route('product.catalog')}}" class="btn btn-primary">Ver mas</a>
                 </div>
@@ -209,7 +209,7 @@
                     </caption>
                 </div>
             </div>
-            @if (count($gifcards) >= 6)
+            @if (count($gifcards) >= 12)
             <div class="text-center">
                 <a href="{{route('product.catalog')}}" class="btn btn-primary">Ver mas</a>
             </div>
