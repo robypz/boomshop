@@ -92,31 +92,31 @@
         <!-- Cards Section-->
         <section>
             <div class="container">
-                <div
-                    class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-6 d-block d-md-none">
-                    @foreach ($products as $product)
-                        <div class="col mb-4">
-                            <a href="{{ route('product.show', ['id' => $product->id]) }}">
-                                <div class="game">
-                                    <div class="myimg-container img-container">
-                                        <img class="card-img-top mycard-img-top" src="{{ asset($product->image) }}"
-                                            alt="Card image cap">
+                <!-- Mobile -->
+                <div class="d-block d-md-none">
+                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-6">
+                        @foreach ($products as $product)
+                            <div class="col mb-4">
+                                <a href="{{ route('product.show', ['id' => $product->id]) }}">
+                                    <div class="game">
+                                        <div class="myimg-container img-container">
+                                            <img class="card-img-top mycard-img-top" src="{{ asset($product->image) }}"
+                                                alt="Card image cap">
 
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-center game-name">
-                                        <div class="text-center">
-                                            {{ $product->name }}
                                         </div>
+
+                                        <div class="d-flex align-items-center justify-content-center game-name">
+                                            <div class="text-center">
+                                                {{ $product->name }}
+                                            </div>
+                                        </div>
+
+
                                     </div>
 
+                                </a>
 
-                                </div>
-
-                            </a>
-                        </div>
-                        @if ($loop->index == 5)
-                        @break
+                            </div>
                         @endif
                 @endforeach
 
@@ -143,7 +143,6 @@
 
 
                             </div>
-
                         </a>
                     </div>
                 @endforeach
