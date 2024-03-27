@@ -17,7 +17,7 @@
                     <tr>
                         <th class="align-middle" scope="row">{{ $product->id }}</th>
                         <td class="align-middle">{{$product->name}}</td>
-                        <td class="align-middle"><img src="{{ asset($product->image) }}" alt="" width="64px"></td>
+                        <td class="align-middle"><img src="{{ asset($product->image) }}" alt="" width="64px" class="rounded-3"></td>
                         @if ($product->available)
                             <td class="align-middle">Si</td>
                         @else

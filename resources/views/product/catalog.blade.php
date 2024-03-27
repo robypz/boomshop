@@ -47,7 +47,7 @@
                                 <div class="game">
                                     <div class="myimg-container img-container text-center">
                                         @if ($product->category->category == 'Tarjetas')
-                                            <img class="card-img-top mycard-img-top w-75"
+                                            <img class="card-img-top mycard-img-top w-75 rounded-3"
                                                 src="{{ asset($product->image) }}"
                                                 alt="Card image cap">
                                         @else

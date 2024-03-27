@@ -183,7 +183,7 @@
                     @foreach ($gifcards as $gifcard)
                         <div class="col mb-3 text-center">
                             <a class="boom-color-lightgray" href="{{ route('product.show', ['id' => $gifcard->id]) }}">
-                                <img class="gift-card" style="width: 100%;" src="{{ asset($gifcard->image) }}" alt="">
+                                <img class="gift-card rounded-3" style="width: 100%;" src="{{ asset($gifcard->image) }}" alt="">
                                 <br>
 
                                 <caption>
@@ -202,7 +202,7 @@
                     @foreach ($gifcards as $gifcard)
                         <div class="col mb-3 text-center">
                             <a class="boom-color-lightgray" href="{{ route('product.show', ['id' => $gifcard->id]) }}">
-                                <img class="gift-card" style="width: 100%;" src="{{ asset($gifcard->image) }}" alt="">
+                                <img class="gift-card rounded-3" style="width: 100%;" src="{{ asset($gifcard->image) }}" alt="">
                                 <br>
 
                                 <caption>
