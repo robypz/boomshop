@@ -117,8 +117,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = product::find($id);
+        $categories = Category::all();
 
-        return view('product.edit', compact('product'));
+        return view('product.edit', compact('product','categories'));
     }
 
     /**
@@ -135,6 +136,7 @@ class ProductController extends Controller
         $product->available = $request->available;
         $product->customizable_field = $request->customizable_field;
         $product->description = $request->description;
+        $product->category_id  = $request->category;
         if (!empty($request->file('file'))) {
             Storage::delete($product->image);
             $product->image = $request->file->store('images');

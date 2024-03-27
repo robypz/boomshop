@@ -7,7 +7,7 @@
                 {{ $product->name }}
             </div>
             <div class="card-body">
-                <form action="{{ route('product.update', ['id' => $product->id]) }}" method="POST">
+                <form action="{{ route('product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col">
@@ -17,12 +17,24 @@
                             <input class="form-control" type="text" name="name" value="{{$product->name}}">
                         </div>
                         <div class="col">
+                            <label for="category" class="form-label">Categoría</label>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <select class="form-select" name="category" id="category">
+                                <option value="{{$product->category->id}}" selected>{{$product->category->category}}</option>
+                                hr
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->category}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col">
                             <label for="available" class="form-label">Disponibilidad</label>
                         </div>
                         <div class="col-12 mb-3">
                             <select class="form-select" name="available" id="available">
                                 <option value="1" selected>Si</option>
-                                <option value="0" selected>No</option>
+                                <option value="0">No</option>
                             </select>
                         </div>
                         <div class="col">
@@ -32,7 +44,7 @@
                             <input class="form-control" type="text" name="customizable_field" value="{{$product->customizable_field}}">
                         </div>
                         <div class="col">
-                            <label for="available" class="form-label">Imagen</label>
+                            <label for="file" class="form-label">Imagen</label>
                         </div>
                         <div class="col-12 mb-3">
                             <input class="form-control" type="file" name="file">
