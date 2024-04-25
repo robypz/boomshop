@@ -497,27 +497,7 @@
         });
     </script>
 
-    <script>
-        (function(a, m, o, c, r, m) {
-            a[m] = {
-                id: "1015079",
-                hash: "55ab9b4011503233f6a8633b276880b700788ff2a0df55d2fc32f4f6d31a5922",
-                locale: "es",
-                setMeta: function(p) {
-                    this.params = (this.params || []).concat([p])
-                }
-            };
-            a[o] = a[o] || function() {
-                (a[o].q = a[o].q || []).push(arguments)
-            };
-            var d = a.document,
-                s = d.createElement('script');
-            s.async = true;
-            s.id = m + '_script';
-            s.src = 'https://gso.kommo.com/js/button.js';
-            d.head && d.head.appendChild(s)
-        }(window, 0, 'crmPlugin', 0, 0, 'crm_plugin'));
-    </script>
+
 
 </body>
 <!-- Messenger Plugin de chat Code -->
@@ -550,6 +530,28 @@
         js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+    (function(a, m, o, c, r, m) {
+        a[m] = {
+            id: "1015079",
+            hash: "55ab9b4011503233f6a8633b276880b700788ff2a0df55d2fc32f4f6d31a5922",
+            locale: "es",
+            setMeta: function(p) {
+                this.params = (this.params || []).concat([p])
+            }
+        };
+        a[o] = a[o] || function() {
+            (a[o].q = a[o].q || []).push(arguments)
+        };
+        var d = a.document,
+            s = d.createElement('script');
+        s.async = true;
+        s.id = m + '_script';
+        s.src = 'https://gso.kommo.com/js/button.js';
+        d.head && d.head.appendChild(s)
+    }(window, 0, 'crmPlugin', 0, 0, 'crm_plugin'));
 </script>
 
 </html>
