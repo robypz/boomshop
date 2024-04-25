@@ -551,7 +551,7 @@
         s.id = m + '_script';
         s.src = 'https://gso.kommo.com/js/button.js';
         d.head && d.head.appendChild(s)
-    }(window, 0, 'crmPlugin', 0, 0, 'crm_plugin'));
+    }(window, document, 'crmPlugin', 0, 0, 'crm_plugin'));
 </script>
 
 </html>
