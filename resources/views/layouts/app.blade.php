@@ -364,8 +364,8 @@
                 <footer class="row row-cols-1 row-cols-sm-1 row-cols-md-5 py-5">
                     <div class="col mb-3 text-center">
                         <a href="#" class="mb-3 link-dark text-decoration-none text-center">
-                            <img src="{{ asset('assets/images/LOGO COMPLETO TRANSP.png') }}" alt="" srcset=""
-                                width="200px">
+                            <img src="{{ asset('assets/images/LOGO COMPLETO TRANSP.png') }}" alt=""
+                                srcset="" width="200px">
                             <span class="text-primary footer-text-logo d-block">BOOMSHOP</span>
                         </a>
                         <p class="text-primary">&copy; 2023</p>
@@ -437,8 +437,8 @@
                     </div>
                     <div class="col mb-3">
                         <div class="w-100 d-flex justify-content-end">
-                            <img src="{{ asset('assets/images/Mascota Boomer transparente bordeless.png') }}" alt=""
-                                srcset="" style="height: 225px">
+                            <img src="{{ asset('assets/images/Mascota Boomer transparente bordeless.png') }}"
+                                alt="" srcset="" style="height: 225px">
                         </div>
                     </div>
                 </footer>
@@ -497,6 +497,28 @@
         });
     </script>
 
+    <script>
+        (function(a, m, o, c, r, m) {
+            a[m] = {
+                id: "1015079",
+                hash: "55ab9b4011503233f6a8633b276880b700788ff2a0df55d2fc32f4f6d31a5922",
+                locale: "es",
+                setMeta: function(p) {
+                    this.params = (this.params || []).concat([p])
+                }
+            };
+            a[o] = a[o] || function() {
+                (a[o].q = a[o].q || []).push(arguments)
+            };
+            var d = a.document,
+                s = d.createElement('script');
+            s.async = true;
+            s.id = m + '_script';
+            s.src = 'https://gso.kommo.com/js/button.js';
+            d.head && d.head.appendChild(s)
+        }(window, 0, 'crmPlugin', 0, 0, 'crm_plugin'));
+    </script>
+
 </body>
 <!-- Messenger Plugin de chat Code -->
 <div id="fb-root"></div>
@@ -506,27 +528,28 @@
 </div>
 
 <script>
-  var chatbox = document.getElementById('fb-customer-chat');
-  chatbox.setAttribute("page_id", "107425274754170");
-  chatbox.setAttribute("attribution", "biz_inbox");
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "107425274754170");
+    chatbox.setAttribute("attribution", "biz_inbox");
 </script>
 
 <!-- Your SDK code -->
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml            : true,
-      version          : 'v18.0'
-    });
-  };
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v18.0'
+        });
+    };
 
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
 
 </html>
