@@ -497,67 +497,28 @@
         });
     </script>
 
-
+    <script>
+        (function(a, m, o, c, r, m) {
+            a[m] = {
+                id: "1015079",
+                hash: "55ab9b4011503233f6a8633b276880b700788ff2a0df55d2fc32f4f6d31a5922",
+                locale: "es",
+                setMeta: function(p) {
+                    this.params = (this.params || []).concat([p])
+                }
+            };
+            a[o] = a[o] || function() {
+                (a[o].q = a[o].q || []).push(arguments)
+            };
+            var d = a.document,
+                s = d.createElement('script');
+            s.async = true;
+            s.id = m + '_script';
+            s.src = 'https://gso.kommo.com/js/button.js';
+            d.head && d.head.appendChild(s)
+        }(window, document, 'crmPlugin', 0, 0, 'crm_plugin'));
+    </script>
 
 </body>
-<!-- Messenger Plugin de chat Code -->
-<div id="fb-root"></div>
-
-<!-- Your Plugin de chat code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
-
-<script>
-    var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "107425274754170");
-    chatbox.setAttribute("attribution", "biz_inbox");
-</script>
-
-<!-- Your SDK code -->
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            xfbml: true,
-            version: 'v18.0'
-        });
-    };
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<script>
-    (function(a, m, o, c, r, m) {
-        a[m] = {
-            id: "1015079",
-            hash: "55ab9b4011503233f6a8633b276880b700788ff2a0df55d2fc32f4f6d31a5922",
-            locale: "es",
-            setMeta: function(p) {
-                this.params = (this.params || []).concat([p])
-            }
-        };
-        a[o] = a[o] || function() {
-            (a[o].q = a[o].q || []).push(arguments)
-        };
-        var d = a.document,
-            s = d.createElement('script');
-        s.async = true;
-        s.id = m + '_script';
-        s.src = 'https://gso.kommo.com/js/button.js';
-        d.head && d.head.appendChild(s)
-    }(window, document, 'crmPlugin', 0, 0, 'crm_plugin'));
-</script>
-
-<script async=true>
-    const elementoHola = document.querySelector('.amo-button-holder');
-    elementoHola.style.right = '10px';
-    elementoHola.style.bottom = '10px';
-</script>
 
 </html>
