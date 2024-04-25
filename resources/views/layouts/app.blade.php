@@ -554,7 +554,7 @@
     }(window, document, 'crmPlugin', 0, 0, 'crm_plugin'));
 </script>
 
-<script>
+<script async=true>
     const elementoHola = document.querySelector('.amo-button-holder');
     elementoHola.style.right = '10px';
     elementoHola.style.bottom = '10px';
