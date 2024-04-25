@@ -500,8 +500,8 @@
     <script>
         (function(a, m, o, c, r, m) {
             a[m] = {
-                id: "1015079",
-                hash: "55ab9b4011503233f6a8633b276880b700788ff2a0df55d2fc32f4f6d31a5922",
+                id: "1015413",
+                hash: "ebf4828af7a3f846f5c8031338632042bd7e07cd239dd248cfa26173c1d389c0",
                 locale: "es",
                 setMeta: function(p) {
                     this.params = (this.params || []).concat([p])
@@ -516,7 +516,7 @@
             s.id = m + '_script';
             s.src = 'https://gso.kommo.com/js/button.js';
             d.head && d.head.appendChild(s)
-        }(window, document, 'crmPlugin', 0, 0, 'crm_plugin'));
+        }(window, 0, 'crmPlugin', 0, 0, 'crm_plugin'));
     </script>
 
 </body>
