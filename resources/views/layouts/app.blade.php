@@ -358,7 +358,7 @@
             @yield('content')
         </main>
 
-        <div class="footer mt-3">
+        <div class="footer">
 
             <div class="container">
                 <footer class="row row-cols-1 row-cols-sm-1 row-cols-md-5 py-5">

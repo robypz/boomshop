@@ -230,7 +230,7 @@
     </section>
 
 
-<div class="recharge-data">
+<div class="recharge-data mt-3">
     <div class="container p-4">
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col text-center p-3">
