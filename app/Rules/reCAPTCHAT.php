@@ -16,7 +16,7 @@ class reCAPTCHAT implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('app.reCaptchaKey'),
+            'secret' => config('app.reCaptchaSecretKey'),
             'reponse' => $value,
         ]);
 

@@ -120,7 +120,7 @@
 
 
                     <div class="row mb-3 row-cols-1">
-                        <div class="g-recaptcha mb-3" data-sitekey="{{ config('app.reCaptchaKey') }}"></div>
+                        <div class="g-recaptcha mb-3" data-sitekey="{{ config('app.reCaptchaSiteKey') }}"></div>
                         @error('g-recaptcha-response')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
