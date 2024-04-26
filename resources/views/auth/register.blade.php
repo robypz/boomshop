@@ -88,7 +88,8 @@
                             @enderror
                         </div>
                         <div class="col-1 d-flex align-items-center justify-content-center show-hide-password">
-                            <span class="fs-4"><i class="bi bi-eye" onclick="showPassword()" id="show-hide-password"></i></span>
+                            <span class="fs-4"><i class="bi bi-eye" onclick="showPassword()"
+                                    id="show-hide-password"></i></span>
                         </div>
                         <script>
                             function showPassword() {
@@ -116,7 +117,15 @@
                                 required autocomplete="new-password">
                         </div>
                     </div>
-                    <div class="g-recaptcha mb-3" data-sitekey="{{config('app.recapchat_key')}}"></div>
+
+                    @error('password')
+                        <div class="row mb-3 row-cols-1">
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        </div>
+                    @enderror
+                    <div class="g-recaptcha mb-3" data-sitekey="{{ config('app.recapchat_key') }}"></div>
                     <div class="row mb-3 row-cols-1 text-end">
                         <a class="text-decoration-underline text-primary fw-bold" href="{{ route('login') }}">Ya tienes
                             cuenta?</a>
