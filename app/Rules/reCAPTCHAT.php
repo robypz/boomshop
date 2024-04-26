@@ -20,10 +20,10 @@ class reCAPTCHAT implements ValidationRule
             'reponse' => $value,
         ]);
 
-        $response = json_decode($jsonResponse);
+        dd($jsonResponse);
 
-        if ($response['success']) {
+        /*if () {
             $fail('El reCAPTCHA no es válido');
-        }
+        }*/
     }
 }
