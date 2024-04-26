@@ -20,7 +20,7 @@ class reCAPTCHAT implements ValidationRule
             'reponse' => $value,
         ]);
 
-        dd($jsonResponse);
+        dd(json_encode($jsonResponse));
 
         /*if () {
             $fail('El reCAPTCHA no es válido');
