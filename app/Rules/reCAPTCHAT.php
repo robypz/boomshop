@@ -20,7 +20,7 @@ class reCAPTCHAT implements ValidationRule
             'response' => $value,
         ]);
 
-        dd($response,config('app.reCaptchaSecretKey'));
+        dd($response->json(),config('app.reCaptchaSecretKey'));
 
         /*if () {
             $fail('El reCAPTCHA no es válido');
