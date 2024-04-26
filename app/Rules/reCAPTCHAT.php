@@ -15,12 +15,12 @@ class reCAPTCHAT implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $jsonResponse = Http::post('https://www.google.com/recaptcha/api/siteverify', [
+        $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => config('app.reCaptchaKey'),
             'reponse' => $value,
         ]);
 
-        dd(json_encode($jsonResponse));
+        dd($response->json('success'));
 
         /*if () {
             $fail('El reCAPTCHA no es válido');
