@@ -17,7 +17,7 @@ class reCAPTCHAT implements ValidationRule
     {
         $secret = config('app.reCaptchaSecretKey');
 
-        $response = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response?=$value");
+        $response = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$value");
 
         dd($response->json());
 
