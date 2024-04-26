@@ -13,20 +13,11 @@ class reCAPTCHAT implements ValidationRule
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
-
-     private $ip;
-    public function __construct(string $ip)
-     {
-         $this->ip = $ip;
-     }
-
-
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $jsonResponse = Http::post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => config('app.reCaptchaKey'),
             'reponse' => $value,
-            'remoteip' => $this->ip,
         ]);
 
         $response = json_decode($jsonResponse);

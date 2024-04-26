@@ -125,7 +125,7 @@
                             </span>
                         </div>
                     @enderror
-                    <div class="g-recaptcha mb-3" data-sitekey="{{ config('app.recapchat_key') }}"></div>
+                    <div class="g-recaptcha mb-3" data-sitekey="{{ config('app.reCaptchaKey') }}"></div>
                     <div class="row mb-3 row-cols-1 text-end">
                         <a class="text-decoration-underline text-primary fw-bold" href="{{ route('login') }}">Ya tienes
                             cuenta?</a>
