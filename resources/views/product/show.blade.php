@@ -351,7 +351,7 @@
                             </div>
 
                             <div class="sub-total text-center fs-5">
-                                <span class="text-primary ms-bold"></span>REF.&nbsp;<span id="sub-total"
+                                <span class="text-primary ms-bold"></span>REF&nbsp;<span id="sub-total"
                                     class="text-primary ms-bold">0.0</span>
                             </div>
                             <div class="row mb-5 mt-3 ">
