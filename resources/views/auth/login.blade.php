@@ -33,14 +33,34 @@
                         <div class="col">
                             <input id="password" type="password"
                                 class="form-control @error('password') is-invalid @enderror" name="password" required
-                                autocomplete="current-password">
+                                autocomplete="current-password" id="password">
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+
                         </div>
+                        <div class="col-12 show-hide-password text-end">
+                            <span class="fs-4"><i class="bi bi-eye text-primary fs-4" onclick="showPassword()"
+                                    id="show-hide-password"></i></span>
+                        </div>
+                        <script>
+                            function showPassword() {
+                                var btn = document.getElementById("show-hide-password");
+                                var tipo = document.getElementById("password");
+                                if (tipo.type == "password") {
+                                    tipo.type = "text";
+                                    btn.classList.remove('bi-eye');
+                                    btn.classList.add('bi-eye-slash');
+                                } else {
+                                    tipo.type = "password";
+                                    btn.classList.remove('bi-eye-slash');
+                                    btn.classList.add('bi-eye');
+                                }
+                            }
+                        </script>
                     </div>
 
                     <div class="row">

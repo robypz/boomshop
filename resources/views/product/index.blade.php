@@ -16,21 +16,23 @@
                 @foreach ($products as $product)
                     <tr>
                         <th class="align-middle" scope="row">{{ $product->id }}</th>
-                        <td class="align-middle">{{$product->name}}</td>
-                        <td class="align-middle"><img src="{{ asset($product->image) }}" alt="" width="64px" class="rounded-3"></td>
+                        <td class="align-middle">{{ $product->name }}</td>
+                        <td class="align-middle"><img src="{{ asset($product->image) }}" alt="" width="64px"
+                                class="rounded-3"></td>
                         @if ($product->available)
                             <td class="align-middle">Si</td>
                         @else
                             <td class="align-middle">No</td>
                         @endif
-                        <td class="align-middle"><a href="{{route('product.edit',['id' => $product->id])}}"><button
-                                    class="btn btn-blue">Editar</button></a></td>
+                        <td class="align-middle"><a href="{{ route('product.edit', ['id' => $product->id]) }}"><button
+                                    class="btn btn-blue">Editar</button></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <div class="text-center">
-            {{$products->links()}}
+            {{ $products->links() }}
         </div>
     </div>
 @endsection

@@ -16,15 +16,15 @@ class BundleController extends Controller
 
     public function index()
     {
-        if(isset($_GET['product_id'])&& $_GET['product_id']!=''){
-            $bundles = Bundle::where('product_id','=',$_GET['product_id'])->paginate(12);
-        }else{
+        if (isset($_GET['product_id']) && $_GET['product_id'] != '') {
+            $bundles = Bundle::where('product_id', '=', $_GET['product_id'])->paginate(12);
+        } else {
             $bundles = Bundle::paginate(12);
         }
 
-        $products = Product::all('id','name');
+        $products = Product::all('id', 'name');
 
-        return view('bundle.index',['bundles' => $bundles,'products'=>$products]);
+        return view('bundle.index', ['bundles' => $bundles, 'products' => $products]);
     }
 
     /**
@@ -53,7 +53,7 @@ class BundleController extends Controller
         $bundle->content = $request->content;
         $bundle->availability = $request->availability;
         $bundle->price = $request->price;
-        $bundle->discount = $request->discount/100;
+        $bundle->discount = $request->discount / 100;
 
         $bundle->save();
 
@@ -83,7 +83,7 @@ class BundleController extends Controller
     {
         $bundle = Bundle::find($id);
 
-        return view('bundle.edit',['bundle' => $bundle]);
+        return view('bundle.edit', ['bundle' => $bundle]);
     }
 
     /**
@@ -115,6 +115,13 @@ class BundleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bundle = Bundle::find($id);
+
+        try {
+            $bundle->delete();
+            return redirect(route('bundle.index'));
+        } catch (\Throwable $th) {
+            return redirect(route('bundle.index'))->with('danger', 'No se pueda eliminar este producto');
+        }
     }
 }

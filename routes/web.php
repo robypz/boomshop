@@ -122,6 +122,7 @@ Route::group(
                     Route::get('/index/{product_id?}', [BundleController::class, 'index'])->name('bundle.index');
                     Route::get('/edit/{id}', [BundleController::class, 'edit'])->name('bundle.edit');
                     Route::post('/update', [BundleController::class, 'update'])->name('bundle.update');
+                    Route::get('/destroy/{id}', [BundleController::class, 'destroy'])->name('bundle.destroy');
                 });
             });
 

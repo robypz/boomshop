@@ -56,7 +56,10 @@
 
                             <td>{{ $bundle->discount }}%</td>
                             <td><a href="{{ route('bundle.edit', ['id' => $bundle->id]) }}"><button
-                                        class="btn btn-blue btn-sm">Editar</button></a></td>
+                                        class="btn btn-blue btn-sm">Editar</button></a>
+                                        <a href="{{ route('bundle.destroy', ['id' => $bundle->id]) }}"><button
+                                            class="btn btn-danger btn-sm">Eliminar</button></a>
+                                    </td>
                         </tr>
                     @endforeach
                 </tbody>
