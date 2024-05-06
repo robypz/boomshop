@@ -26,6 +26,8 @@
                         @endif
                         <td class="align-middle"><a href="{{ route('product.edit', ['id' => $product->id]) }}"><button
                                     class="btn btn-blue">Editar</button></a>
+                            <a href="{{ route('bundle.destroy', ['id' => $product->id]) }}"><button
+                                    class="btn btn-danger btn-sm">Eliminar</button></a>
                         </td>
                     </tr>
                 @endforeach

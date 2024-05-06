@@ -104,7 +104,7 @@ class BundleController extends Controller
 
         $bundle->save();
 
-        return redirect(route('bundle.index'));
+        return redirect(route('bundle.index'))->with('message','¡Datos cargados con éxito!');
     }
 
     /**
@@ -113,7 +113,7 @@ class BundleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function destroy($id)
+    public function destroy($id)
     {
         $bundle = Bundle::find($id);
 
@@ -123,5 +123,5 @@ class BundleController extends Controller
         } catch (\Throwable $th) {
             return redirect(route('bundle.index'))->with('danger', 'No se pueda eliminar este producto');
         }
-    }*/
+    }
 }
