@@ -26,6 +26,13 @@
 
             </div>
         </form>
+        <div class="my-3">
+            @if (session('danger'))
+                <div class="alert alert-danger">
+                    {{ session('danger') }}
+                </div>
+            @endif
+        </div>
         <div class="table-responsive">
             <table class="table boom-table">
                 <thead class="boom-table-header">
@@ -57,16 +64,16 @@
                             <td>{{ $bundle->discount }}%</td>
                             <td><a href="{{ route('bundle.edit', ['id' => $bundle->id]) }}"><button
                                         class="btn btn-blue btn-sm">Editar</button></a>
-                                        <a href="{{ route('bundle.destroy', ['id' => $bundle->id]) }}"><button
-                                            class="btn btn-danger btn-sm">Eliminar</button></a>
-                                    </td>
+                                <a href="{{ route('bundle.destroy', ['id' => $bundle->id]) }}"><button
+                                        class="btn btn-danger btn-sm">Eliminar</button></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
 
-        {{$bundles->links()}}
+        {{ $bundles->links() }}
 
 
     </div>
