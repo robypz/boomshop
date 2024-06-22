@@ -13,7 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/puntoYaBDV.scss', 'resources/js/app.js'])
-    <meta name="py-client" content="07B459BD9B47BCED" />
+    <meta name="py-client" content="" />
 
 </head>
 
