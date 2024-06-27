@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         $superAdmin->name = 'Boom';
         $superAdmin->surname = 'Store';
         $superAdmin->nick = 'BoomStoreSA';
-        $superAdmin->email = 'tiendasonlineb@gmail.com';
-        $superAdmin->password = hash::make('B0om-St0r3#Sup3rAdm1n');
+        $superAdmin->email = 'root@example.com';
+        $superAdmin->password = hash::make('1234567890');
         $superAdmin->markEmailAsVerified();
 
         $superAdmin->save();
