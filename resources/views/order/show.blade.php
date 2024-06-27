@@ -416,7 +416,7 @@
                                 </div>
                             </div>
 
-                            @if ($order->orderStatus->status != 'Exitoso' && $order->orderStatus->status != 'Pago No Procesado')
+                            @if ($order->orderStatus->status != 'Exitoso' && $order->orderStatus->status != 'No Procesado')
                                 <div class="col-12 mt-4">
                                     <hr>
                                     <h2>Actualizar</h2>

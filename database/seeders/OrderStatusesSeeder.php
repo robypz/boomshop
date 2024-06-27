@@ -19,8 +19,8 @@ class OrderStatusesSeeder extends Seeder
             ['status' => 'Exitoso'],
             ['status' => 'Pendiente'],
             ['status' => 'Procesando'],
-            ['status' => 'Pago No Procesado'],
-            ['status' => 'Datos Erroneos'],
+            ['status' => 'No Procesado'],
+            ['status' => 'Reembolsado'],
         ]);
     }
 }
