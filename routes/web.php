@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\AvatarController;
-use App\Http\Controllers\BinanceController;
+//use App\Http\Controllers\BinanceController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NoticeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,7 +42,7 @@ Route::group(
     ],
     function () {
 
-        Route::get('news',function () {
+        Route::get('news', function () {
             return view('news');
         })->name('news');
 
@@ -196,7 +197,6 @@ Route::group(
                     Route::get('/editRole/{id}', [UserController::class, 'editRole'])->name('user.editRole');
                     Route::post('/updateRole', [UserController::class, 'updateRole'])->name('user.updateRole');
                 });
-
             });
 
 
@@ -208,7 +208,6 @@ Route::group(
                     Route::post('/store', [AvatarController::class, 'store'])->name('avatar.store');
                     Route::get('/destroy/{id}', [AvatarController::class, 'destroy'])->name('avatar.destroy');
                 });
-
             });
 
 
@@ -225,15 +224,22 @@ Route::group(
                 Route::post('/validate', [CodeController::class, 'validateCode'])->name('code.validate');
                 Route::get('/test', [CodeController::class, 'test'])->name('code.test');
             });
+
+
+            Route::group(['middleware' => ['role:super-admin|admin']], function () {
+                //create resource route for notice controller
+                Route::resource('notice', NoticeController::class);
+            });
         });
     }
 );
-Route::group(['middleware' => ['role:super-admin']], function () {
+/**Route::group(['middleware' => ['role:super-admin']], function () {
 
     Route::prefix('binance')->group(function () {
-        Route::get('createOrder',[BinanceController::class, 'createOrder']);
-        Route::get('certificates',[BinanceController::class, 'certificates']);
+        Route::get('createOrder', [BinanceController::class, 'createOrder']);
+        Route::get('certificates', [BinanceController::class, 'certificates']);
     });
 });
 
-Route::get('webhook',[BinanceController::class, 'webhook']);
+Route::get('webhook', [BinanceController::class, 'webhook']);
+ **/

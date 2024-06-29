@@ -77,25 +77,28 @@
                                 <hr>
                             </div>
 
-                                <div class="col-12">
-                                    <p class="fs-4">Información de Cuenta</p>
-                                </div>
-                                <div class="col-5  col-xxl-3">
-                                    <span>Usuario de BOOM</span>
-                                </div>
-                                <div class="col-1">
-                                    :
-                                </div>
-                                <div class="col-6 fw-bold ">
-                                    <a href="{{route('user.show',['id' =>$order->user->id])}}" target="_blank" data-bs-toggle="modal" data-bs-target="#exampleModal">{{$order->user->nick}}</a>
+                            <div class="col-12">
+                                <p class="fs-4">Información de Cuenta</p>
+                            </div>
+                            <div class="col-5  col-xxl-3">
+                                <span>Usuario de BOOM</span>
+                            </div>
+                            <div class="col-1">
+                                :
+                            </div>
+                            <div class="col-6 fw-bold ">
+                                <a href="{{ route('user.show', ['id' => $order->user->id]) }}" target="_blank"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">{{ $order->user->nick }}</a>
 
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                          <div class="modal-content">
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                             <div class="modal-header recharge-data-header">
-                                              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body recharge-data">
                                                 <p><span class="fw-bold">Nombre:</span> {{ $order->user->name }}</p>
@@ -108,59 +111,106 @@
                                                 </p>
                                             </div>
                                             <div class="modal-footer recharge-data">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
                                             </div>
-                                          </div>
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
-                                @if ($order->bundle->product->need_access)
-                                    <div class="col-12">
-                                        <p class="fs-4">Informacion de Cuenta</p>
-                                    </div>
-                                    <div class="col-4 col-xxl-3">
-                                        Teléfono:
-                                    </div>
-                                    <div class="col-6 fw-bold ">
-                                        {{ $accountInfo['phone'] }}
-                                    </div>
-                                @elseif ($order->bundle->product->need_region_id)
-                                    <div class="col-5 col-xxl-3">
-                                        ID de región
-                                    </div>
-                                    <div class="col-1">
-                                        :
-                                    </div>
-                                    <div class="col-6 fw-bold ">
-                                        {{ $accountInfo['region_id'] }}
-                                    </div>
-
-                                    <div class="col-5 col-xxl-3">
-                                        ID de cuenta
-                                    </div>
-                                    <div class="col-1">
-                                        :
-                                    </div>
-                                    <div class="col-6 fw-bold ">
-                                        {{ $accountInfo['account_id'] }}
-                                    </div>
-                                @elseif ($order->bundle->product->category->category != 'Tarjetas')
-                                    <div class="col-5 col-xxl-3">
-                                        ID de cuenta
-                                    </div>
-                                    <div class="col-1">
-                                        :
-                                    </div>
-                                    <div class="col-6 fw-bold ">
-                                        {{ $accountInfo['account_id'] }}
-                                    </div>
-                                @endif
-
+                            </div>
+                            @if ($order->bundle->product->need_access)
                                 <div class="col-12">
-                                    <hr>
+                                    <p class="fs-4">Informacion de Cuenta</p>
                                 </div>
+                                <div class="col-4 col-xxl-3">
+                                    Teléfono:
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $accountInfo['phone'] }}
+                                </div>
+                            @elseif ($order->bundle->product->need_region_id)
+                                <div class="col-5 col-xxl-3">
+                                    ID de región
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $accountInfo['region_id'] }}
+                                </div>
+
+                                <div class="col-5 col-xxl-3">
+                                    ID de cuenta
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $accountInfo['account_id'] }}
+                                </div>
+                            @elseif ($order->bundle->product->category->category != 'Tarjetas')
+                                <div class="col-5 col-xxl-3">
+                                    ID de cuenta
+                                </div>
+                                <div class="col-1">
+                                    :
+                                </div>
+                                <div class="col-6 fw-bold ">
+                                    {{ $accountInfo['account_id'] }}
+                                </div>
+                            @endif
 
                             <div class="col-12">
+                                <hr>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="fs-4">Operador</p>
+                                    </div>
+                                    <div class="col-5 col-xxl-3">
+                                        ID de usuario
+                                    </div>
+                                    <div class="col-1">
+                                        :
+                                    </div>
+                                    <div class="col-6 fw-bold ">
+                                        {{ $order->asistBy->id }}
+                                    </div>
+                                    <div class="col-5 col-xxl-3">
+                                        Nombre
+                                    </div>
+                                    <div class="col-1">
+                                        :
+                                    </div>
+                                    <div class="col-6 fw-bold ">
+                                        {{ $order->asistBy->name }}
+                                    </div>
+                                    <div class="col-5 col-xxl-3">
+                                        Apellido
+                                    </div>
+                                    <div class="col-1">
+                                        :
+                                    </div>
+                                    <div class="col-6 fw-bold ">
+                                        {{ $order->asistBy->surname }}
+                                    </div>
+                                    <div class="col-5 col-xxl-3">
+                                        Correo
+                                    </div>
+                                    <div class="col-1">
+                                        :
+                                    </div>
+                                    <div class="col-6 fw-bold ">
+                                        {{ $order->asistBy->email }}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <hr>
                                 <p class="fs-4">Detalles de Transacción</p>
                             </div>
                             <div class="col-5  col-xxl-3">
@@ -202,7 +252,7 @@
                                 <div class="col-1">
                                     :
                                 </div>
-                                <div class="col-6 fw-bold" >
+                                <div class="col-6 fw-bold">
                                     {{ $order->payment->data['code_discount'] }} %
                                 </div>
                             @endif
@@ -378,6 +428,7 @@
                                 <div class="col-6 fw-bold ">
                                     {{ $order->payment->data['amount'] }} USD
                                 </div>
+
                             @endif
                             <div class="col-12">
                                 <div class="row">
@@ -402,7 +453,8 @@
                                         </div>
                                     @elseif ($order->orderStatus->status == 'Procesando')
                                         <div class="col text-center">
-                                            <div class="rounded-pill bg-info w-75 fw-bold text-truncate boom-color-darkgray">
+                                            <div
+                                                class="rounded-pill bg-info w-75 fw-bold text-truncate boom-color-darkgray">
                                                 {{ $order->orderStatus->status }}
                                             </div>
                                         </div>
@@ -416,7 +468,11 @@
                                 </div>
                             </div>
 
-                            @if ($order->orderStatus->status != 'Exitoso' && $order->orderStatus->status != 'No Procesado' && $order->orderStatus->status != 'Reembolsado')
+
+                            @if (
+                                $order->orderStatus->status != 'Exitoso' &&
+                                    $order->orderStatus->status != 'Cancelado' &&
+                                    $order->orderStatus->status != 'Reembolsado')
                                 <div class="col-12 mt-4">
                                     <hr>
                                     <h2>Actualizar</h2>
@@ -424,16 +480,15 @@
                                         @csrf
                                         <input type="text" name="order_id" value="{{ $order->id }}" hidden>
                                         @if ($order->bundle->product->category->category == 'Tarjetas')
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <label for="code" class="form-label">Codigo:</label>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label for="code" class="form-label">Codigo:</label>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" class="form-control-sm mb-3 w-100"
+                                                        name="code" required>
+                                                </div>
                                             </div>
-                                            <div class="col-12">
-                                                <input type="text" class="form-control-sm mb-3 w-100" name="code" required>
-                                            </div>
-                                        </div>
-
-
                                         @endif
                                         <div class="row">
                                             <div class="col-12">
@@ -441,7 +496,8 @@
 
                                             </div>
                                             <div class="col-12">
-                                                <select name="order_status" id="" required class="form-select-sm w-100" required>
+                                                <select name="order_status" id="" required
+                                                    class="form-select-sm w-100" required>
 
                                                     @foreach ($orderStatuses as $orderStatus)
                                                         <option value="{{ $orderStatus->id }}">

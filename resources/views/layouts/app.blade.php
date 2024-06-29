@@ -190,7 +190,8 @@
                                         @hasanyrole('super-admin|admin')
                                             <li><a class="dropdown-item text-primary user-dropdown-item"
                                                     href="{{ route('order.index') }}"><i
-                                                        class="bi bi-clock-history me-1"></i>Historial</a></li>
+                                                        class="bi bi-clock-history me-1">
+                                                    </i>Historial</a></li>
                                         @endhasanyrole
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
                                                 href="{{ route('order.pending') }}"><i
@@ -338,6 +339,22 @@
                                         <li><a class="dropdown-item text-primary user-dropdown-item"
                                                 href="{{ route('avatar.create') }}"><i
                                                     class="bi bi-clipboard2 me-1"></i>Agregar</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown mb-2 ">
+                                    <a class="dropdown-toggle fs-4 nav-item" href="#" role="link"
+                                        data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-wallet2 me-2 "></i>
+                                        Avisos
+                                    </a>
+                                    <ul class="dropdown-menu user-dropdown">
+                                        <li><a class="dropdown-item text-primary user-dropdown-item"
+                                                href="{{ route('notice.index') }}"><i class="bi bi-list me-1"></i>Ver
+                                                todos</a></li>
+
+                                        <li><a class="dropdown-item text-primary user-dropdown-item"
+                                                href="{{ route('notice.create') }}"><i
+                                                    class="bi bi-plus me-1"></i></i>Agregar</a></li>
                                     </ul>
                                 </li>
                             @endhasanyrole

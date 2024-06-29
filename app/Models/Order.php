@@ -31,4 +31,9 @@ class Order extends Model
     {
         return $this->belongsTo(OrderStatus::class);
     }
+
+    public function asistBy()
+    {
+        return $this->belongsTo(User::class,'asist_by');
+    }
 }

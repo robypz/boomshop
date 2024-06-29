@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
@@ -73,8 +73,6 @@ class BinanceController extends Controller
         } else {
             return response()->json(null, 502);
         }
-
-
     }
 
     public function certificates()
@@ -110,3 +108,4 @@ class BinanceController extends Controller
         return $cartificates;
     }
 }
+*/
