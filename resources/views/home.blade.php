@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <!--  <i class="> <i class="bi bi-eye"></i></i>
-                                                                                                                                                                                                                                                                                                                                              <h3 class="">Ver mas Juegos</h3>-->
+                                                                                                                                                                                                                                                                                                                                                              <h3 class="">Ver mas Juegos</h3>-->
                 </section>
             </div>
         @endif
@@ -253,39 +253,42 @@
     </div>
 </div>
 </div>
+@if ($notices->count() > 0)
 <div class="modal" tabindex="1" id="notices">
-<div class="modal-dialog  modal-dialog-centered">
-    <div class="modal-content recharge-data">
-        <div class="modal-header recharge-data-header">
-            <h5 class="modal-title boom-color-darkgray"></h5>
-            <i type="button" class="bi bi-x-lg boom-color-darkgrayfs-4" data-bs-dismiss="modal" aria-label="Close"></i>
-        </div>
-        <div class="modal-body recahrge-data-body">
-            <div id="notices-carousel" class="carousel slide" data-bs-ride="notices-carousel">
-                <div class="carousel-inner">
-                    @foreach ($notices as $notice)
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                            <img src="{{ asset($notice->image_path) }}" class="d-block w-100 notice-content"
-                                alt="...">
-                        </div>
-                    @endforeach
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#notices-carousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#notices-carousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon text-primary" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content recharge-data">
+            <div class="modal-header recharge-data-header">
+                <h5 class="modal-title boom-color-darkgray"></h5>
+                <i type="button" class="bi bi-x-lg boom-color-darkgrayfs-4" data-bs-dismiss="modal"
+                    aria-label="Close"></i>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-blue" data-bs-dismiss="modal">Cerrar</button>
+            <div class="modal-body recahrge-data-body">
+                <div id="notices-carousel" class="carousel slide" data-bs-ride="notices-carousel">
+                    <div class="carousel-inner">
+                        @foreach ($notices as $notice)
+                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                <img src="{{ asset($notice->image_path) }}" class="d-block w-100 notice-content"
+                                    alt="...">
+                            </div>
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#notices-carousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#notices-carousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon text-primary" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-blue" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>
-</div>
+@endif
 @endsection
