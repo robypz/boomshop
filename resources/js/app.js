@@ -4,12 +4,14 @@ import "./bootstrap";
 
 
 
-var myModal = new Modal(document.getElementById('notices'), {
-    keyboard: false
-});
+const noticies = document.getElementById('notices');
 
-// Muestra el modal
-myModal.show();
+if (noticies) {
+    var myModal = new Modal(noticies, {
+        keyboard: false
+    });
 
+    // Muestra el modal
+    myModal.show();
 
-
+}
